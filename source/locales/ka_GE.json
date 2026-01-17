@@ -191,8 +191,8 @@
 			]
 		},
 		"Info": {
-			"Access Proton VPN via this icon": [
-				"Proton VPN-თან წვდომა ამ ხატულით"
+			"Access Swift Proton VPN via this icon": [
+				"Swift Proton VPN-თან წვდომა ამ ხატულით"
 			],
 			"Allow VPN permissions": [
 				"დაუშვით VPN-ის წვდომები"
@@ -206,8 +206,8 @@
 			"Auto-selected from": [
 				"ავტომატურადაა არჩეული წყაროდან"
 			],
-			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"ბრაუზერის გახსნისას Proton VPN-ის ავტომატური მიერთება."
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"ბრაუზერის გახსნისას Swift Proton VPN-ის ავტომატური მიერთება."
 			],
 			"Back": [
 				"უკან"
@@ -239,8 +239,8 @@
 			"Connecting...": [
 				"მიერთება..."
 			],
-			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"Proton VPN-თან დახმარებისთვის შეგიძლიათ ჩვენს მხარდაჭერის გუნდს დაუკავშირდეთ."
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"Swift Proton VPN-თან დახმარებისთვის შეგიძლიათ ჩვენს მხარდაჭერის გუნდს დაუკავშირდეთ."
 			],
 			"Crash": [
 				"ავარია"
@@ -272,8 +272,8 @@
 			"Fastest free server": [
 				"ყველაზე სწრაფი უფასო სერვერი"
 			],
-			"Follow these simple steps to get the best experience using Proton VPN": [
-				"Proton VPN-ით სარგებლობისას საუკეთესო გამოცდილების მისაღებად ამ მარტივ ნაბიჯებს გაჰყევით"
+			"Follow these simple steps to get the best experience using Swift Proton VPN": [
+				"Swift Proton VPN-ით სარგებლობისას საუკეთესო გამოცდილების მისაღებად ამ მარტივ ნაბიჯებს გაჰყევით"
 			],
 			"Get unlimited server changes with VPN Plus": [
 				"მიიღეთ განუსაზღვრელი სერვერის ცვლილება VPN Plus-თან ერთად"
@@ -312,11 +312,11 @@
 			"Open the Extensions menu": [
 				"გაფართოებების მენიუს გახსნა"
 			],
-			"Open the Proton VPN browser extension to continue": [
-				"გასაგრძელებლად Proton VPN-ის ბრაუზერის გაფართოება გახსენით"
+			"Open the Swift Proton VPN browser extension to continue": [
+				"გასაგრძელებლად Swift Proton VPN-ის ბრაუზერის გაფართოება გახსენით"
 			],
-			"Pin Proton VPN to your toolbar": [
-				"მიამაგრეთ Proton VPN-ი თქვენი ხელსაწყოების ზოლზე"
+			"Pin Swift Proton VPN to your toolbar": [
+				"მიამაგრეთ Swift Proton VPN-ი თქვენი ხელსაწყოების ზოლზე"
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"თქვენი ბრაუზერის მხტუნარაში დააწექით <b>შემდეგს</b>, შემდეგ კი <b>დაშვებას</b>."
@@ -324,11 +324,11 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"დაიცავით თავი ინტერნეტში Proton-ის უფასო ჩქაროსნული VPN-ით."
 			],
-			"Proton VPN": [
-				"Proton VPN"
+			"Swift Proton VPN": [
+				"Swift Proton VPN"
 			],
-			"Proton VPN Browser Extension": [
-				"Proton VPN-ის გაფართოება ბრაუზერისთვის"
+			"Swift Proton VPN Browser Extension": [
+				"Swift Proton VPN-ის გაფართოება ბრაუზერისთვის"
 			],
 			"Search": [
 				"ძებნა"
@@ -351,11 +351,11 @@
 			"Telemetry": [
 				"ტელემეტრია"
 			],
-			"Thank you for installing Proton VPN": [
-				"დიდი მადლობა Proton VPN-ის დაყენებისთვის"
+			"Thank you for installing Swift Proton VPN": [
+				"დიდი მადლობა Swift Proton VPN-ის დაყენებისთვის"
 			],
-			"Then just click the Proton VPN icon to sign in.": [
-				"შემდეგ კი, შესასვლელად, უბრალოდ დააწკაპუნეთ Proton VPN-ის ხატულაზე."
+			"Then just click the Swift Proton VPN icon to sign in.": [
+				"შემდეგ კი, შესასვლელად, უბრალოდ დააწკაპუნეთ Swift Proton VPN-ის ხატულაზე."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"ეს სტატისტიკა არ შეიცავს თქვენს IP მისამართს და მათი იდენტიფიცირებისთვის შეუძლებელია. ჩვენ არასდროს გავუზიარებთ მათ მესამე მხარეებს"
@@ -481,16 +481,16 @@
 			"Connecting to ${serverName}": [
 				"${serverName}-სთან დაკავშირება"
 			],
-			"Proton VPN: ${status}": [
-				"Proton VPN: ${status}"
+			"Swift Proton VPN: ${status}": [
+				"Swift Proton VPN: ${status}"
 			]
 		},
 		"Title": {
 			"Features": [
 				"ფუნქციები"
 			],
-			"Proton VPN for Vivaldi": [
-				"Proton VPN-ი Vivaldi-სთვის"
+			"Swift Proton VPN for Vivaldi": [
+				"Swift Proton VPN-ი Vivaldi-სთვის"
 			],
 			"Streaming": [
 				"სტრიმინგი"

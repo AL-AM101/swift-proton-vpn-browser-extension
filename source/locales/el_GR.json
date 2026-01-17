@@ -98,8 +98,8 @@
 			"Upgrade": [
 				"Αναβάθμιση"
 			],
-			"Upgrade to Proton VPN Plus": [
-				"Αναβαθμίστε στο Proton VPN Plus"
+			"Upgrade to Swift Proton VPN Plus": [
+				"Αναβαθμίστε στο Swift Proton VPN Plus"
 			],
 			"Visit Support Center": [
 				"Επισκεφτείτε το Κέντρο Υποστήριξης"
@@ -211,8 +211,8 @@
 			"Access over 13,000 secure servers in over 120 countries": [
 				"Αποκτήστε πρόσβαση σε περισσότερους από 13.000 ασφαλείς διακομιστές σε πάνω από 120 χώρες"
 			],
-			"Access Proton VPN via this icon": [
-				"Αποκτήστε πρόσβαση στο Proton VPN μέσω αυτού του εικονιδίου"
+			"Access Swift Proton VPN via this icon": [
+				"Αποκτήστε πρόσβαση στο Swift Proton VPN μέσω αυτού του εικονιδίου"
 			],
 			"Allow VPN permissions": [
 				"Επιτρέψτε τα δικαιώματα VPN"
@@ -229,8 +229,8 @@
 			"Auto-selected from": [
 				"Επιλέχθηκε αυτόματα από"
 			],
-			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"Επανασυνδεθείτε αυτόματα στο Proton VPN όταν ανοίγετε το πρόγραμμα περιήγησής σας."
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"Επανασυνδεθείτε αυτόματα στο Swift Proton VPN όταν ανοίγετε το πρόγραμμα περιήγησής σας."
 			],
 			"Back": [
 				"Πίσω"
@@ -268,8 +268,8 @@
 			"Connecting...": [
 				"Γίνεται σύνδεση..."
 			],
-			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"Επικοινωνήστε με τους αντιπροσώπους υποστήριξης πελατών μας για να σας βοηθήσουμε με το Proton VPN."
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"Επικοινωνήστε με τους αντιπροσώπους υποστήριξης πελατών μας για να σας βοηθήσουμε με το Swift Proton VPN."
 			],
 			"Crash": [
 				"Ατύχημα"
@@ -298,8 +298,8 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Εκπέμπει ειδοποιήσεις συστήματος για συμβάντα σύνδεσης και αποσύνδεσης."
 			],
-			"Enjoying Proton VPN?": [
-				"Απολαμβάνετε το Proton VPN;"
+			"Enjoying Swift Proton VPN?": [
+				"Απολαμβάνετε το Swift Proton VPN;"
 			],
 			"Exclude mode": [
 				"Λειτουργία εξαίρεσης"
@@ -310,8 +310,8 @@
 			"Fastest free server": [
 				"Ο ταχύτερος δωρεάν διακομιστής"
 			],
-			"Follow these simple steps to get the best experience using Proton VPN": [
-				"Ακολουθήστε αυτά τα απλά βήματα για να έχετε την καλύτερη εμπειρία χρησιμοποιώντας το Proton VPN"
+			"Follow these simple steps to get the best experience using Swift Proton VPN": [
+				"Ακολουθήστε αυτά τα απλά βήματα για να έχετε την καλύτερη εμπειρία χρησιμοποιώντας το Swift Proton VPN"
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"Χώρες δωρεάν διακομιστών (<span id=\"free-server-countries-count\">0</span>)"
@@ -359,11 +359,11 @@
 			"Open the Extensions menu": [
 				"Άνοιγμα του μενού \"Προεκτάσεις\""
 			],
-			"Open the Proton VPN browser extension to continue": [
-				"Ανοίξτε την προέκταση του προγράμματος περιήγησης Proton VPN για να συνεχίσετε"
+			"Open the Swift Proton VPN browser extension to continue": [
+				"Ανοίξτε την προέκταση του προγράμματος περιήγησης Swift Proton VPN για να συνεχίσετε"
 			],
-			"Pin Proton VPN to your toolbar": [
-				"Καρφιτσώστε το Proton VPN στη γραμμή εργαλείων σας"
+			"Pin Swift Proton VPN to your toolbar": [
+				"Καρφιτσώστε το Swift Proton VPN στη γραμμή εργαλείων σας"
 			],
 			"Please help us spread the word with a Web Store rating.": [
 				"Παρακαλούμε βοηθήστε μας να διαδώσουμε το μήνυμα με μια αξιολόγηση στο Ηλεκτρονικό Κατάστημα."
@@ -374,11 +374,11 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Προστατέψτε τον εαυτό σας στο διαδίκτυο με το δωρεάν VPN υψηλής ταχύτητας της Proton."
 			],
-			"Proton VPN": [
-				"Proton VPN"
+			"Swift Proton VPN": [
+				"Swift Proton VPN"
 			],
-			"Proton VPN Browser Extension": [
-				"Προέκταση προγράμματος περιήγησης Proton VPN"
+			"Swift Proton VPN Browser Extension": [
+				"Προέκταση προγράμματος περιήγησης Swift Proton VPN"
 			],
 			"Search": [
 				"Αναζήτηση"
@@ -404,11 +404,11 @@
 			"Telemetry": [
 				"Τηλεμετρία"
 			],
-			"Thank you for installing Proton VPN": [
-				"Σας ευχαριστούμε που εγκαταστήσατε το Proton VPN"
+			"Thank you for installing Swift Proton VPN": [
+				"Σας ευχαριστούμε που εγκαταστήσατε το Swift Proton VPN"
 			],
-			"Then just click the Proton VPN icon to sign in.": [
-				"Στη συνέχεια, απλώς κάντε κλικ στο εικονίδιο Proton VPN για να συνδεθείτε."
+			"Then just click the Swift Proton VPN icon to sign in.": [
+				"Στη συνέχεια, απλώς κάντε κλικ στο εικονίδιο Swift Proton VPN για να συνδεθείτε."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Αυτά τα στατιστικά στοιχεία δεν περιέχουν τη διεύθυνση IP σας και δεν μπορούν να χρησιμοποιηθούν για την αναγνώρισή σας. Δε θα τα κοινοποιήσουμε ποτέ σε τρίτους"
@@ -428,11 +428,11 @@
 			"User": [
 				"Χρήστης"
 			],
-			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
-				"Η VPN αποκλείστηκε από εξωτερικό λογισμικό.\n\nΟρισμένα εργαλεία, όπως προστασίας από ιούς ή διακομιστές μεσολάβησης, μπορούν να παρεμβαίνουν στο Proton VPN. Απενεργοποιήστε τα και δοκιμάστε ξανά."
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. Disable them and retry.": [
+				"Η VPN αποκλείστηκε από εξωτερικό λογισμικό.\n\nΟρισμένα εργαλεία, όπως προστασίας από ιούς ή διακομιστές μεσολάβησης, μπορούν να παρεμβαίνουν στο Swift Proton VPN. Απενεργοποιήστε τα και δοκιμάστε ξανά."
 			],
-			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
-				"Η VPN αποκλείστηκε από εξωτερικό λογισμικό: ${blockingSoftware}.\n\nΟρισμένα εργαλεία, όπως προστασίας από ιούς ή διακομιστές μεσολάβησης, μπορούν να παρεμβαίνουν στο Proton VPN. Απενεργοποιήστε τα και δοκιμάστε ξανά."
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. You can try disabling it to confirm.": [
+				"Η VPN αποκλείστηκε από εξωτερικό λογισμικό: ${blockingSoftware}.\n\nΟρισμένα εργαλεία, όπως προστασίας από ιούς ή διακομιστές μεσολάβησης, μπορούν να παρεμβαίνουν στο Swift Proton VPN. Απενεργοποιήστε τα και δοκιμάστε ξανά."
 			],
 			"VPN Features": [
 				"Χαρακτηριστικά VPN"
@@ -546,16 +546,16 @@
 			"Connecting to ${serverName}": [
 				"Σύνδεση σε ${serverName}"
 			],
-			"Proton VPN: ${status}": [
-				"Proton VPN: ${status}"
+			"Swift Proton VPN: ${status}": [
+				"Swift Proton VPN: ${status}"
 			]
 		},
 		"Title": {
 			"Features": [
 				"Χαρακτηριστικά"
 			],
-			"Proton VPN for Vivaldi": [
-				"Proton VPN για Vivaldi"
+			"Swift Proton VPN for Vivaldi": [
+				"Swift Proton VPN για Vivaldi"
 			],
 			"Streaming": [
 				"Μετάδοση"

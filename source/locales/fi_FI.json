@@ -98,8 +98,8 @@
 			"Upgrade": [
 				"Päivitä tilaus"
 			],
-			"Upgrade to Proton VPN Plus": [
-				"Päivitä Proton VPN Plussaan"
+			"Upgrade to Swift Proton VPN Plus": [
+				"Päivitä Swift Proton VPN Plussaan"
 			],
 			"Visit Support Center": [
 				"Avaa Tukikeskus"
@@ -211,8 +211,8 @@
 			"Access over 13,000 secure servers in over 120 countries": [
 				"Käytä yli 13 000 turvallista palvelinta yli 120 maassa"
 			],
-			"Access Proton VPN via this icon": [
-				"Käytä Proton VPN:ää tästä kuvakkeesta"
+			"Access Swift Proton VPN via this icon": [
+				"Käytä Swift Proton VPN:ää tästä kuvakkeesta"
 			],
 			"Allow VPN permissions": [
 				"Myönnä VPN -laajennuksen tarvitsemat käyttöoikeudet"
@@ -229,8 +229,8 @@
 			"Auto-selected from": [
 				"Valittu automaattisesti seuraavista"
 			],
-			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"Yhdistä Proton VPN automaattisesti, kun avaat selaimen."
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"Yhdistä Swift Proton VPN automaattisesti, kun avaat selaimen."
 			],
 			"Back": [
 				"Takaisin"
@@ -268,8 +268,8 @@
 			"Connecting...": [
 				"Yhdistetään..."
 			],
-			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"Pyydä apua Proton VPN:n käyttöön asiakaspalvelustamme."
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"Pyydä apua Swift Proton VPN:n käyttöön asiakaspalvelustamme."
 			],
 			"Crash": [
 				"Kaatuminen"
@@ -298,8 +298,8 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Lähetä järjestelmäilmoituksia yhteyden muodostus- ja katkaisutapahtumista."
 			],
-			"Enjoying Proton VPN?": [
-				"Nautitko Proton VPN:stä?"
+			"Enjoying Swift Proton VPN?": [
+				"Nautitko Swift Proton VPN:stä?"
 			],
 			"Exclude mode": [
 				"Poissulje-tila"
@@ -310,8 +310,8 @@
 			"Fastest free server": [
 				"Nopein ilmainen palvelin"
 			],
-			"Follow these simple steps to get the best experience using Proton VPN": [
-				"Noudata näitä yksinkertaisia ohjeita parasta Proton VPN -kokemusta varten"
+			"Follow these simple steps to get the best experience using Swift Proton VPN": [
+				"Noudata näitä yksinkertaisia ohjeita parasta Swift Proton VPN -kokemusta varten"
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"Ilmaispalvelinmaat (<span id=\"free-server-countries-count\">0</span>)"
@@ -359,11 +359,11 @@
 			"Open the Extensions menu": [
 				"Avaa laajennusvalikko"
 			],
-			"Open the Proton VPN browser extension to continue": [
-				"Jatka avaamalla Proton VPN -selainlaajennus"
+			"Open the Swift Proton VPN browser extension to continue": [
+				"Jatka avaamalla Swift Proton VPN -selainlaajennus"
 			],
-			"Pin Proton VPN to your toolbar": [
-				"Kiinnitä Proton VPN työkalupalkkiisi"
+			"Pin Swift Proton VPN to your toolbar": [
+				"Kiinnitä Swift Proton VPN työkalupalkkiisi"
 			],
 			"Please help us spread the word with a Web Store rating.": [
 				"Auta meitä levittämään sanaa antamalla arvosanan Verkkokaupassa."
@@ -374,11 +374,11 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Suojaa itseäsi verkossa Protonin ilmaisella nopealla VPN:llä."
 			],
-			"Proton VPN": [
-				"Proton VPN"
+			"Swift Proton VPN": [
+				"Swift Proton VPN"
 			],
-			"Proton VPN Browser Extension": [
-				"Proton VPN -selainlaajennus"
+			"Swift Proton VPN Browser Extension": [
+				"Swift Proton VPN -selainlaajennus"
 			],
 			"Search": [
 				"Haku"
@@ -404,10 +404,10 @@
 			"Telemetry": [
 				"Telemetria"
 			],
-			"Thank you for installing Proton VPN": [
-				"Kiitos Proton VPN:n asennuksesta"
+			"Thank you for installing Swift Proton VPN": [
+				"Kiitos Swift Proton VPN:n asennuksesta"
 			],
-			"Then just click the Proton VPN icon to sign in.": [
+			"Then just click the Swift Proton VPN icon to sign in.": [
 				"Kirjaudu sitten sisään painamalla Proron VPN -kuvaketta."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
@@ -428,11 +428,11 @@
 			"User": [
 				"Käyttäjä"
 			],
-			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
-				"VPN:n on estänyt ulkoinen ohjelmisto.\n\nTietyt työkalut, kuten virustorjuntaohjelmat tai välityspalvelimet, saattavat häiritä Proton VPN:n toimintaa. Poista ne käytöstä ja yritä uudelleen."
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. Disable them and retry.": [
+				"VPN:n on estänyt ulkoinen ohjelmisto.\n\nTietyt työkalut, kuten virustorjuntaohjelmat tai välityspalvelimet, saattavat häiritä Swift Proton VPN:n toimintaa. Poista ne käytöstä ja yritä uudelleen."
 			],
-			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
-				"VPN:n on estänyt ulkoinen ohjelmisto: ${blockingSoftware}.\n\nTietyt työkalut, kuten virustorjuntaohjelmat tai välityspalvelimet, saattavat häiritä Proton VPN:n toimintaa. Voit yrittää poistaa sen käytöstä vahvistaaksesi."
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. You can try disabling it to confirm.": [
+				"VPN:n on estänyt ulkoinen ohjelmisto: ${blockingSoftware}.\n\nTietyt työkalut, kuten virustorjuntaohjelmat tai välityspalvelimet, saattavat häiritä Swift Proton VPN:n toimintaa. Voit yrittää poistaa sen käytöstä vahvistaaksesi."
 			],
 			"VPN Features": [
 				"VPN:n ominaisuudet"
@@ -546,16 +546,16 @@
 			"Connecting to ${serverName}": [
 				"Yhdistetään palvelimeen ${serverName}"
 			],
-			"Proton VPN: ${status}": [
-				"Proton VPN: ${status}"
+			"Swift Proton VPN: ${status}": [
+				"Swift Proton VPN: ${status}"
 			]
 		},
 		"Title": {
 			"Features": [
 				"Ominaisuudet"
 			],
-			"Proton VPN for Vivaldi": [
-				"Proton VPN Vivaldille"
+			"Swift Proton VPN for Vivaldi": [
+				"Swift Proton VPN Vivaldille"
 			],
 			"Streaming": [
 				"Suoratoisto"

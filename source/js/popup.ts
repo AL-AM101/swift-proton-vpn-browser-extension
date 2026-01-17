@@ -1,6 +1,7 @@
 'use popup';
 import type {Logical} from './vpn/Logical';
-import {getLogicalById, getSortedLogicals, lookups} from './vpn/getLogicals';
+import {getLastConnectedServer} from './vpn/lastConnectedServer';
+import {getLogicalById, getSortedLogicals, isLogicalUp, lookups} from './vpn/getLogicals';
 import {readSession} from './account/readSession';
 import {sendMessageToBackground} from './tools/sendMessageToBackground';
 import {getInfoFromBackground} from './tools/getInfoFromBackground';
@@ -8,11 +9,14 @@ import {startSession} from './account/createSession';
 import {
 	c,
 	fetchTranslations,
+	getLanguage,
 	getCountryName,
 	getCountryNameOrCode,
 	getHashSeed,
+	getPreferredLanguage,
 	getQuerySeed,
 	getTranslation,
+	setPreferredLanguage,
 	translateArea,
 } from './tools/translate';
 import {escapeHtml} from './tools/escapeHtml';
@@ -31,13 +35,14 @@ import {
 	splitTunnelingEnabled,
 } from './config';
 import {refreshLocationSlots} from './account/refreshLocationSlots';
-import {getAllLogicals, requireBestLogical, requireRandomLogical} from './vpn/getLogical';
+import {getAllLogicals, getBestLogical, requireBestLogical, requireRandomLogical} from './vpn/getLogical';
 import {getCities, mergeTranslations} from './vpn/getCities';
 import {setUpSearch} from './search/setUpSearch';
 import {countryList, type CountryList} from './components/countryList';
+import {serverList} from './components/serverList';
 import {configureServerGroups} from './components/configureServerGroups';
 import {configureLookupSearch} from './components/configureLookupSearch';
-import {storage} from './tools/storage';
+import {storage, storagePrefix} from './tools/storage';
 import {showNotifications} from './notifications/showNotifications';
 import {watchBroadcastMessages} from './tools/answering';
 import type {ChangeStateMessage} from './tools/broadcastMessage';
@@ -65,6 +70,7 @@ import {getSearchResult} from './search/getSearchResult';
 import {upsell} from './tools/upsell';
 import {forgetAccount} from './account/forgetAccount';
 import {hideIf} from './tools/hideIf';
+import {getCurrentTab} from './tools/getCurrentTab';
 import {storedPreventWebrtcLeak} from './webrtc/storedPreventWebrtcLeak';
 import {preventLeak} from './webrtc/preventLeak';
 import {setWebRTCState} from './webrtc/setWebRTCState';
@@ -92,20 +98,38 @@ import {ServerRotator} from './vpn/ServerRotator';
 import {configureGoToButtons} from './components/goToButton';
 import {updateAccessSentenceWithCounts} from './components/accessSentence';
 import {configureLinks, setNewTabLinkTitle} from './components/links';
-import {configureModalButtons} from './components/modals/modals';
+import {closeModal, configureModalButtons, showModal} from './components/modals/modals';
 import {configureRatingModalButtons, maybeShowRatingModal} from './components/modals/ratingModal';
 import {setReviewInfoStateOnConnectAction} from './vpn/reviewInfo';
 import {filterLogicalsWithCurrentFeatures} from './vpn/filterLogicalsWithCurrentFeatures';
+import {
+	swiftDisconnectOnUnmatchedItem,
+	swiftEnabledItem,
+	swiftRulesItem,
+	type SwiftRule,
+	type SwiftTargetType,
+} from './swift/swiftRules';
+import {swiftDebugItem, type SwiftDebugEvent} from './swift/swiftDebug';
+import {swiftHeartbeatItem, type SwiftHeartbeat} from './swift/swiftHeartbeat';
+import {buildSwiftHostLabel, getSwiftUrlParts, normalizeSwiftPath, parseSwiftUrlInput, selectSwiftRule} from './swift/swiftRuleMatching';
+import {swiftBlockedSiteItem, type SwiftBlockedSite} from './swift/swiftBlockedSite';
+import {resolveSwiftTarget} from './swift/swiftTargetResolver';
+import {connectionSpeedItem, type ConnectionSpeed} from './vpn/connectionSpeed';
 
 const state = {
 	connected: false,
 	restarted: false,
 };
 
+let searchInput: HTMLInputElement | null = null;
+
 type Theme = 'dark' | 'light' | 'auto';
 
 const start = async () => {
 	await fetchTranslations();
+	const primaryLanguage = `${getLanguage() || ''}`.split(/[_-]/)[0];
+	const isRtlLanguage = primaryLanguage === 'ar';
+	document.body?.classList.toggle('lang-rtl', isRtlLanguage);
 
 	const spinner = document.getElementById('spinner');
 	const loggedView = document.getElementById('logged-view');
@@ -157,6 +181,55 @@ const start = async () => {
 		setTheme(theme);
 	});
 
+	const languageSelect = document.getElementById('language-preference') as HTMLSelectElement | null;
+	if (languageSelect) {
+		const preferredLanguage = getPreferredLanguage();
+		languageSelect.value = preferredLanguage || '';
+		languageSelect.addEventListener('change', async () => {
+			const nextLanguage = languageSelect.value || null;
+			await setPreferredLanguage(nextLanguage);
+			window.location.reload();
+		});
+	}
+
+	const widthInput = document.getElementById('popup-width') as HTMLInputElement | null;
+	const widthValue = document.getElementById('popup-width-value') as HTMLSpanElement | null;
+	const storedPopupWidth = storage.item<{value: number}>('popup-width');
+
+	const applyPopupWidth = (width: number) => {
+		const min = widthInput ? Number(widthInput.min) || 300 : 300;
+		const max = widthInput ? Number(widthInput.max) || 380 : 380;
+		const base = Number.isFinite(width) ? width : 330;
+		const clamped = Math.min(max, Math.max(min, base));
+
+		document.documentElement.style.setProperty('--popup-width', `${clamped}px`);
+
+		if (widthInput) {
+			widthInput.value = `${clamped}`;
+		}
+
+		if (widthValue) {
+			widthValue.textContent = `${clamped}px`;
+		}
+	};
+
+	storedPopupWidth.get().then(widthCache => {
+		if (typeof widthCache?.value === 'number') {
+			applyPopupWidth(widthCache.value);
+			return;
+		}
+
+		applyPopupWidth(widthInput ? Number(widthInput.value) : 330);
+	});
+
+	if (widthInput) {
+		widthInput.addEventListener('input', () => {
+			const nextWidth = Number(widthInput.value);
+			applyPopupWidth(nextWidth);
+			storedPopupWidth.set({value: nextWidth});
+		});
+	}
+
 	const session = await readSession();
 
 	if (!session.uid || !session.refreshToken) {
@@ -205,6 +278,8 @@ const start = async () => {
 			configureButtons(regionSlot);
 			configureGoToButtons(regionSlot, goTo);
 			configureServerGroups(regionSlot);
+			configureFavoriteButtons(regionSlot);
+			syncFavoriteToggles(regionSlot);
 			showConnectedItemMarker(regionSlot);
 		}
 	};
@@ -455,6 +530,11 @@ const start = async () => {
 
 		(area || document.getElementById('servers') || document).querySelectorAll<HTMLButtonElement>('.open-upgrade-page, button[data-href], button[data-id], button[data-exitCountry], .connect-clickable, .server:not(.in-maintenance)').forEach(button => {
 			onClick(button, async (event) => {
+				const target = event.target as HTMLElement | null;
+				if (target?.closest?.('.favorite-toggle')) {
+					return;
+				}
+
 				event.stopPropagation();
 				event.stopImmediatePropagation?.();
 				event.preventDefault();
@@ -604,6 +684,10 @@ const start = async () => {
 	mergeTranslations(logicals, cities);
 
 	window.addEventListener('languagechange', async () => {
+		if (getPreferredLanguage()) {
+			return;
+		}
+
 		const cities = await getCities((await readSession()).uid);
 		mergeTranslations(logicals, cities);
 
@@ -738,26 +822,1587 @@ const start = async () => {
 
 	servers.classList[limitedUi ? 'add' : 'remove']('not-allowed-by-plan');
 
+	const favoriteLogicalsItem = storage.item<{value: string[]}>('favorite-logicals');
+	let favoriteLogicals = new Set<string>();
+
+	const loadFavoriteLogicals = async () => {
+		const stored = await favoriteLogicalsItem.get();
+		favoriteLogicals = new Set((stored?.value || []).map(id => `${id}`));
+	};
+
+	const getFavoriteLogicals = () => {
+		const favorites = logicals.filter(logical => favoriteLogicals.has(`${logical.ID}`));
+
+		return filterLogicalsWithCurrentFeatures(favorites, userTier, secureCore);
+	};
+
+	const updateFavoriteToggle = (button: HTMLButtonElement) => {
+		const id = button.getAttribute('data-favorite-id');
+
+		if (!id) {
+			return;
+		}
+
+		const isFavorite = favoriteLogicals.has(id);
+		const label = isFavorite
+			? c('Action').t`Remove from favorites`
+			: c('Action').t`Add to favorites`;
+
+		button.classList.toggle('is-favorite', isFavorite);
+		button.setAttribute('aria-pressed', isFavorite ? 'true' : 'false');
+		button.setAttribute('title', label);
+		button.setAttribute('aria-label', label);
+	};
+
+	const syncFavoriteToggles = (area?: ParentNode) => {
+		(area || document).querySelectorAll<HTMLButtonElement>('.favorite-toggle').forEach(updateFavoriteToggle);
+	};
+
+	let refresh = () => {};
+
+	const updateFavoriteConnectButton = (visible?: boolean) => {
+		const favoriteConnectButton = document.querySelector('.favorite-connect-button') as HTMLButtonElement | null;
+
+		if (!favoriteConnectButton) {
+			return;
+		}
+
+		if (typeof visible === 'boolean') {
+			favoriteConnectButton.style.display = visible ? 'block' : 'none';
+		}
+
+		favoriteConnectButton.disabled = getFavoriteLogicals().length === 0;
+	};
+
+	const toggleFavorite = (button: HTMLButtonElement) => {
+		const id = button.getAttribute('data-favorite-id');
+
+		if (!id) {
+			return;
+		}
+
+		if (favoriteLogicals.has(id)) {
+			favoriteLogicals.delete(id);
+		} else {
+			favoriteLogicals.add(id);
+		}
+
+		triggerPromise(favoriteLogicalsItem.set({value: Array.from(favoriteLogicals)}));
+		updateFavoriteToggle(button);
+
+		const isSearchActive = !!(searchInput && searchInput.value);
+		const isInServersList = !!button.closest('#servers');
+
+		if (isSearchActive) {
+			syncFavoriteToggles(document);
+		} else if (isInServersList) {
+			refresh();
+		} else {
+			syncFavoriteToggles(button.closest('[data-page]') || document);
+		}
+
+		updateFavoriteConnectButton();
+	};
+
+	const configureFavoriteButtons = (area?: ParentNode) => {
+		(area || document).querySelectorAll<HTMLButtonElement>('.favorite-toggle:not(.favorite-toggle-configured)').forEach(button => {
+			button.classList.add('favorite-toggle-configured');
+			updateFavoriteToggle(button);
+		});
+	};
+
+	document.addEventListener('click', (event) => {
+		const target = event.target as HTMLElement | null;
+		const button = target?.closest?.('.favorite-toggle') as HTMLButtonElement | null;
+
+		if (!button) {
+			return;
+		}
+
+		event.preventDefault();
+		event.stopImmediatePropagation();
+		toggleFavorite(button);
+	}, true);
+
+	const getFavoritesGroupHtml = () => {
+		const favorites = getFavoriteLogicals();
+
+		if (!favorites.length) {
+			return '';
+		}
+
+		const title = c('Label').t`Favorites`;
+		const countLabel = favorites.length > 1 ? ` (${favorites.length})` : '';
+		const secureCoreEnabled = userTier > 0 && secureCore.value;
+
+		return `
+			<div class="servers-group group-section favorites-group">${title}${countLabel}</div>
+			<div class="servers-group favorites-list">
+				<div class="server-items">${serverList(userTier, favorites, title, secureCoreEnabled)}</div>
+			</div>
+		`;
+	};
+
 	const setServersHtml = (html: string, search = '') => {
 		if (servers.innerHTML !== html) {
 			servers.innerHTML = html;
 		}
 
 		if (search === '') {
+			configureFavoriteButtons(servers);
+			syncFavoriteToggles(servers);
+
 			return;
 		}
 
 		configureLookupSearch(servers, userTier, div => {
 			configureButtons(div);
 			configureServerGroups(div);
+			configureFavoriteButtons(div);
 		}, search);
+
+		configureFavoriteButtons(servers);
+		syncFavoriteToggles(servers);
 	};
 
-	let refresh = () => {
-		setServersHtml(countryList(countries, userTier, secureCore));
+	refresh = () => {
+		setServersHtml(getFavoritesGroupHtml() + countryList(countries, userTier, secureCore));
 		configureServerGroups();
 	};
+	await loadFavoriteLogicals();
 	refresh();
+
+	let swiftRules: SwiftRule[] = [];
+	let swiftEnabled = true;
+	let swiftDisconnectOnUnmatched = false;
+	let swiftMatchedRule: SwiftRule | null = null;
+	let swiftConnectionInfo: HTMLDivElement | null = null;
+	let swiftConnectionBadge: HTMLSpanElement | null = null;
+	let swiftConnectionRule: HTMLSpanElement | null = null;
+	let swiftOnlyBanner: HTMLDivElement | null = null;
+	let swiftToast: HTMLDivElement | null = null;
+	let swiftToastText: HTMLSpanElement | null = null;
+	let swiftToastTimer: number | null = null;
+	let lastSwiftToastKey = '';
+	let swiftHeartbeat: SwiftHeartbeat | null = null;
+	let swiftHeartbeatRow: HTMLDivElement | null = null;
+	let swiftHeartbeatText: HTMLSpanElement | null = null;
+	let connectionSpeedRow: HTMLSpanElement | null = null;
+	let connectionSpeedDownload: HTMLSpanElement | null = null;
+	let connectionSpeedUpload: HTMLSpanElement | null = null;
+	let connectionSpeed: ConnectionSpeed = {downloadPerSecond: 0, uploadPerSecond: 0};
+	let connectionSpeedLastTime = 0;
+	let connectionSpeedTimer: number | null = null;
+	let speedActive = false;
+	let swiftBlockedPrompt: SwiftBlockedSite | null = null;
+	let swiftBlockedBanner: HTMLDivElement | null = null;
+	let swiftBlockedHost: HTMLDivElement | null = null;
+	let swiftBlockedTargetsText: HTMLDivElement | null = null;
+	let swiftBlockedAddServerButton: HTMLButtonElement | null = null;
+	let swiftBlockedAddCountryButton: HTMLButtonElement | null = null;
+	let swiftBlockedDismissButton: HTMLButtonElement | null = null;
+	let swiftBlockedServerTarget: {targetId: string; targetLabel: string} | null = null;
+	let swiftBlockedCountryTarget: {targetId: string; targetLabel: string} | null = null;
+	let swiftBlockedPickerModal: HTMLDialogElement | null = null;
+	let swiftBlockedPickerHost: HTMLDivElement | null = null;
+	let swiftBlockedPickerSteps: HTMLDivElement | null = null;
+	let swiftBlockedPickerBack: HTMLButtonElement | null = null;
+	let swiftBlockedPickerClose: HTMLButtonElement | null = null;
+	let swiftBlockedPickerCountryList: HTMLDivElement | null = null;
+	let swiftBlockedPickerServerList: HTMLDivElement | null = null;
+	let swiftBlockedPickerCountrySearch: HTMLInputElement | null = null;
+	let swiftBlockedPickerServerSearch: HTMLInputElement | null = null;
+	let swiftBlockedPickerServerHeading: HTMLDivElement | null = null;
+	let swiftBlockedPickerCountryOnlyButton: HTMLButtonElement | null = null;
+	let swiftBlockedPickerCountries: {code: string; name: string; logicals: Logical[]}[] = [];
+	let swiftBlockedPickerServers: Logical[] = [];
+	let swiftBlockedPickerSelectedCountry: {code: string; name: string} | null = null;
+
+	const updateSwiftOnlyBanner = () => {
+		if (!swiftOnlyBanner) {
+			return;
+		}
+
+		swiftOnlyBanner.style.display = 'flex';
+		updateSwiftHeartbeatUi();
+	};
+
+	const isSwiftRuleConnected = (
+		server: ServerSummary | undefined,
+		rule: {targetType: SwiftTargetType; targetId: string},
+	): boolean => {
+		if (!server) {
+			return false;
+		}
+
+		if (rule.targetType === 'server') {
+			return `${server.id || ''}` === `${rule.targetId}`;
+		}
+
+		return (server.exitCountry || '') === rule.targetId;
+	};
+
+	const formatSwiftRule = (rule: SwiftRule): string => {
+		const targetLabel = rule.targetLabel || rule.targetId;
+		const kindLabel = rule.targetType === 'country' ? c('Label').t`Country` : c('Label').t`Server`;
+		const hostLabel = buildSwiftHostLabel(rule.host, rule.path);
+
+		return `${hostLabel} - ${kindLabel}: ${targetLabel}`;
+	};
+
+	const updateSwiftConnectionInfo = (server?: ServerSummary, connecting = false) => {
+		if (!swiftConnectionInfo) {
+			return;
+		}
+
+		const currentServer = server || connectionState?.server;
+		const show = !!(swiftEnabled && swiftMatchedRule && state.connected && !connecting && isSwiftRuleConnected(currentServer, swiftMatchedRule));
+
+		swiftConnectionInfo.style.display = show ? 'flex' : 'none';
+
+		if (swiftConnectionRule) {
+			swiftConnectionRule.textContent = show && swiftMatchedRule ? formatSwiftRule(swiftMatchedRule) : '';
+		}
+		if (swiftConnectionBadge) {
+			swiftConnectionBadge.textContent = c('Info').t`Connected by Swift`;
+		}
+	};
+
+	const refreshSwiftMatchedRule = async () => {
+		if (!swiftEnabled) {
+			swiftMatchedRule = null;
+			updateSwiftConnectionInfo();
+			return;
+		}
+
+		const activeRules = swiftRules.filter(rule => rule.enabled !== false);
+
+		if (!activeRules.length) {
+			swiftMatchedRule = null;
+			updateSwiftConnectionInfo();
+			return;
+		}
+
+		try {
+			const tab = await getCurrentTab();
+			const url = tab?.url;
+
+			if (!url || (!url.startsWith('http://') && !url.startsWith('https://'))) {
+				swiftMatchedRule = null;
+				updateSwiftConnectionInfo();
+				return;
+			}
+
+			const parts = getSwiftUrlParts(url);
+			const {rule} = parts ? selectSwiftRule(activeRules, parts) : {rule: undefined};
+
+			swiftMatchedRule = rule || null;
+		} catch (error) {
+			swiftMatchedRule = null;
+		}
+
+		updateSwiftConnectionInfo();
+	};
+
+	const SWIFT_HEARTBEAT_STALE_MS = milliSeconds.fromMinutes(2);
+	const SWIFT_HEARTBEAT_REFRESH_MS = milliSeconds.fromSeconds(30);
+	const SWIFT_TOAST_VISIBLE_MS = milliSeconds.fromSeconds(4);
+	const SWIFT_TOAST_STALE_MS = milliSeconds.fromSeconds(15);
+	const CONNECTION_SPEED_STALE_MS = milliSeconds.fromSeconds(3);
+	const CONNECTION_SPEED_REFRESH_MS = milliSeconds.fromSeconds(1);
+
+	const updateSwiftHeartbeatUi = () => {
+		if (!swiftHeartbeatRow) {
+			return;
+		}
+
+		const lastTime = swiftHeartbeat?.time || 0;
+		const heartbeatActive = Date.now() - lastTime <= SWIFT_HEARTBEAT_STALE_MS;
+		const isActive = swiftEnabled && swiftDisconnectOnUnmatched && heartbeatActive;
+
+		swiftHeartbeatRow.classList[isActive ? 'add' : 'remove']('active');
+		if (swiftHeartbeatText) {
+			swiftHeartbeatText.textContent = c('Info').t`Swift Background`;
+		}
+	};
+
+	const formatSpeed = (bytesPerSecond: number): string => {
+		if (!Number.isFinite(bytesPerSecond) || bytesPerSecond <= 0) {
+			return '0 B/s';
+		}
+
+		const units = ['B/s', 'KB/s', 'MB/s', 'GB/s'];
+		let value = bytesPerSecond;
+		let unitIndex = 0;
+
+		while (value >= 1024 && unitIndex < units.length - 1) {
+			value /= 1024;
+			unitIndex += 1;
+		}
+
+		const precision = value >= 100 ? 0 : value >= 10 ? 1 : 2;
+		return `${value.toFixed(precision)} ${units[unitIndex]}`;
+	};
+
+	const updateConnectionSpeedUi = (downloadPerSecond: number, uploadPerSecond: number) => {
+		if (connectionSpeedDownload) {
+			connectionSpeedDownload.textContent = formatSpeed(downloadPerSecond);
+		}
+		if (connectionSpeedUpload) {
+			connectionSpeedUpload.textContent = formatSpeed(uploadPerSecond);
+		}
+	};
+
+	const clearConnectionSpeedUi = () => {
+		updateConnectionSpeedUi(0, 0);
+	};
+
+	const isConnectionSpeedStale = () => Date.now() - connectionSpeedLastTime > CONNECTION_SPEED_STALE_MS;
+
+	const refreshConnectionSpeedUi = () => {
+		if (isConnectionSpeedStale()) {
+			updateConnectionSpeedUi(0, 0);
+			return;
+		}
+
+		updateConnectionSpeedUi(connectionSpeed.downloadPerSecond, connectionSpeed.uploadPerSecond);
+	};
+
+	const applyConnectionSpeed = (payload?: {value?: ConnectionSpeed; time?: number} | null) => {
+		const value = payload?.value;
+		connectionSpeedLastTime = typeof payload?.time === 'number' ? payload.time : 0;
+
+		if (typeof value?.downloadPerSecond === 'number' && typeof value?.uploadPerSecond === 'number') {
+			connectionSpeed = value;
+		} else {
+			connectionSpeed = {downloadPerSecond: 0, uploadPerSecond: 0};
+		}
+
+		if (speedActive) {
+			refreshConnectionSpeedUi();
+		}
+	};
+
+	const loadConnectionSpeed = async () => {
+		const stored = await connectionSpeedItem.get();
+		applyConnectionSpeed(stored || null);
+	};
+
+	const startConnectionSpeedTimer = () => {
+		if (connectionSpeedTimer !== null) {
+			return;
+		}
+
+		connectionSpeedTimer = window.setInterval(() => {
+			if (!speedActive) {
+				return;
+			}
+
+			refreshConnectionSpeedUi();
+		}, CONNECTION_SPEED_REFRESH_MS);
+	};
+
+	const stopConnectionSpeedTimer = () => {
+		if (connectionSpeedTimer === null) {
+			return;
+		}
+
+		window.clearInterval(connectionSpeedTimer);
+		connectionSpeedTimer = null;
+	};
+
+	const setSpeedActive = (active: boolean) => {
+		if (speedActive === active) {
+			return;
+		}
+
+		speedActive = active;
+		if (connectionSpeedRow) {
+			connectionSpeedRow.classList[active ? 'add' : 'remove']('active');
+		}
+
+		if (active) {
+			refreshConnectionSpeedUi();
+			startConnectionSpeedTimer();
+		} else {
+			stopConnectionSpeedTimer();
+			clearConnectionSpeedUi();
+		}
+	};
+
+	const getSwiftRootHost = (host: string): string => {
+		const trimmed = host.trim().toLowerCase();
+
+		if (!trimmed || trimmed === 'localhost') {
+			return trimmed;
+		}
+
+		if (/^\d{1,3}(\.\d{1,3}){3}$/.test(trimmed)) {
+			return trimmed;
+		}
+
+		if (trimmed.includes(':')) {
+			return trimmed;
+		}
+
+		const parts = trimmed.split('.').filter(Boolean);
+		const count = parts.length;
+		if (count <= 2) {
+			return trimmed;
+		}
+
+		const last = parts[count - 1];
+		const second = parts[count - 2];
+		const third = parts[count - 3];
+
+		if (!last || !second) {
+			return trimmed;
+		}
+		const useThree = !!third && last.length === 2 && second.length <= 3;
+
+		return useThree ? `${third}.${second}.${last}` : `${second}.${last}`;
+	};
+
+	const getSwiftBlockedParts = (prompt: SwiftBlockedSite) => {
+		const parts = getSwiftUrlParts(prompt.url);
+		const rawHost = parts?.host || prompt.host;
+
+		if (!rawHost) {
+			return null;
+		}
+
+		const host = getSwiftRootHost(rawHost);
+		const match = parts || {host: rawHost, path: '/'};
+
+		return {
+			host,
+			path: undefined,
+			match,
+		};
+	};
+
+	const updateSwiftBlockedTargets = async () => {
+		swiftBlockedServerTarget = null;
+		swiftBlockedCountryTarget = null;
+
+		const currentServer = connectionState?.server;
+		if (currentServer?.id) {
+			swiftBlockedServerTarget = {
+				targetId: `${currentServer.id}`,
+				targetLabel: currentServer.name || `${currentServer.id}`,
+			};
+		}
+		if (currentServer?.exitCountry) {
+			swiftBlockedCountryTarget = {
+				targetId: currentServer.exitCountry,
+				targetLabel: getCountryNameOrCode(currentServer.exitCountry),
+			};
+		}
+
+		if (!swiftBlockedServerTarget || !swiftBlockedCountryTarget) {
+			const last = await getLastConnectedServer();
+
+			if (!swiftBlockedServerTarget && last?.id) {
+				swiftBlockedServerTarget = {
+					targetId: `${last.id}`,
+					targetLabel: last.name || `${last.id}`,
+				};
+			}
+			if (!swiftBlockedCountryTarget && last?.exitCountry) {
+				swiftBlockedCountryTarget = {
+					targetId: last.exitCountry,
+					targetLabel: getCountryNameOrCode(last.exitCountry),
+				};
+			}
+		}
+
+		if (!swiftBlockedServerTarget || !swiftBlockedCountryTarget) {
+			const filteredLogicals = filterLogicalsWithCurrentFeatures(logicals, userTier, secureCore);
+			const bestLogical = getBestLogical(filteredLogicals, userTier);
+
+			if (bestLogical) {
+				if (!swiftBlockedServerTarget) {
+					swiftBlockedServerTarget = {
+						targetId: `${bestLogical.ID}`,
+						targetLabel: bestLogical.Name,
+					};
+				}
+				if (!swiftBlockedCountryTarget) {
+					swiftBlockedCountryTarget = {
+						targetId: bestLogical.ExitCountry,
+						targetLabel: getCountryNameOrCode(bestLogical.ExitCountry),
+					};
+				}
+			}
+		}
+	};
+
+	const formatSwiftServerLabel = (logical: Logical): string => {
+		const exitCountry = logical.ExitCountry || '';
+		const city = logical.Translations?.City || logical.City || '';
+		const baseName = (logical.Name || '').replace(new RegExp('^' + exitCountry + '#'), '#');
+		const label = `${city ? `${city} ` : ''}${baseName}`.trim();
+
+		return label || logical.Name || exitCountry;
+	};
+
+	const getSwiftBlockedPickerLogicals = () => filterLogicalsWithCurrentFeatures(logicals, userTier, secureCore)
+		.filter(logical => logical.Tier <= userTier && isLogicalUp(logical));
+
+	const buildSwiftBlockedPickerData = () => {
+		const countryMap: Record<string, Logical[]> = {};
+
+		getSwiftBlockedPickerLogicals().forEach(logical => {
+			const code = logical.ExitCountry;
+			if (!code) {
+				return;
+			}
+
+			if (!countryMap[code]) {
+				countryMap[code] = [];
+			}
+			countryMap[code].push(logical);
+		});
+
+		swiftBlockedPickerCountries = Object.keys(countryMap).map(code => {
+			const logicals = countryMap[code] || [];
+			logicals.sort((a, b) => {
+				const aScore = a.SearchScore || 0;
+				const bScore = b.SearchScore || 0;
+
+				if (aScore !== bScore) {
+					return bScore - aScore;
+				}
+
+				return a.Name.localeCompare(b.Name);
+			});
+
+			return {
+				code,
+				name: getCountryNameOrCode(code),
+				logicals,
+			};
+		}).sort((a, b) => a.name.localeCompare(b.name));
+	};
+
+	const setSwiftBlockedPickerStep = (step: 'country' | 'server') => {
+		if (!swiftBlockedPickerSteps) {
+			return;
+		}
+
+		swiftBlockedPickerSteps.setAttribute('data-step', step);
+		if (swiftBlockedPickerBack) {
+			swiftBlockedPickerBack.disabled = step === 'country';
+		}
+	};
+
+	const renderSwiftBlockedPickerCountries = (searchText = '') => {
+		if (!swiftBlockedPickerCountryList) {
+			return;
+		}
+
+		const query = searchText.trim().toLowerCase();
+		const matches = swiftBlockedPickerCountries.filter(entry => (
+			!query
+			|| entry.code.toLowerCase().includes(query)
+			|| entry.name.toLowerCase().includes(query)
+		));
+
+		if (!matches.length) {
+			swiftBlockedPickerCountryList.innerHTML = `<div class="swift-blocked-picker-empty">${c('Info').t`No countries found.`}</div>`;
+			return;
+		}
+
+		swiftBlockedPickerCountryList.innerHTML = matches.map(entry => {
+			const count = entry.logicals.length;
+			const countLabel = count === 1 ? c('Label').t`Server` : c('Label').t`Servers`;
+
+			return `
+				<button type="button" class="swift-blocked-picker-item" data-country-code="${escapeHtml(entry.code)}">
+					<span class="swift-blocked-picker-flag">${getCountryFlag(entry.code)}</span>
+					<span class="swift-blocked-picker-name">${escapeHtml(entry.name)}</span>
+					<span class="swift-blocked-picker-meta">${count} ${countLabel}</span>
+					<span class="swift-blocked-picker-chevron">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<use xlink:href="img/icons.svg#expand-button"></use>
+						</svg>
+					</span>
+				</button>
+			`;
+		}).join('');
+	};
+
+	const renderSwiftBlockedPickerServers = (searchText = '') => {
+		if (!swiftBlockedPickerServerList) {
+			return;
+		}
+
+		const query = searchText.trim().toLowerCase();
+		const matches = swiftBlockedPickerServers.filter(logical => {
+			if (!query) {
+				return true;
+			}
+
+			const label = formatSwiftServerLabel(logical).toLowerCase();
+			const name = (logical.Name || '').toLowerCase();
+
+			return label.includes(query) || name.includes(query);
+		});
+
+		if (!matches.length) {
+			swiftBlockedPickerServerList.innerHTML = `<div class="swift-blocked-picker-empty">${c('Info').t`No servers found.`}</div>`;
+			return;
+		}
+
+		swiftBlockedPickerServerList.innerHTML = matches.map(logical => `
+			<button type="button" class="swift-blocked-picker-item" data-server-id="${escapeHtml(`${logical.ID}`)}">
+				<span class="swift-blocked-picker-name">${escapeHtml(formatSwiftServerLabel(logical))}</span>
+			</button>
+		`).join('');
+	};
+
+	const resetSwiftBlockedPicker = () => {
+		swiftBlockedPickerSelectedCountry = null;
+		swiftBlockedPickerServers = [];
+
+		if (swiftBlockedPickerServerHeading) {
+			swiftBlockedPickerServerHeading.textContent = '';
+		}
+
+		if (swiftBlockedPickerCountrySearch) {
+			swiftBlockedPickerCountrySearch.value = '';
+		}
+
+		if (swiftBlockedPickerServerSearch) {
+			swiftBlockedPickerServerSearch.value = '';
+		}
+
+		if (swiftBlockedPickerCountryOnlyButton) {
+			swiftBlockedPickerCountryOnlyButton.disabled = true;
+		}
+
+		setSwiftBlockedPickerStep('country');
+	};
+
+	const openSwiftBlockedPicker = () => {
+		if (!swiftBlockedPickerModal || !swiftBlockedPrompt) {
+			return;
+		}
+
+		const parts = getSwiftBlockedParts(swiftBlockedPrompt);
+		if (!parts) {
+			clearSwiftBlockedPrompt();
+			return;
+		}
+
+		buildSwiftBlockedPickerData();
+		resetSwiftBlockedPicker();
+		renderSwiftBlockedPickerCountries();
+
+		if (swiftBlockedPickerHost) {
+			swiftBlockedPickerHost.textContent = buildSwiftHostLabel(parts.host, parts.path);
+		}
+
+		showModal(swiftBlockedPickerModal);
+		swiftBlockedPickerCountrySearch?.focus();
+	};
+
+	const closeSwiftBlockedPicker = () => {
+		if (!swiftBlockedPickerModal) {
+			return;
+		}
+
+		closeModal(swiftBlockedPickerModal);
+	};
+
+	const clearSwiftBlockedPrompt = () => {
+		swiftBlockedPrompt = null;
+		swiftBlockedBanner?.classList.remove('active');
+		closeSwiftBlockedPicker();
+		triggerPromise(swiftBlockedSiteItem.remove());
+	};
+
+	const renderSwiftBlockedPrompt = async () => {
+		if (!swiftBlockedBanner || !swiftBlockedHost || !swiftBlockedPrompt) {
+			swiftBlockedBanner?.classList.remove('active');
+			closeSwiftBlockedPicker();
+			return;
+		}
+
+		const parts = getSwiftBlockedParts(swiftBlockedPrompt);
+		if (!parts) {
+			clearSwiftBlockedPrompt();
+			return;
+		}
+
+		if (swiftRules.length && selectSwiftRule(swiftRules, parts.match).rule) {
+			clearSwiftBlockedPrompt();
+			return;
+		}
+
+		await updateSwiftBlockedTargets();
+
+		swiftBlockedHost.textContent = buildSwiftHostLabel(parts.host, parts.path);
+		if (swiftBlockedPickerModal?.open && swiftBlockedPickerHost) {
+			swiftBlockedPickerHost.textContent = buildSwiftHostLabel(parts.host, parts.path);
+		}
+
+		if (swiftBlockedTargetsText) {
+			const serverText = swiftBlockedServerTarget
+				? `${c('Label').t`Server`}: ${swiftBlockedServerTarget.targetLabel}`
+				: '';
+			const countryText = swiftBlockedCountryTarget
+				? `${c('Label').t`Country`}: ${swiftBlockedCountryTarget.targetLabel}`
+				: '';
+			swiftBlockedTargetsText.textContent = [serverText, countryText].filter(Boolean).join(' · ');
+		}
+
+		if (swiftBlockedAddServerButton) {
+			swiftBlockedAddServerButton.textContent = c('Action').t`Add server`;
+			swiftBlockedAddServerButton.disabled = !swiftBlockedServerTarget;
+			swiftBlockedAddServerButton.title = swiftBlockedServerTarget?.targetLabel || '';
+		}
+
+		if (swiftBlockedAddCountryButton) {
+			swiftBlockedAddCountryButton.textContent = c('Action').t`Choose location`;
+			swiftBlockedAddCountryButton.disabled = !swiftBlockedCountryTarget;
+			swiftBlockedAddCountryButton.title = c('Action').t`Choose location`;
+		}
+
+		if (swiftBlockedDismissButton) {
+			swiftBlockedDismissButton.textContent = c('Action').t`Dismiss`;
+		}
+
+		swiftBlockedBanner.classList.add('active');
+	};
+
+	const addSwiftBlockedRule = (
+		targetType: SwiftTargetType,
+		overrideTarget?: {targetId: string; targetLabel: string},
+	) => {
+		if (!swiftBlockedPrompt) {
+			return;
+		}
+
+		const parts = getSwiftBlockedParts(swiftBlockedPrompt);
+		if (!parts) {
+			clearSwiftBlockedPrompt();
+			return;
+		}
+
+		const target = overrideTarget || (targetType === 'server' ? swiftBlockedServerTarget : swiftBlockedCountryTarget);
+		if (!target) {
+			return;
+		}
+
+		const includeSubdomains = true;
+		const existingIndex = swiftRules.findIndex(rule => (
+			rule.host === parts.host
+			&& (rule.path || '') === (parts.path || '')
+			&& !!rule.includeSubdomains === includeSubdomains
+		));
+		const existingRule = existingIndex >= 0 ? swiftRules[existingIndex] : undefined;
+		const newRule: SwiftRule = {
+			id: existingRule?.id || `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+			host: parts.host,
+			path: parts.path,
+			includeSubdomains,
+			enabled: existingRule?.enabled !== false,
+			targetType,
+			targetId: target.targetId,
+			targetLabel: target.targetLabel,
+		};
+
+		if (existingIndex >= 0) {
+			swiftRules.splice(existingIndex, 1, newRule);
+		} else {
+			swiftRules.push(newRule);
+		}
+
+		triggerPromise(swiftRulesItem.set({value: swiftRules}));
+		renderSwiftRules();
+		updateSwiftAddState();
+		clearSwiftBlockedPrompt();
+	};
+
+	const showSwiftToast = (event?: SwiftDebugEvent) => {
+		if (!swiftToast || !swiftToastText || !event || event.action !== 'connect') {
+			return;
+		}
+
+		if (Date.now() - event.time > SWIFT_TOAST_STALE_MS) {
+			return;
+		}
+
+		const hostLabel = event.host || c('Info').t`(unknown host)`;
+		const rawTarget = event.target || '';
+		const targetLabel = rawTarget.replace(/^[^:]+:/, '').trim() || rawTarget;
+
+		if (!targetLabel) {
+			return;
+		}
+
+		const toastKey = `${event.time}|${hostLabel}|${targetLabel}`;
+
+		if (toastKey === lastSwiftToastKey) {
+			return;
+		}
+
+		lastSwiftToastKey = toastKey;
+		swiftToastText.textContent = c('Info').t`Swift connected to ${targetLabel} for ${hostLabel}`;
+		swiftToast.classList.add('active');
+
+		if (swiftToastTimer) {
+			window.clearTimeout(swiftToastTimer);
+		}
+
+		swiftToastTimer = window.setTimeout(() => {
+			swiftToast?.classList.remove('active');
+		}, SWIFT_TOAST_VISIBLE_MS);
+	};
+
+	const loadSwiftRules = async () => {
+		const storedRules = (await swiftRulesItem.get())?.value || [];
+		swiftRules = storedRules.map(rule => ({
+			...rule,
+			path: normalizeSwiftPath(rule.path),
+			enabled: rule.enabled !== false,
+		}));
+	};
+
+	const loadSwiftEnabled = async () => {
+		const stored = await swiftEnabledItem.get();
+
+		if (typeof stored?.value === 'boolean') {
+			swiftEnabled = stored.value;
+
+			return;
+		}
+
+		swiftEnabled = true;
+		triggerPromise(swiftEnabledItem.set({value: true}));
+	};
+
+	const loadSwiftDisconnectOnUnmatched = async () => {
+		const stored = await swiftDisconnectOnUnmatchedItem.get();
+
+		if (typeof stored?.value === 'boolean') {
+			swiftDisconnectOnUnmatched = stored.value;
+
+			return;
+		}
+
+		swiftDisconnectOnUnmatched = false;
+		triggerPromise(swiftDisconnectOnUnmatchedItem.set({value: false}));
+	};
+
+	const loadSwiftHeartbeat = async () => {
+		const stored = await swiftHeartbeatItem.get();
+		swiftHeartbeat = stored?.value || null;
+		updateSwiftHeartbeatUi();
+	};
+
+
+	const swiftPage = document.querySelector('[data-page="swift"]') as HTMLDivElement | null;
+	const swiftUrlInput = swiftPage?.querySelector<HTMLInputElement>('.swift-url') || null;
+	const swiftTargetInput = swiftPage?.querySelector<HTMLInputElement>('.swift-target') || null;
+	const swiftAddButton = swiftPage?.querySelector<HTMLButtonElement>('.swift-add-button') || null;
+	const swiftError = swiftPage?.querySelector<HTMLDivElement>('.swift-error') || null;
+	const swiftList = swiftPage?.querySelector<HTMLDivElement>('.swift-list') || null;
+	const swiftDebugInfo = swiftPage?.querySelector<HTMLDivElement>('.swift-debug-info') || null;
+	const swiftStatus = swiftPage?.querySelector<HTMLDivElement>('.swift-status') || null;
+	const swiftDisconnectStatus = swiftPage?.querySelector<HTMLDivElement>('.swift-disconnect-status') || null;
+	const swiftSubdomainsToggle = swiftPage?.querySelector<HTMLInputElement>('.swift-subdomains-toggle') || null;
+	const swiftServerDatalist = swiftPage?.querySelector<HTMLDataListElement>('#swift-target-servers') || null;
+	const swiftCountryDatalist = swiftPage?.querySelector<HTMLDataListElement>('#swift-target-countries') || null;
+	const swiftImportInput = swiftPage?.querySelector<HTMLInputElement>('.swift-import-input') || null;
+	const swiftDebugStorageKey = storagePrefix + swiftDebugItem.key;
+	const swiftEnabledStorageKey = storagePrefix + swiftEnabledItem.key;
+	const swiftDisconnectStorageKey = storagePrefix + swiftDisconnectOnUnmatchedItem.key;
+	const swiftHeartbeatStorageKey = storagePrefix + swiftHeartbeatItem.key;
+	const swiftBlockedPromptStorageKey = storagePrefix + swiftBlockedSiteItem.key;
+	const connectionSpeedStorageKey = storagePrefix + connectionSpeedItem.key;
+
+	const getSwiftTargetType = (): SwiftTargetType => {
+		const selected = swiftPage?.querySelector<HTMLInputElement>('input[name="swift-target-type"]:checked');
+
+		return (selected?.value as SwiftTargetType) || 'server';
+	};
+
+	const setSwiftError = (message = '') => {
+		if (swiftError) {
+			swiftError.textContent = message;
+		}
+	};
+
+	const updateSwiftCancelState = () => {
+		if (!swiftPage) {
+			return;
+		}
+
+		swiftPage.querySelectorAll<HTMLButtonElement>('[data-swift-action="cancel"]').forEach(button => {
+			button.disabled = swiftRules.length === 0;
+		});
+	};
+
+	const toggleSwiftForm = (open: boolean) => {
+		if (!swiftPage) {
+			return;
+		}
+
+		swiftPage.querySelectorAll<HTMLDivElement>('.swift-filter-add').forEach(element => {
+			element.style.display = open ? 'none' : 'block';
+		});
+
+		swiftPage.querySelectorAll<HTMLDivElement>('.swift-filter-form').forEach(element => {
+			element.style.display = open ? 'block' : 'none';
+		});
+
+		swiftPage.querySelectorAll<HTMLDivElement>('.swift-filters').forEach(element => {
+			element.style.display = 'block';
+		});
+
+		updateSwiftCancelState();
+	};
+
+	const clearSwiftForm = () => {
+		if (!swiftUrlInput || !swiftTargetInput) {
+			return;
+		}
+
+		swiftUrlInput.value = '';
+		swiftTargetInput.value = '';
+
+		if (swiftSubdomainsToggle) {
+			swiftSubdomainsToggle.checked = true;
+		}
+
+		setSwiftError('');
+		updateSwiftAddState();
+	};
+
+	const updateSwiftEnabledUi = () => {
+		if (!swiftPage) {
+			return;
+		}
+
+		if (swiftStatus) {
+			swiftStatus.textContent = '';
+			swiftStatus.style.display = 'none';
+		}
+
+		swiftPage.querySelectorAll<HTMLButtonElement>('[data-swift-action="toggle"]').forEach(button => {
+			button.classList[swiftEnabled ? 'add' : 'remove']('activated');
+		});
+
+		swiftPage.querySelectorAll<HTMLDivElement>('.swift-configuration').forEach(configurationBlock => {
+			configurationBlock.style.display = swiftEnabled ? 'block' : 'none';
+		});
+
+		if (!swiftEnabled) {
+			clearSwiftForm();
+		}
+
+		if (swiftEnabled) {
+			toggleSwiftForm(false);
+		}
+
+		updateSwiftOnlyBanner();
+		updateSwiftConnectionInfo();
+	};
+
+	const updateSwiftDisconnectUi = () => {
+		if (!swiftPage) {
+			return;
+		}
+
+		if (swiftDisconnectStatus) {
+			swiftDisconnectStatus.textContent = '';
+			swiftDisconnectStatus.style.display = 'none';
+		}
+
+		swiftPage.querySelectorAll<HTMLButtonElement>('[data-swift-action="toggle-disconnect"]').forEach(button => {
+			button.classList[swiftDisconnectOnUnmatched ? 'add' : 'remove']('activated');
+		});
+
+		updateSwiftOnlyBanner();
+		updateSwiftConnectionInfo();
+	};
+
+	const exportSwiftRules = () => {
+		const payload = {
+			version: 1,
+			rules: swiftRules,
+		};
+
+		const blob = new Blob([JSON.stringify(payload, null, 2)], {type: 'application/json'});
+		const url = URL.createObjectURL(blob);
+		const link = document.createElement('a');
+
+		link.href = url;
+		link.download = 'swift-rules.json';
+		link.click();
+		setTimeout(() => URL.revokeObjectURL(url), 0);
+	};
+
+	const parseSwiftRules = (raw: any): SwiftRule[] | null => {
+		const list = Array.isArray(raw) ? raw : raw?.rules;
+
+		if (!Array.isArray(list)) {
+			return null;
+		}
+
+		const seenKeys = new Set<string>();
+		const normalized: SwiftRule[] = [];
+		let idSeed = Date.now();
+
+		list.forEach(item => {
+			if (!item || typeof item !== 'object') {
+				return;
+			}
+
+			const parsedHost = typeof item.host === 'string' ? parseSwiftUrlInput(item.host) : null;
+			const host = parsedHost?.host;
+			const path = normalizeSwiftPath(typeof item.path === 'string' ? item.path : parsedHost?.path);
+			const targetType = (typeof item.targetType === 'string' && item.targetType.toLowerCase() === 'country')
+				? 'country'
+				: 'server';
+			const targetId = typeof item.targetId === 'string' ? item.targetId : null;
+			const targetLabel = typeof item.targetLabel === 'string' ? item.targetLabel : null;
+			const includeSubdomains = !!item.includeSubdomains;
+			const key = host ? `${host}|${path || ''}|${includeSubdomains ? 'sub' : 'exact'}` : '';
+
+			if (!host || !targetId || !targetLabel || !key || seenKeys.has(key)) {
+				return;
+			}
+
+			seenKeys.add(key);
+			idSeed += 1;
+
+			normalized.push({
+				id: typeof item.id === 'string' ? item.id : `${idSeed}-${Math.random().toString(16).slice(2)}`,
+				host,
+				path,
+				includeSubdomains,
+				enabled: item.enabled !== false,
+				targetType,
+				targetId,
+				targetLabel,
+			});
+		});
+
+		return normalized;
+	};
+
+	const importSwiftRules = async (file: File) => {
+		try {
+			const content = await file.text();
+			const parsed = JSON.parse(content);
+			const imported = parseSwiftRules(parsed);
+
+			if (!imported || !imported.length) {
+				setSwiftError(c('Error').t`No valid Swift rules found.`);
+				return;
+			}
+
+			swiftRules = imported;
+			triggerPromise(swiftRulesItem.set({value: swiftRules}));
+			renderSwiftRules();
+			setSwiftError('');
+			updateSwiftAddState();
+		} catch (error) {
+			setSwiftError(c('Error').t`Failed to import rules.`);
+		}
+	};
+
+	const useCurrentTabForSwift = async () => {
+		if (!swiftUrlInput) {
+			return;
+		}
+
+		const tab = await getCurrentTab();
+		const parsed = tab?.url ? parseSwiftUrlInput(tab.url) : null;
+
+		if (!parsed) {
+			setSwiftError(c('Error').t`Unable to read the current tab.`);
+			return;
+		}
+
+		swiftUrlInput.value = buildSwiftHostLabel(parsed.host, parsed.path);
+		setSwiftError('');
+		updateSwiftAddState();
+	};
+
+	const updateSwiftAddState = () => {
+		if (!swiftAddButton || !swiftUrlInput || !swiftTargetInput) {
+			return;
+		}
+
+		swiftAddButton.disabled = !swiftUrlInput.value.trim() || !swiftTargetInput.value.trim();
+	};
+
+	const updateSwiftTargetList = () => {
+		if (!swiftTargetInput) {
+			return;
+		}
+
+		swiftTargetInput.setAttribute(
+			'list',
+			getSwiftTargetType() === 'server' ? 'swift-target-servers' : 'swift-target-countries',
+		);
+	};
+
+	const populateSwiftDatalists = () => {
+		if (swiftServerDatalist) {
+			swiftServerDatalist.innerHTML = logicals
+				.filter(logical => logical.Tier <= userTier)
+				.map(logical => `<option value="${escapeHtml(logical.Name)}"></option>`)
+				.join('');
+		}
+
+		if (swiftCountryDatalist) {
+			swiftCountryDatalist.innerHTML = Object.keys(countries)
+				.sort()
+				.map(code => {
+					const name = countries[code]?.name || code;
+
+					return [
+						`<option value="${escapeHtml(code)}"></option>`,
+						`<option value="${escapeHtml(name)}"></option>`,
+					].join('');
+				})
+				.join('');
+		}
+	};
+
+	const resolveSwiftTargetInput = (targetType: SwiftTargetType, input: string) => {
+		const resolved = resolveSwiftTarget(targetType, input, logicals, userTier, countries);
+
+		if ('error' in resolved) {
+			const errorMap: Record<typeof resolved.error, string> = {
+				'empty-input': c('Error').t`Enter a server or country.`,
+				'server-not-found': c('Error').t`Server not found.`,
+				'server-upgrade-required': c('Error').t`Upgrade required to use this server.`,
+				'country-not-found': c('Error').t`Country not found.`,
+			};
+
+			return {error: errorMap[resolved.error]};
+		}
+
+		return resolved;
+	};
+
+	const renderSwiftRules = () => {
+		if (!swiftList) {
+			return;
+		}
+
+		if (!swiftRules.length) {
+			swiftList.innerHTML = `<div class="fade-text">${c('Info').t`No Swift rules yet.`}</div>`;
+			updateSwiftCancelState();
+
+			return;
+		}
+
+		swiftList.innerHTML = swiftRules.map((rule, index) => {
+			const isEnabled = rule.enabled !== false;
+			const targetKind = rule.targetType === 'server'
+				? c('Label').t`Server`
+				: c('Label').t`Country`;
+			const hostLabel = buildSwiftHostLabel(rule.host, rule.path);
+			const subdomainLabel = rule.includeSubdomains
+				? c('Label').t`Includes subdomains`
+				: c('Label').t`Exact host`;
+			const pathLabel = rule.path
+				? `${c('Label').t`Path`}: ${escapeHtml(rule.path)}`
+				: c('Label').t`Any path`;
+			const scopeLabel = `${subdomainLabel} · ${pathLabel}`;
+			const moveUpDisabled = index === 0;
+			const moveDownDisabled = index === swiftRules.length - 1;
+			const toggleLabel = isEnabled
+				? c('Action').t`Disable rule`
+				: c('Action').t`Enable rule`;
+			const moveUpLabel = c('Action').t`Move up`;
+			const moveDownLabel = c('Action').t`Move down`;
+			const removeLabel = c('Action').t`Remove`;
+
+			return `
+				<div class="swift-rule${isEnabled ? '' : ' is-disabled'}">
+					<button
+						class="toggle swift-rule-toggle${isEnabled ? ' activated' : ''}"
+						data-swift-toggle="${escapeHtml(rule.id)}"
+						title="${toggleLabel}"
+						aria-label="${toggleLabel}"
+					></button>
+					<div class="swift-rule-info">
+						<div class="swift-rule-meta">
+							<span class="swift-rule-priority">#${index + 1}</span>
+							<div class="swift-rule-host">${escapeHtml(hostLabel)}</div>
+						</div>
+						<div class="swift-rule-target">${targetKind}: ${escapeHtml(rule.targetLabel)} · ${scopeLabel}</div>
+					</div>
+					<div class="swift-rule-actions">
+						<button
+							class="swift-move-button"
+							data-swift-move="up"
+							data-swift-id="${escapeHtml(rule.id)}"
+							title="${moveUpLabel}"
+							aria-label="${moveUpLabel}"
+							${moveUpDisabled ? 'disabled' : ''}
+						>
+							<svg viewBox="0 0 24 24" class="swift-move-icon swift-move-up">
+								<use xlink:href="img/icons.svg#expand-button"></use>
+							</svg>
+						</button>
+						<button
+							class="swift-move-button"
+							data-swift-move="down"
+							data-swift-id="${escapeHtml(rule.id)}"
+							title="${moveDownLabel}"
+							aria-label="${moveDownLabel}"
+							${moveDownDisabled ? 'disabled' : ''}
+						>
+							<svg viewBox="0 0 24 24" class="swift-move-icon swift-move-down">
+								<use xlink:href="img/icons.svg#expand-button"></use>
+							</svg>
+						</button>
+						<button
+							class="swift-remove-button"
+							data-swift-remove="${escapeHtml(rule.id)}"
+							title="${removeLabel}"
+							aria-label="${removeLabel}"
+						>
+							<svg viewBox="0 0 24 24">
+								<use xlink:href="img/icons.svg#delete"></use>
+							</svg>
+						</button>
+					</div>
+				</div>
+			`;
+		}).join('');
+
+		swiftList.querySelectorAll<HTMLButtonElement>('[data-swift-toggle]').forEach(button => {
+			onClick(button, (event) => {
+				event.stopPropagation();
+				event.preventDefault();
+
+				const id = button.getAttribute('data-swift-toggle');
+
+				if (!id) {
+					return;
+				}
+
+				const rule = swiftRules.find(item => item.id === id);
+
+				if (!rule) {
+					return;
+				}
+
+				rule.enabled = !(rule.enabled !== false);
+				triggerPromise(swiftRulesItem.set({value: swiftRules}));
+				renderSwiftRules();
+			});
+		});
+
+		swiftList.querySelectorAll<HTMLButtonElement>('[data-swift-remove]').forEach(button => {
+			onClick(button, (event) => {
+				event.stopPropagation();
+				event.preventDefault();
+
+				const id = button.getAttribute('data-swift-remove');
+
+				if (!id) {
+					return;
+				}
+
+				swiftRules = swiftRules.filter(rule => rule.id !== id);
+				triggerPromise(swiftRulesItem.set({value: swiftRules}));
+				renderSwiftRules();
+			});
+		});
+
+		swiftList.querySelectorAll<HTMLButtonElement>('[data-swift-move]').forEach(button => {
+			onClick(button, (event) => {
+				event.stopPropagation();
+				event.preventDefault();
+
+				const id = button.getAttribute('data-swift-id');
+				const direction = button.getAttribute('data-swift-move');
+
+				if (!id || (direction !== 'up' && direction !== 'down')) {
+					return;
+				}
+
+				const index = swiftRules.findIndex(rule => rule.id === id);
+
+				if (index < 0) {
+					return;
+				}
+
+				const nextIndex = direction === 'up' ? index - 1 : index + 1;
+
+				if (nextIndex < 0 || nextIndex >= swiftRules.length) {
+					return;
+				}
+
+				const [rule] = swiftRules.splice(index, 1);
+
+				if (!rule) {
+					return;
+				}
+
+				swiftRules.splice(nextIndex, 0, rule);
+				triggerPromise(swiftRulesItem.set({value: swiftRules}));
+				renderSwiftRules();
+			});
+		});
+
+		updateSwiftCancelState();
+	};
+
+	const renderSwiftDebug = (event?: SwiftDebugEvent) => {
+		if (!swiftDebugInfo) {
+			return;
+		}
+
+		if (!event) {
+			swiftDebugInfo.textContent = c('Info').t`No recent Swift activity.`;
+
+			return;
+		}
+
+		const detailLabelMap: Record<string, string> = {
+			'already-connected': c('Info').t`Already connected.`,
+			'server-not-available': c('Error').t`Server not available.`,
+			'country-not-available': c('Error').t`No servers available for this country.`,
+			'no-server-up': c('Error').t`No servers are available right now.`,
+			'no-user': c('Error').t`Sign in to connect.`,
+			'invalid-host': c('Error').t`Invalid website.`,
+			'disabled': c('Info').t`Swift is off.`,
+			'no-rule': c('Info').t`No matching rule.`,
+			'multiple-rules': c('Info').t`Multiple rules matched, using top priority.`,
+		};
+		const host = event.host || c('Info').t`(unknown host)`;
+		const target = event.target ? ` -> ${event.target}` : '';
+		const detailLabel = event.detail ? (detailLabelMap[event.detail] || event.detail) : '';
+		const detail = detailLabel ? ` (${detailLabel})` : '';
+		const time = new Date(event.time).toLocaleTimeString();
+
+		swiftDebugInfo.textContent = `${time} - ${event.action} - ${host}${target}${detail}`;
+	};
+
+	const addSwiftRule = (): boolean => {
+		if (!swiftUrlInput || !swiftTargetInput || !swiftAddButton) {
+			return false;
+		}
+
+		setSwiftError('');
+
+		const parsedHost = parseSwiftUrlInput(swiftUrlInput.value);
+		const host = parsedHost?.host;
+		const path = parsedHost?.path;
+		const targetType = getSwiftTargetType();
+		const includeSubdomains = !!swiftSubdomainsToggle?.checked;
+
+		if (!host) {
+			setSwiftError(c('Error').t`Enter a valid website.`);
+
+			return false;
+		}
+
+		const resolved = resolveSwiftTargetInput(targetType, swiftTargetInput.value);
+
+		if ('error' in resolved) {
+			setSwiftError(resolved.error);
+
+			return false;
+		}
+
+		const existingIndex = swiftRules.findIndex(rule => (
+			rule.host === host
+			&& (rule.path || '') === (path || '')
+			&& !!rule.includeSubdomains === includeSubdomains
+		));
+		const existingRule = existingIndex >= 0 ? swiftRules[existingIndex] : undefined;
+		const newRule: SwiftRule = {
+			id: existingIndex >= 0 ? swiftRules[existingIndex]!.id : `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+			host,
+			path,
+			includeSubdomains,
+			enabled: existingRule?.enabled !== false,
+			targetType,
+			targetId: resolved.targetId,
+			targetLabel: resolved.targetLabel,
+		};
+
+		if (existingIndex >= 0) {
+			swiftRules.splice(existingIndex, 1, newRule);
+		} else {
+			swiftRules.push(newRule);
+		}
+
+		triggerPromise(swiftRulesItem.set({value: swiftRules}));
+		renderSwiftRules();
+		updateSwiftAddState();
+		triggerPromise(renderSwiftBlockedPrompt());
+
+		return true;
+	};
+
+	if (swiftPage && swiftUrlInput && swiftTargetInput && swiftAddButton) {
+		updateSwiftTargetList();
+
+		swiftUrlInput.addEventListener('input', updateSwiftAddState);
+		swiftTargetInput.addEventListener('input', updateSwiftAddState);
+		swiftPage.querySelectorAll<HTMLInputElement>('input[name="swift-target-type"]').forEach(input => {
+			input.addEventListener('change', () => {
+				updateSwiftTargetList();
+				updateSwiftAddState();
+			});
+		});
+
+		swiftPage.querySelectorAll<HTMLButtonElement>('[data-swift-action]').forEach(button => {
+			const action = button.getAttribute('data-swift-action');
+
+			if (!action) {
+				return;
+			}
+
+			onClick(button, (event) => {
+				event.preventDefault();
+
+				switch (action) {
+					case 'toggle':
+						swiftEnabled = !swiftEnabled;
+						triggerPromise(swiftEnabledItem.set({value: swiftEnabled}));
+						updateSwiftEnabledUi();
+						break;
+					case 'toggle-disconnect':
+						swiftDisconnectOnUnmatched = !swiftDisconnectOnUnmatched;
+						triggerPromise(swiftDisconnectOnUnmatchedItem.set({value: swiftDisconnectOnUnmatched}));
+						updateSwiftDisconnectUi();
+						break;
+					case 'use-current-tab':
+						triggerPromise(useCurrentTabForSwift());
+						break;
+					case 'export':
+						exportSwiftRules();
+						break;
+					case 'import':
+						swiftImportInput?.click();
+						break;
+					case 'add-website':
+						if (!swiftEnabled) {
+							swiftEnabled = true;
+							triggerPromise(swiftEnabledItem.set({value: true}));
+							updateSwiftEnabledUi();
+						}
+
+						toggleSwiftForm(true);
+						swiftUrlInput.focus();
+						updateSwiftAddState();
+						break;
+					case 'add':
+						if (!swiftEnabled) {
+							swiftEnabled = true;
+							triggerPromise(swiftEnabledItem.set({value: true}));
+							updateSwiftEnabledUi();
+						}
+
+						if (addSwiftRule()) {
+							clearSwiftForm();
+							toggleSwiftForm(false);
+						}
+						break;
+					case 'cancel':
+						if (!swiftRules.length) {
+							return;
+						}
+
+						clearSwiftForm();
+						toggleSwiftForm(false);
+						break;
+				}
+			});
+		});
+
+		populateSwiftDatalists();
+		await loadSwiftRules();
+		await loadSwiftEnabled();
+		await loadSwiftDisconnectOnUnmatched();
+		await loadSwiftHeartbeat();
+		await loadConnectionSpeed();
+		await refreshSwiftMatchedRule();
+		renderSwiftRules();
+		updateSwiftEnabledUi();
+		updateSwiftDisconnectUi();
+		updateSwiftOnlyBanner();
+		setInterval(updateSwiftHeartbeatUi, SWIFT_HEARTBEAT_REFRESH_MS);
+
+		if (swiftImportInput) {
+			swiftImportInput.addEventListener('change', async () => {
+				const file = swiftImportInput.files?.[0];
+
+				if (!file) {
+					return;
+				}
+
+				await importSwiftRules(file);
+				swiftImportInput.value = '';
+			});
+		}
+
+		const debugEvent = (await swiftDebugItem.get())?.value;
+		renderSwiftDebug(debugEvent);
+		showSwiftToast(debugEvent);
+
+		chrome.storage.onChanged.addListener((changes, areaName) => {
+			if (areaName === 'local' || areaName === 'session') {
+				if (changes[connectionSpeedStorageKey]) {
+					const nextValue = changes[connectionSpeedStorageKey]?.newValue as {value: ConnectionSpeed; time?: number} | undefined;
+					applyConnectionSpeed(nextValue || null);
+				}
+			}
+
+			if (areaName !== 'local') {
+				return;
+			}
+
+			if (changes[swiftDebugStorageKey]) {
+				const nextValue = changes[swiftDebugStorageKey]?.newValue as {value: SwiftDebugEvent} | undefined;
+				renderSwiftDebug(nextValue?.value);
+				showSwiftToast(nextValue?.value);
+			}
+
+			if (changes[swiftEnabledStorageKey]) {
+				const nextValue = changes[swiftEnabledStorageKey]?.newValue as {value: boolean} | undefined;
+				swiftEnabled = nextValue?.value ?? true;
+				updateSwiftEnabledUi();
+				updateSwiftOnlyBanner();
+				triggerPromise(refreshSwiftMatchedRule());
+			}
+
+			if (changes[swiftDisconnectStorageKey]) {
+				const nextValue = changes[swiftDisconnectStorageKey]?.newValue as {value: boolean} | undefined;
+				swiftDisconnectOnUnmatched = nextValue?.value ?? false;
+				updateSwiftDisconnectUi();
+				updateSwiftOnlyBanner();
+				triggerPromise(refreshSwiftMatchedRule());
+			}
+
+			if (changes[swiftHeartbeatStorageKey]) {
+				const nextValue = changes[swiftHeartbeatStorageKey]?.newValue as {value: SwiftHeartbeat} | undefined;
+				swiftHeartbeat = nextValue?.value || null;
+				updateSwiftHeartbeatUi();
+			}
+
+			if (changes[swiftBlockedPromptStorageKey]) {
+				const nextValue = changes[swiftBlockedPromptStorageKey]?.newValue as {value: SwiftBlockedSite | null} | undefined;
+				swiftBlockedPrompt = nextValue?.value || null;
+				triggerPromise(renderSwiftBlockedPrompt());
+			}
+		});
+	}
 
 	const setLastChoiceWithCurrentOptions = (choice: Choice) => {
 		const options = {
@@ -787,18 +2432,162 @@ const start = async () => {
 	};
 
 	// Load unique DOM elements
+
 	const serverStatusSlot = document.querySelector('#status .connection-status') as HTMLDivElement;
+	swiftConnectionInfo = document.querySelector<HTMLDivElement>('#status .swift-connection-info');
+	swiftConnectionBadge = swiftConnectionInfo?.querySelector<HTMLSpanElement>('.swift-connection-badge') || null;
+	swiftConnectionRule = swiftConnectionInfo?.querySelector<HTMLSpanElement>('.swift-connection-rule') || null;
+	swiftOnlyBanner = document.querySelector<HTMLDivElement>('#status .swift-only-banner');
+	swiftHeartbeatRow = swiftOnlyBanner;
+	swiftHeartbeatText = swiftOnlyBanner?.querySelector<HTMLSpanElement>('.swift-background-text') || null;
+	connectionSpeedRow = document.querySelector<HTMLSpanElement>('#status .connection-speed');
+	connectionSpeedDownload = connectionSpeedRow?.querySelector<HTMLSpanElement>('.speed-download-value') || null;
+	connectionSpeedUpload = connectionSpeedRow?.querySelector<HTMLSpanElement>('.speed-upload-value') || null;
+	swiftBlockedBanner = document.querySelector<HTMLDivElement>('#status .swift-blocked-banner');
+	swiftBlockedHost = swiftBlockedBanner?.querySelector<HTMLDivElement>('.swift-blocked-host') || null;
+	swiftBlockedTargetsText = swiftBlockedBanner?.querySelector<HTMLDivElement>('.swift-blocked-targets') || null;
+	swiftBlockedAddServerButton = swiftBlockedBanner?.querySelector<HTMLButtonElement>('.swift-blocked-add-server') || null;
+	swiftBlockedAddCountryButton = swiftBlockedBanner?.querySelector<HTMLButtonElement>('.swift-blocked-add-country') || null;
+	swiftBlockedDismissButton = swiftBlockedBanner?.querySelector<HTMLButtonElement>('.swift-blocked-dismiss') || null;
+	swiftBlockedPickerModal = document.querySelector<HTMLDialogElement>('#swift-blocked-picker');
+	swiftBlockedPickerHost = swiftBlockedPickerModal?.querySelector<HTMLDivElement>('.swift-blocked-picker-host') || null;
+	swiftBlockedPickerSteps = swiftBlockedPickerModal?.querySelector<HTMLDivElement>('.swift-blocked-picker-steps') || null;
+	swiftBlockedPickerBack = swiftBlockedPickerModal?.querySelector<HTMLButtonElement>('.swift-blocked-picker-back') || null;
+	swiftBlockedPickerClose = swiftBlockedPickerModal?.querySelector<HTMLButtonElement>('.swift-blocked-picker-close') || null;
+	swiftBlockedPickerCountryList = swiftBlockedPickerModal?.querySelector<HTMLDivElement>('.swift-blocked-country-list') || null;
+	swiftBlockedPickerServerList = swiftBlockedPickerModal?.querySelector<HTMLDivElement>('.swift-blocked-server-list') || null;
+	swiftBlockedPickerCountrySearch = swiftBlockedPickerModal?.querySelector<HTMLInputElement>('.swift-blocked-country-search') || null;
+	swiftBlockedPickerServerSearch = swiftBlockedPickerModal?.querySelector<HTMLInputElement>('.swift-blocked-server-search') || null;
+	swiftBlockedPickerServerHeading = swiftBlockedPickerModal?.querySelector<HTMLDivElement>('.swift-blocked-picker-server-heading') || null;
+	swiftBlockedPickerCountryOnlyButton = swiftBlockedPickerModal?.querySelector<HTMLButtonElement>('.swift-blocked-picker-country-only') || null;
+	swiftToast = document.querySelector<HTMLDivElement>('#status .swift-toast');
+	swiftToastText = swiftToast?.querySelector<HTMLSpanElement>('.swift-toast-text') || null;
 	const signOutButton = document.querySelector('button.sign-out-button') as HTMLDivElement;
 	const switchButton = document.querySelector('button.switch-account-button') as HTMLDivElement;
 	const menu = document.getElementById('menu') as HTMLDivElement;
 	const quickConnectButton = document.querySelector('.quick-connect-button') as HTMLDivElement;
+	const favoriteConnectButton = document.querySelector('.favorite-connect-button') as HTMLButtonElement | null;
 	const disconnectButton = document.querySelector('#status button.disconnection-button') as HTMLDivElement;
+	const reconnectButton = document.querySelector('#reconnect-button') as HTMLButtonElement | null;
 
 	const freeCountriesListEl = document.getElementById('free-countries-list') as HTMLDivElement;
 	const freeCountriesCountEl = document.getElementById('free-server-countries-count') as HTMLSpanElement;
 	const freeCountryItemTemplate = document.getElementById('free-country-item-template') as HTMLTemplateElement;
 
+	updateSwiftOnlyBanner();
+	triggerPromise((async () => {
+		swiftBlockedPrompt = (await swiftBlockedSiteItem.get())?.value || null;
+		await renderSwiftBlockedPrompt();
+	})());
+
+	swiftBlockedAddServerButton?.addEventListener('click', () => {
+		addSwiftBlockedRule('server');
+	});
+
+	swiftBlockedAddCountryButton?.addEventListener('click', () => {
+		openSwiftBlockedPicker();
+	});
+
+	swiftBlockedDismissButton?.addEventListener('click', () => {
+		clearSwiftBlockedPrompt();
+	});
+
+	if (swiftBlockedPickerBack) {
+		swiftBlockedPickerBack.textContent = c('Action').t`Back`;
+		swiftBlockedPickerBack.addEventListener('click', () => {
+			setSwiftBlockedPickerStep('country');
+			swiftBlockedPickerCountrySearch?.focus();
+		});
+	}
+
+	if (swiftBlockedPickerClose) {
+		swiftBlockedPickerClose.textContent = c('Action').t`Close`;
+	}
+
+	if (swiftBlockedPickerCountryOnlyButton) {
+		swiftBlockedPickerCountryOnlyButton.textContent = c('Action').t`Use country only`;
+		swiftBlockedPickerCountryOnlyButton.disabled = true;
+		swiftBlockedPickerCountryOnlyButton.addEventListener('click', () => {
+			if (!swiftBlockedPickerSelectedCountry) {
+				return;
+			}
+
+			addSwiftBlockedRule('country', {
+				targetId: swiftBlockedPickerSelectedCountry.code,
+				targetLabel: swiftBlockedPickerSelectedCountry.name,
+			});
+			closeSwiftBlockedPicker();
+		});
+	}
+
+	swiftBlockedPickerCountrySearch?.addEventListener('input', () => {
+		renderSwiftBlockedPickerCountries(swiftBlockedPickerCountrySearch?.value || '');
+	});
+
+	swiftBlockedPickerServerSearch?.addEventListener('input', () => {
+		renderSwiftBlockedPickerServers(swiftBlockedPickerServerSearch?.value || '');
+	});
+
+	swiftBlockedPickerCountryList?.addEventListener('click', (event) => {
+		const button = (event.target as HTMLElement)?.closest<HTMLButtonElement>('.swift-blocked-picker-item');
+		const code = button?.dataset['countryCode'];
+		if (!code) {
+			return;
+		}
+
+		const entry = swiftBlockedPickerCountries.find(country => country.code === code);
+		if (!entry) {
+			return;
+		}
+
+		swiftBlockedPickerSelectedCountry = {code: entry.code, name: entry.name};
+		swiftBlockedPickerServers = entry.logicals.slice();
+		if (swiftBlockedPickerServerHeading) {
+			swiftBlockedPickerServerHeading.textContent = `${c('Label').t`Country`}: ${entry.name}`;
+		}
+		if (swiftBlockedPickerCountryOnlyButton) {
+			swiftBlockedPickerCountryOnlyButton.disabled = false;
+		}
+		if (swiftBlockedPickerServerSearch) {
+			swiftBlockedPickerServerSearch.value = '';
+		}
+
+		renderSwiftBlockedPickerServers();
+		setSwiftBlockedPickerStep('server');
+		swiftBlockedPickerServerSearch?.focus();
+	});
+
+	swiftBlockedPickerServerList?.addEventListener('click', (event) => {
+		const button = (event.target as HTMLElement)?.closest<HTMLButtonElement>('.swift-blocked-picker-item');
+		const id = button?.dataset['serverId'];
+		if (!id) {
+			return;
+		}
+
+		const logical = swiftBlockedPickerServers.find(server => `${server.ID}` === id);
+		if (!logical) {
+			return;
+		}
+
+		addSwiftBlockedRule('server', {
+			targetId: `${logical.ID}`,
+			targetLabel: formatSwiftServerLabel(logical),
+		});
+		closeSwiftBlockedPicker();
+	});
+
+	swiftBlockedPickerModal?.addEventListener('close', () => {
+		resetSwiftBlockedPicker();
+	});
+
 	disconnectButton.innerHTML = c('Action').t`Disconnect`;
+	if (reconnectButton) {
+		reconnectButton.innerHTML = c('Action').t`Reconnect`;
+	}
+	if (favoriteConnectButton) {
+		favoriteConnectButton.innerHTML = c('Action').t`Favorites`;
+		updateFavoriteConnectButton(!limitedUi);
+	}
 
 	const disconnect = async (type: StateChange = StateChange.DISCONNECT) => {
 		const previousServer = connectionState?.server;
@@ -855,6 +2644,80 @@ const start = async () => {
 
 	const showFreeQuickConnect = simplifiedUi && isFreeTier;
 
+	const formatRelativeTime = (connectedAt: number) => {
+		const seconds = Math.max(0, Math.floor((Date.now() - connectedAt) / 1000));
+		const minutes = Math.floor(seconds / 60);
+		const hours = Math.floor(minutes / 60);
+		const days = Math.floor(hours / 24);
+
+		if (typeof Intl !== 'undefined' && 'RelativeTimeFormat' in Intl) {
+			const locale = getLanguage().replace(/_/g, '-');
+			const formatter = new Intl.RelativeTimeFormat([locale], {numeric: 'auto'});
+
+			if (seconds < 60) {
+				return formatter.format(-seconds, 'second');
+			}
+
+			if (minutes < 60) {
+				return formatter.format(-minutes, 'minute');
+			}
+
+			if (hours < 24) {
+				return formatter.format(-hours, 'hour');
+			}
+
+			return formatter.format(-days, 'day');
+		}
+
+		if (seconds < 60) {
+			return `${seconds} second${seconds === 1 ? '' : 's'} ago`;
+		}
+
+		if (minutes < 60) {
+			return `${minutes} minute${minutes === 1 ? '' : 's'} ago`;
+		}
+
+		if (hours < 24) {
+			return `${hours} hour${hours === 1 ? '' : 's'} ago`;
+		}
+
+		return `${days} day${days === 1 ? '' : 's'} ago`;
+	};
+
+	const updateReconnectButtonContent = async () => {
+		if (!reconnectButton) {
+			return;
+		}
+
+		const last = await getLastConnectedServer();
+		if (!last?.exitCountry) {
+			reconnectButton.classList.remove('reconnect-card');
+			reconnectButton.textContent = c('Action').t`Reconnect`;
+			return;
+		}
+
+		const countryName = escapeHtml(getCountryNameOrCode(last.exitCountry));
+		const serverNameRaw = last.exitCity || last.exitEnglishCity || last.name || '';
+		const serverName = serverNameRaw ? escapeHtml(serverNameRaw) : '';
+		const relative = last.connectedAt ? formatRelativeTime(last.connectedAt) : c('Info').t`Recently`;
+		const subtitle = escapeHtml(c('Info').t`Last connected ${relative}`);
+
+		reconnectButton.classList.add('reconnect-card');
+		reconnectButton.innerHTML = `
+			<div class="reconnect-card-content">
+				<div class="reconnect-flag">${getCountryFlag(last.exitCountry)}</div>
+				<div class="reconnect-details">
+					<div class="reconnect-title">
+						<span class="reconnect-country">${countryName}</span>
+						${serverName ? `<span class="reconnect-server">${serverName}</span>` : ''}
+					</div>
+					<div class="reconnect-subtitle">${subtitle}</div>
+				</div>
+				<div class="reconnect-action">${c('Action').t`Reconnect`}</div>
+			</div>
+		`;
+	};
+
 
 	let connectionAttemptTime = 0;
 	let connectingChecker: ReturnType<typeof setInterval> | undefined = undefined;
@@ -874,17 +2737,26 @@ const start = async () => {
 
 	const refreshConnectionStatus = (server?: ServerSummary, connecting = false) => {
 		server || (server = connectionState?.server);
+		updateSwiftConnectionInfo(server, connecting);
+		setSpeedActive(state.connected && !connecting);
 		const exitCountry = server?.exitCountry || '';
 		const entryCountry = server?.entryCountry || '';
 		const secureCore = !!(entryCountry && entryCountry !== exitCountry);
 		const exitCity = server?.exitCity || '';
 		const name = exitCity + ' ' + (server?.name || '').replace(new RegExp('^' + exitCountry + '#'), '#');
+		const countryName = getCountryNameOrCode(exitCountry);
+		const serverName = name.trim();
+		const serverLabel = serverName ? `${countryName} - ${serverName}` : countryName;
 		const exitIp = server?.exitIp || '';
 		const canDisconnectOrCancel = (state.connected || connecting);
 		disconnectButton.style.display = canDisconnectOrCancel ? 'block' : 'none';
 		quickConnectButton.style.display = canDisconnectOrCancel && hasAccessToPaidServers ? 'none' : 'block';
 		quickConnectButton.innerHTML = canDisconnectOrCancel ? c('Action').t`Change server` : c('Action').t`Connect`;
 		quickConnectButton.classList[canDisconnectOrCancel ? 'add' : 'remove']('weak');
+		updateFavoriteConnectButton(!limitedUi && quickConnectButton.style.display !== 'none');
+		if (reconnectButton) {
+			reconnectButton.style.display = canDisconnectOrCancel ? 'none' : 'block';
+		}
 		document.querySelectorAll<HTMLDivElement>('.quick-connect-button-subtitle').forEach(quickConnectSubtitle => {
 			if (hasAccessToPaidServers) {
 				return;
@@ -899,6 +2771,7 @@ const start = async () => {
 		showConnectedItemMarker(servers, state.connected && !connecting);
 
 		serverRotator?.refreshState(canDisconnectOrCancel);
+		triggerPromise(updateReconnectButtonContent());
 
 		if (connecting) {
 			connectionAttemptTime = Date.now();
@@ -917,8 +2790,7 @@ const start = async () => {
 				<div class="current-server-description">
 					<div class="current-server-flag">${getCountryFlag(exitCountry)}</div>
 					<div>
-						<div class="current-server-country">${getCountryNameOrCode(exitCountry)}</div>
-						<div class="current-server-name">${name}</div>
+						<div class="current-server-country">${serverLabel}</div>
 						<div class="exit-ip">${exitIp}</div>
 					</div>
 				</div>
@@ -967,8 +2839,7 @@ const start = async () => {
 						getCountryFlag(exitCountry)
 					}</div>
 					<div>
-						<div class="current-server-country">${getCountryNameOrCode(exitCountry)}</div>
-						<div class="current-server-name">${name}</div>
+						<div class="current-server-country">${serverLabel}</div>
 						<div class="exit-ip">${exitIp}</div>
 					</div>
 				</div>
@@ -1134,6 +3005,74 @@ const start = async () => {
 			setError(e as Error);
 		}
 	};
+
+	const connectToFavorite = async () => {
+		errorSlot.innerHTML = '';
+
+		const favorites = getFavoriteLogicals();
+
+		if (!favorites.length) {
+			setError(new Error(c('Error').t`Please add at least one favorite server.`));
+
+			return;
+		}
+
+		const logical = requireRandomLogical(favorites, userTier, setError);
+
+		setLastChoiceWithCurrentOptions({
+			connected: true,
+			logicalId: logical.ID,
+		});
+		goTo('world');
+		await connectToServer(logical);
+	};
+
+	if (favoriteConnectButton) {
+		onClick(favoriteConnectButton, (event) => {
+			event.stopPropagation();
+			event.preventDefault();
+			triggerPromise(connectToFavorite());
+		});
+	}
+
+	const reconnectToLastServer = async () => {
+		if (!reconnectButton) {
+			return;
+		}
+
+		reconnectButton.disabled = true;
+
+		try {
+			const last = await getLastConnectedServer();
+			if (!last?.id) {
+				return;
+			}
+
+			const logical = getLogicalById(last.id);
+			if (!logical) {
+				throw new Error('Unable to find the last connected server.');
+			}
+
+			setLastChoiceWithCurrentOptions({
+				connected: true,
+				logicalId: logical.ID,
+			});
+			goTo('world');
+			await connectToServer(logical);
+		} catch (e) {
+			setError(e as Error);
+		} finally {
+			reconnectButton.disabled = false;
+		}
+	};
+
+	if (reconnectButton) {
+		onClick(reconnectButton, (event) => {
+			event.stopPropagation();
+			event.preventDefault();
+			triggerPromise(reconnectToLastServer());
+		});
+	}
 
 	const closeSession = async (action: StateChange) => {
 		if (state.connected) {
@@ -1336,7 +3275,8 @@ const start = async () => {
 		}
 	}
 
-	const search = document.getElementById('search-input') as HTMLInputElement;
+	searchInput = document.getElementById('search-input') as HTMLInputElement;
+	const search = searchInput;
 
 	if (search) {
 		search.focus();
@@ -1407,6 +3347,8 @@ const start = async () => {
 	}
 
 	configureButtons();
+	configureFavoriteButtons(document);
+	syncFavoriteToggles(document);
 	configureModalButtons(document.querySelector<HTMLDivElement>('#modals')!);
 	configureRatingModalButtons(rateUsModal);
 
@@ -1414,6 +3356,8 @@ const start = async () => {
 		logicalUpdate(logicalsInput: Logical[]) {
 			if (logicalsInput?.length) {
 				logicals = logicalsInput;
+				populateSwiftDatalists();
+				triggerPromise(renderSwiftBlockedPrompt());
 			}
 		},
 		changeState(data: ChangeStateMessage['data']) {
@@ -1423,6 +3367,7 @@ const start = async () => {
 					connectionState.server = data.server;
 					refreshConnectionStatus(data.server);
 					setError(data.error);
+					triggerPromise(renderSwiftBlockedPrompt());
 					break;
 
 				case 'connecting':
@@ -1430,6 +3375,7 @@ const start = async () => {
 					connectionState.server = data.server;
 					refreshConnectionStatus(data.server, true);
 					setError(data.error);
+					triggerPromise(renderSwiftBlockedPrompt());
 					break;
 
 				case 'logged-out':
@@ -1441,11 +3387,32 @@ const start = async () => {
 					connectionState.server = undefined;
 					refreshConnectionStatus(data.server);
 					setError(data.error);
+					triggerPromise(renderSwiftBlockedPrompt());
 					break;
 			}
 		},
 		error: setError,
 	});
+
+	if (chrome.tabs?.onActivated) {
+		chrome.tabs.onActivated.addListener(() => {
+			triggerPromise(refreshSwiftMatchedRule());
+		});
+	}
+
+	if (chrome.tabs?.onUpdated) {
+		chrome.tabs.onUpdated.addListener((_tabId, changeInfo, tab) => {
+			if (!tab?.active) {
+				return;
+			}
+
+			if (!changeInfo.url && changeInfo.status !== 'complete') {
+				return;
+			}
+
+			triggerPromise(refreshSwiftMatchedRule());
+		});
+	}
 
 	const settingsPageTitle = document.querySelector('*[data-page="settings"] .page-title');
 

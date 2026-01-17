@@ -98,11 +98,42 @@
 			"Upgrade": [
 				"升级账户"
 			],
-			"Upgrade to Proton VPN Plus": [
-				"升级到 Proton VPN Plus"
+			"Upgrade to Swift Proton VPN Plus": [
+				"升级到 Swift Proton VPN Plus"
 			],
 			"Visit Support Center": [
 				"访问支持中心"
+			]
+			,
+			"Add server": [
+				"添加服务器"
+			],
+			"Back": [
+				"返回"
+			],
+			"Choose location": [
+				"选择位置"
+			],
+			"Close": [
+				"关闭"
+			],
+			"Dismiss": [
+				"忽略"
+			],
+			"Export rules": [
+				"导出规则"
+			],
+			"Import rules": [
+				"导入规则"
+			],
+			"Use browser language": [
+				"使用浏览器语言"
+			],
+			"Use country only": [
+				"仅使用国家"
+			],
+			"Use current tab": [
+				"使用当前标签页"
 			]
 		},
 		"Action: City-level button": {
@@ -208,8 +239,8 @@
 			"Access over 13,000 secure servers in over 120 countries": [
 				"访问超过 120 个国家的 13,000 多个安全服务器"
 			],
-			"Access Proton VPN via this icon": [
-				"通过此图标访问 Proton VPN"
+			"Access Swift Proton VPN via this icon": [
+				"通过此图标访问 Swift Proton VPN"
 			],
 			"Allow VPN permissions": [
 				"允许 VPN 权限"
@@ -226,8 +257,8 @@
 			"Auto-selected from": [
 				"自动选择"
 			],
-			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"打开浏览器时自动重新连接到 Proton VPN。"
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"打开浏览器时自动重新连接到 Swift Proton VPN。"
 			],
 			"Back": [
 				"返回"
@@ -259,8 +290,8 @@
 			"Connecting...": [
 				"正在连接..."
 			],
-			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"联系我们的客户支持代理人来帮助您使用 Proton VPN。"
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"联系我们的客户支持代理人来帮助您使用 Swift Proton VPN。"
 			],
 			"Crash": [
 				"崩溃啦"
@@ -298,8 +329,8 @@
 			"Fastest free server": [
 				"最快的免费服务器"
 			],
-			"Follow these simple steps to get the best experience using Proton VPN": [
-				"请遵循以下简单步骤，获得使用 Proton VPN 的最佳体验"
+			"Follow these simple steps to get the best experience using Swift Proton VPN": [
+				"请遵循以下简单步骤，获得使用 Swift Proton VPN 的最佳体验"
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"免费服务器所在的国家 (<span id=\"free-server-countries-count\">0</span>)"
@@ -343,11 +374,11 @@
 			"Open the Extensions menu": [
 				"打开扩展菜单"
 			],
-			"Open the Proton VPN browser extension to continue": [
-				"打开 Proton VPN 浏览器扩展程序即可继续操作"
+			"Open the Swift Proton VPN browser extension to continue": [
+				"打开 Swift Proton VPN 浏览器扩展程序即可继续操作"
 			],
-			"Pin Proton VPN to your toolbar": [
-				"将 Proton VPN 固定在您的工具栏"
+			"Pin Swift Proton VPN to your toolbar": [
+				"将 Swift Proton VPN 固定在您的工具栏"
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"点击 <b>下一步</b>，然后点击浏览器弹出窗口上的<b>允许</b>。"
@@ -355,11 +386,11 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"使用 Proton 免费高速 VPN 保护您的上网安全。"
 			],
-			"Proton VPN": [
-				"Proton VPN"
+			"Swift Proton VPN": [
+				"Swift Proton VPN"
 			],
-			"Proton VPN Browser Extension": [
-				"Proton VPN 浏览器扩展程序"
+			"Swift Proton VPN Browser Extension": [
+				"Swift Proton VPN 浏览器扩展程序"
 			],
 			"Search": [
 				"搜索"
@@ -385,11 +416,11 @@
 			"Telemetry": [
 				"遥测技术"
 			],
-			"Thank you for installing Proton VPN": [
-				"感谢您安装 Proton VPN"
+			"Thank you for installing Swift Proton VPN": [
+				"感谢您安装 Swift Proton VPN"
 			],
-			"Then just click the Proton VPN icon to sign in.": [
-				"然后点击 Proton VPN 图标以登录。"
+			"Then just click the Swift Proton VPN icon to sign in.": [
+				"然后点击 Swift Proton VPN 图标以登录。"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"这些统计数据不包含您的 IP 地址，因此无法用于识别您的身份。我们绝不会与第三方分享它们。"
@@ -406,17 +437,69 @@
 			"User": [
 				"用户"
 			],
-			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
-				"VPN 被外部软件阻止。\n\n某些工具（如反病毒软件或代理服务器）会干扰 Proton VPN，请禁用它们并重试。"
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. Disable them and retry.": [
+				"VPN 被外部软件阻止。\n\n某些工具（如反病毒软件或代理服务器）会干扰 Swift Proton VPN，请禁用它们并重试。"
 			],
-			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
-				"VPN 被外部软件阻止：${blockingSoftware}。\n\n某些工具（如反病毒软件或代理服务器）会干扰 Proton VPN，您可以尝试禁用它们来确认。"
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. You can try disabling it to confirm.": [
+				"VPN 被外部软件阻止：${blockingSoftware}。\n\n某些工具（如反病毒软件或代理服务器）会干扰 Swift Proton VPN，您可以尝试禁用它们来确认。"
 			],
 			"VPN Features": [
 				"VPN 功能"
 			],
 			"You're signed in": [
 				"您已成功登录"
+			]
+			,
+			"Add to Swift": [
+				"添加到 Swift"
+			],
+			"Also match subdomains": [
+				"同时匹配子域名"
+			],
+			"Choose the language for the extension.": [
+				"选择扩展程序的语言。"
+			],
+			"Connected by Swift": [
+				"通过 Swift 连接"
+			],
+			"Import replaces current rules.": [
+				"导入会替换当前规则。"
+			],
+			"Last Swift event": [
+				"最近一次 Swift 事件"
+			],
+			"Last connected ${relative}": [
+				"上次连接${relative}"
+			],
+			"Recently": [
+				"刚刚"
+			],
+			"No countries found.": [
+				"未找到国家。"
+			],
+			"No servers found.": [
+				"未找到服务器。"
+			],
+			"Select country": [
+				"选择国家"
+			],
+			"Select server": [
+				"选择服务器"
+			],
+			"Site might be blocked": [
+				"网站可能被屏蔽"
+			],
+			"Swift Background": [
+				"Swift 后台"
+			],
+			"Swift rules": [
+				"Swift 规则"
+			],
+			"Turn off VPN when your active tab isn't in Swift rules.": [
+				"当前标签页不在 Swift 规则中时关闭 VPN。"
+			],
+			"When you visit a website, Swift connects you to the server or country you selected.": [
+				"当您访问某个网站时，Swift 会连接到您选择的服务器或国家/地区。"
 			]
 		},
 		"Label": {
@@ -498,6 +581,19 @@
 			"WebRTC leak protection": [
 				"WebRTC 泄漏保护"
 			]
+			,
+			"Auto-connect by website": [
+				"按网站自动连接"
+			],
+			"Disconnect on other sites": [
+				"在其他网站时断开连接"
+			],
+			"Language": [
+				"语言"
+			],
+			"Swift": [
+				"Swift"
+			]
 		},
 		"Menu": {
 			"Countries": [
@@ -512,21 +608,25 @@
 			"Settings": [
 				"设置"
 			]
+			,
+			"Swift": [
+				"Swift"
+			]
 		},
 		"Status": {
 			"Connecting to ${serverName}": [
 				"正在连接 ${serverName}"
 			],
-			"Proton VPN: ${status}": [
-				"Proton VPN: ${status}"
+			"Swift Proton VPN: ${status}": [
+				"Swift Proton VPN: ${status}"
 			]
 		},
 		"Title": {
 			"Features": [
 				"功能"
 			],
-			"Proton VPN for Vivaldi": [
-				"Proton VPN Vivaldi 客户端"
+			"Swift Proton VPN for Vivaldi": [
+				"Swift Proton VPN Vivaldi 客户端"
 			],
 			"Streaming": [
 				"串流中"

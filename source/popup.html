@@ -14,7 +14,7 @@
 			<img src="img/vpn-welcome-image-dark@2x.png" alt="" class="welcome-background">
 			<div class="content">
 				<h1 class="text-center mxauto">
-					<img src="img/vpn-logo.svg" alt="Proton VPN" width="195" height="34">
+					<img src="img/vpn-logo.svg" alt="Swift Proton VPN" width="195" height="34">
 				</h1>
 				<p></p>
 				<div class="text-center">
@@ -36,7 +36,7 @@
 		</div>
 		<div id="logged-view">
 			<header class="top-bar">
-				<svg viewBox="0 0 98 18" class="text-intense" focusable="none" role="img" aria-label="Proton VPN">
+				<svg viewBox="0 0 98 18" class="text-intense" focusable="none" role="img" aria-label="Swift Proton VPN">
 					<path d="M25.9172 11.3626V14.0065H27.7734V11.478C27.7734 11.2326 27.8703 10.9954 28.0456 10.8222C28.2189 10.649 28.456 10.55 28.7015 10.55H30.605C31.4919 10.55 32.3436 10.1973 32.9706 9.56828C33.5976 8.94131 33.9502 8.08954 33.9502 7.20272C33.9502 6.31589 33.5976 5.46413 32.9706 4.8351C32.3436 4.20814 31.4919 3.85547 30.603 3.85547H25.9172V7.15941H27.7734V5.60231H30.4792C30.9 5.60231 31.3021 5.76936 31.5991 6.06635C31.8961 6.36333 32.0631 6.76549 32.0631 7.18622C32.0631 7.60695 31.8961 8.00911 31.5991 8.3061C31.3021 8.60308 30.9 8.77013 30.4792 8.77013H28.5138C28.1735 8.77013 27.8353 8.83613 27.5218 8.96812C27.2062 9.09805 26.9216 9.28985 26.6803 9.53115C26.439 9.77245 26.2493 10.0591 26.1173 10.3726C25.9832 10.684 25.9172 11.0223 25.9172 11.3626Z" fill="currentColor"/>
 					<path d="M34.2371 14.0068V9.97896C34.2371 8.33524 35.1961 7.02769 37.1161 7.02769C37.4234 7.02356 37.7307 7.05656 38.0318 7.12874V8.78484C37.8132 8.7704 37.6256 8.7704 37.5369 8.7704C36.5201 8.7704 36.0829 9.2365 36.0829 10.1811V14.0068H34.2371V14.0068Z" fill="currentColor"/>
 					<path d="M38.5845 10.5915C38.5845 8.57039 40.1106 7.02979 42.2349 7.02979C44.3571 7.02979 45.8853 8.57039 45.8853 10.5915C45.8853 12.6127 44.3592 14.1677 42.2349 14.1677C40.1106 14.1677 38.5845 12.6106 38.5845 10.5915ZM44.0663 10.5915C44.0663 9.44277 43.295 8.62813 42.2349 8.62813C41.1728 8.62813 40.4035 9.44071 40.4035 10.5915C40.4035 11.7547 41.1748 12.5549 42.2349 12.5549C43.295 12.5549 44.0663 11.7526 44.0663 10.5915Z" fill="currentColor"/>
@@ -65,6 +65,13 @@
 						</linearGradient>
 					</defs>
 				</svg>
+				<div class="top-actions">
+					<a
+						class="support-link"
+						href="https://buymeacoffee.com/azizalam"
+						aria-label="Support Me"
+					>Support Me &#9749;</a>
+				</div>
 			</header>
 			<main class="central-view">
 				<nav class="sidebar">
@@ -82,6 +89,11 @@
 								<path fill-rule="evenodd" d="M17.25 3H6.75a3.75 3.75 0 1 0 0 7.5h10.5a3.75 3.75 0 1 0 0-7.5ZM6.75 1.5a5.25 5.25 0 0 0 0 10.5h10.5a5.25 5.25 0 1 0 0-10.5H6.75Z" clip-rule="evenodd"/>
 								<path d="M9 6.75a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/>
 								<path fill-rule="evenodd" d="M6 13.5a4.5 4.5 0 1 0 0 9h12a4.5 4.5 0 1 0 0-9H6ZM18 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd"/>
+							</svg>
+						</button>
+						<button class="side-button" data-go-to="swift" title="Swift" aria-label="Swift" data-context="Menu">
+							<svg viewBox="0 0 10 14">
+								<use xlink:href="img/icons.svg#lightning"></use>
 							</svg>
 						</button>
 					</div>
@@ -118,8 +130,48 @@
 							</div>
 
 							<div class="connection-status" aria-live="polite" aria-atomic="true"></div>
+							<div class="swift-connection-info">
+								<span class="swift-connection-badge" data-trans>Connected by Swift</span>
+								<span class="swift-connection-rule"></span>
+							</div>
+							<div class="swift-only-banner" role="status" aria-live="polite" aria-atomic="true">
+								<span class="swift-background-dot" aria-hidden="true"></span>
+								<span class="swift-background-text" data-trans>Swift Background</span>
+								<span class="connection-speed" role="status" aria-live="polite" aria-atomic="true">
+									<span class="speed-item speed-download">
+										<svg class="speed-icon speed-icon-down" viewBox="0 0 24 24" aria-hidden="true">
+											<use xlink:href="img/icons.svg#expand-button"></use>
+										</svg>
+										<span class="speed-value speed-download-value"></span>
+									</span>
+									<span class="speed-item speed-upload">
+										<svg class="speed-icon speed-icon-up" viewBox="0 0 24 24" aria-hidden="true">
+											<use xlink:href="img/icons.svg#expand-button"></use>
+										</svg>
+										<span class="speed-value speed-upload-value"></span>
+									</span>
+								</span>
+							</div>
+							<div class="swift-blocked-banner" role="status" aria-live="polite" aria-atomic="true">
+								<div class="swift-blocked-title" data-trans>Site might be blocked</div>
+								<div class="swift-blocked-host"></div>
+								<div class="swift-blocked-targets"></div>
+								<div class="swift-blocked-actions">
+									<button class="swift-blocked-add-server secondary-button" data-context="Action"></button>
+									<button class="swift-blocked-add-country secondary-button" data-context="Action"></button>
+									<button class="swift-blocked-dismiss tertiary-button" data-context="Action"></button>
+								</div>
+							</div>
+							<div class="swift-toast" role="status" aria-live="polite" aria-atomic="true">
+								<svg class="swift-toast-icon" viewBox="0 0 10 14" aria-hidden="true">
+									<use xlink:href="img/icons.svg#lightning"></use>
+								</svg>
+								<span class="swift-toast-text"></span>
+							</div>
 							<div><button class="quick-connect-button primary-button" data-next-change=""></button></div>
+							<div><button class="favorite-connect-button secondary-button"></button></div>
 							<div><button class="disconnection-button"></button></div>
+							<div><button id="reconnect-button" class="reconnect-button secondary-button"></button></div>
 							<div data-go-to="about-free-connections" class="quick-connect-button-subtitle hidden free" data-trans>
 								<div class="weak-text">
 									<span data-trans>About free connections</span>
@@ -223,7 +275,7 @@
 									</strong></div>
 
 									<div class="weak-text" data-trans data-comment="Description for the Auto connect option toggle">
-										Automatically reconnect to Proton VPN when you open your browser.
+										Automatically reconnect to Swift Proton VPN when you open your browser.
 									</div>
 								</div>
 
@@ -422,7 +474,7 @@
 									</strong></div>
 
 									<div class="weak-text" data-trans>
-										Contact our Customer Support agents to help you out with Proton VPN.
+										Contact our Customer Support agents to help you out with Swift Proton VPN.
 									</div>
 
 									<a
@@ -498,6 +550,41 @@
 											<span data-trans>Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties</span>
 											<a data-trans class="text-link" href="https://proton.me/legal/privacy">Learn more</a>
 										</div>
+									</div>
+								</div>
+							</div>
+							<div class="action-block">
+								<div class="action-description">
+									<div class="action-text">
+										<div><strong data-trans data-context="Label">Language</strong></div>
+										<div class="sub-action-text" data-trans data-context="Info">Choose the language for the extension.</div>
+									</div>
+								</div>
+								<div class="action-description">
+									<div class="action-text language-select">
+										<select id="language-preference" aria-label="Language" data-context="Label">
+											<option value="" data-trans data-context="Action">Use browser language</option>
+											<option value="ar">Arabic</option>
+											<option value="zh-CN">Chinese (Simplified)</option>
+											<option value="en">English</option>
+											<option value="fr">French</option>
+											<option value="ru">Russian</option>
+											<option value="es">Spanish</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="action-block">
+								<div class="action-description">
+									<div class="action-text">
+										<div><strong>Popup width</strong></div>
+										<div class="sub-action-text">Adjust the popup width.</div>
+									</div>
+								</div>
+								<div class="action-description">
+									<div class="action-text size-adjustment">
+										<input type="range" id="popup-width" min="300" max="380" step="5" value="330">
+										<span id="popup-width-value" class="sub-action-text">330px</span>
 									</div>
 								</div>
 							</div>
@@ -578,6 +665,101 @@
 						</div>
 
 						<div><button class="primary-button open-upgrade-page" data-trans>Upgrade</button></div>
+					</div>
+
+					<div data-page="swift">
+						<div class="scrollable-view">
+							<h1 class="page-title" data-trans data-context="Label">Swift</h1>
+
+							<div class="action-block swift-inner-action-block">
+								<div class="action-description">
+									<div class="action-text">
+										<div><strong data-trans data-context="Label">
+											Auto-connect by website
+										</strong></div>
+										<div class="weak-text" data-trans>
+											When you visit a website, Swift connects you to the server or country you selected.
+										</div>
+									</div>
+
+									<div class="action-pretext swift-status"></div>
+									<button data-swift-action="toggle" class="toggle" title="Swift" data-context="Action"></button>
+								</div>
+							</div>
+							<div class="swift-configuration">
+								<div class="action-block swift-disconnect-action-block">
+									<div class="action-description">
+										<div class="action-text">
+											<div><strong data-trans data-context="Label">
+												Disconnect on other sites
+											</strong></div>
+											<div class="weak-text" data-trans>
+												Turn off VPN when your active tab isn't in Swift rules.
+											</div>
+										</div>
+
+										<div class="action-pretext swift-disconnect-status"></div>
+										<button data-swift-action="toggle-disconnect" class="toggle" title="Swift disconnect" data-context="Action"></button>
+									</div>
+								</div>
+
+								<div class="swift-filter-add">
+									<button data-swift-action="add-website" class="primary-button" data-trans data-context="Action">Add website</button>
+								</div>
+								<div class="swift-filter-form">
+									<div class="my1">
+										<input type="text" class="swift-url" placeholder="domain.com/path" pattern="^[\x20-\x7E]+$">
+										<input type="text" class="swift-target" placeholder="Server name or country code" pattern="^[\x20-\x7E]+$">
+									</div>
+
+									<div class="swift-form-tools">
+										<button data-swift-action="use-current-tab" class="secondary-button" data-trans data-context="Action">Use current tab</button>
+									</div>
+
+									<div class="swift-options flex space-between my1">
+									<label class="flex">
+										<input type="radio" name="swift-target-type" value="server" checked>
+										<span data-trans data-context="Label">Server</span>
+									</label>
+									<label class="flex">
+										<input type="radio" name="swift-target-type" value="country">
+										<span data-trans data-context="Label">Country</span>
+									</label>
+									</div>
+
+									<label class="flex swift-subdomains">
+										<input type="checkbox" class="swift-subdomains-toggle" checked>
+										<span data-trans>Also match subdomains</span>
+									</label>
+
+									<div class="swift-actions flex space-between my1">
+										<button data-swift-action="cancel" class="tertiary-button" data-trans data-context="Action">Cancel</button>
+										<button data-swift-action="add" class="primary-button swift-add-button" data-trans data-context="Action" disabled>Add</button>
+									</div>
+									<div class="swift-error" aria-live="polite"></div>
+
+									<datalist id="swift-target-servers"></datalist>
+									<datalist id="swift-target-countries"></datalist>
+								</div>
+
+								<div class="swift-filters">
+									<p class="fade-text" data-trans>Swift rules</p>
+									<div class="swift-list"></div>
+								</div>
+
+								<div class="swift-tools">
+									<button data-swift-action="export" class="secondary-button" data-trans data-context="Action">Export rules</button>
+									<button data-swift-action="import" class="tertiary-button" data-trans data-context="Action">Import rules</button>
+									<input type="file" class="swift-import-input" accept="application/json">
+								</div>
+								<p class="fade-text swift-tools-note" data-trans>Import replaces current rules.</p>
+							</div>
+
+							<div class="swift-debug">
+								<p class="fade-text" data-trans>Last Swift event</p>
+								<div class="swift-debug-info"></div>
+							</div>
+						</div>
 					</div>
 
 
@@ -703,15 +885,46 @@
 					 -->
 
 					<dialog id="rate-us" >
-						<img src="img/rate-us.svg" alt="5 stars floating over Proton VPN application button">
+						<img src="img/rate-us.svg" alt="5 stars floating over Swift Proton VPN application button">
 						<main>
-							<div class="title" data-trans>Enjoying Proton VPN?</div>
+							<div class="title" data-trans>Enjoying Swift Proton VPN?</div>
 							<div class="sub-title" data-trans>Please help us spread the word with a Web Store rating.</div>
 						</main>
 						<footer>
 							<button data-modal-default-close data-rate-us-click id="store-button" class="primary-button" data-trans>Leave a rating</button>
 							<button data-modal-default-close data-rate-us-dismiss id="not-now-button" class="tertiary-button" data-trans>Not now</button>
 						</footer>
+					</dialog>
+
+					<dialog id="swift-blocked-picker" class="swift-blocked-picker" data-modal-default-close-outside>
+						<div class="swift-blocked-picker-header">
+							<button class="swift-blocked-picker-back tertiary-button" data-context="Action"></button>
+							<div class="swift-blocked-picker-title" data-trans>Add to Swift</div>
+							<button class="swift-blocked-picker-close tertiary-button" data-modal-default-close data-context="Action"></button>
+						</div>
+						<div class="swift-blocked-picker-host"></div>
+						<div class="swift-blocked-picker-steps" data-step="country">
+							<div class="swift-blocked-picker-track">
+								<section class="swift-blocked-picker-panel swift-blocked-picker-country-panel">
+									<div class="swift-blocked-picker-panel-title" data-trans>Select country</div>
+									<label class="swift-blocked-picker-search">
+										<input type="search" class="swift-blocked-country-search" placeholder="Search countries">
+									</label>
+									<div class="swift-blocked-picker-list swift-blocked-country-list"></div>
+								</section>
+								<section class="swift-blocked-picker-panel swift-blocked-picker-server-panel">
+									<div class="swift-blocked-picker-panel-title" data-trans>Select server</div>
+									<div class="swift-blocked-picker-panel-subtitle swift-blocked-picker-server-heading"></div>
+									<label class="swift-blocked-picker-search">
+										<input type="search" class="swift-blocked-server-search" placeholder="Search servers">
+									</label>
+									<div class="swift-blocked-picker-list swift-blocked-server-list"></div>
+									<div class="swift-blocked-picker-footer">
+										<button class="swift-blocked-picker-country-only secondary-button" data-context="Action"></button>
+									</div>
+								</section>
+							</div>
+						</div>
 					</dialog>
 
 				</aside>

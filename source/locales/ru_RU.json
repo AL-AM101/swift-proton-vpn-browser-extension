@@ -98,8 +98,8 @@
 			"Upgrade": [
 				"Улучшить"
 			],
-			"Upgrade to Proton VPN Plus": [
-				"Улучшить до Proton VPN Plus"
+			"Upgrade to Swift Proton VPN Plus": [
+				"Улучшить до Swift Proton VPN Plus"
 			],
 			"Visit Support Center": [
 				"Открыть Центр поддержки"
@@ -200,8 +200,8 @@
 			]
 		},
 		"Info": {
-			"Access Proton VPN via this icon": [
-				"Подключитесь к Proton VPN через эту иконку"
+			"Access Swift Proton VPN via this icon": [
+				"Подключитесь к Swift Proton VPN через эту иконку"
 			],
 			"Allow VPN permissions": [
 				"Предоставьте разрешения VPN"
@@ -215,8 +215,8 @@
 			"Auto-selected from": [
 				"Автоматически выбрано из"
 			],
-			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"Автоматически подключаться к Proton VPN при открытии браузера."
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"Автоматически подключаться к Swift Proton VPN при открытии браузера."
 			],
 			"Back": [
 				"Назад"
@@ -245,11 +245,17 @@
 			"Connected to ${name} in ${city}": [
 				"Подключено к ${name} в ${city}"
 			],
+			"Last connected ${relative}": [
+				"Последнее подключение ${relative}"
+			],
+			"Recently": [
+				"Недавно"
+			],
 			"Connecting...": [
 				"Подключение..."
 			],
-			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"Свяжитесь с нашей Службой поддержки для помощи с Proton VPN."
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"Свяжитесь с нашей Службой поддержки для помощи с Swift Proton VPN."
 			],
 			"Crash": [
 				"Сбой"
@@ -284,8 +290,8 @@
 			"Fastest free server": [
 				"Самый быстрый сервер Free"
 			],
-			"Follow these simple steps to get the best experience using Proton VPN": [
-				"Следуйте этим простым шагам, чтобы получить лучший опыт, используя Proton VPN"
+			"Follow these simple steps to get the best experience using Swift Proton VPN": [
+				"Следуйте этим простым шагам, чтобы получить лучший опыт, используя Swift Proton VPN"
 			],
 			"Get unlimited server changes with VPN Plus": [
 				"Получите неограниченное количество изменений сервера с VPN Plus"
@@ -329,11 +335,11 @@
 			"Open the Extensions menu": [
 				"Откройте меню Расширения"
 			],
-			"Open the Proton VPN browser extension to continue": [
-				"Для продолжения, откройте расширение Proton VPN"
+			"Open the Swift Proton VPN browser extension to continue": [
+				"Для продолжения, откройте расширение Swift Proton VPN"
 			],
-			"Pin Proton VPN to your toolbar": [
-				"Закрепить Proton VPN на панели инструментов"
+			"Pin Swift Proton VPN to your toolbar": [
+				"Закрепить Swift Proton VPN на панели инструментов"
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Нажмите <b>Далее</b>, затем щёлкните <b>Разрешить</b> во всплывающем окне браузера."
@@ -341,11 +347,11 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Защитите себя в Интернете с помощью бесплатной высокоскоростной VPN от Proton."
 			],
-			"Proton VPN": [
-				"Proton VPN"
+			"Swift Proton VPN": [
+				"Swift Proton VPN"
 			],
-			"Proton VPN Browser Extension": [
-				"Расширение Proton VPN для браузера"
+			"Swift Proton VPN Browser Extension": [
+				"Расширение Swift Proton VPN для браузера"
 			],
 			"Search": [
 				"Поиск"
@@ -368,11 +374,11 @@
 			"Telemetry": [
 				"Телеметрия"
 			],
-			"Thank you for installing Proton VPN": [
-				"Спасибо за установку Proton VPN"
+			"Thank you for installing Swift Proton VPN": [
+				"Спасибо за установку Swift Proton VPN"
 			],
-			"Then just click the Proton VPN icon to sign in.": [
-				"Затем просто нажмите иконку Proton VPN для входа."
+			"Then just click the Swift Proton VPN icon to sign in.": [
+				"Затем просто нажмите иконку Swift Proton VPN для входа."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Эти статистические данные не содержат вашего адреса IP и не могут быть использованы для вашей идентификации. Мы никогда не передадим их третьим лицам."
@@ -506,16 +512,16 @@
 			"Connecting to ${serverName}": [
 				"Подключение к ${serverName}"
 			],
-			"Proton VPN: ${status}": [
-				"Proton VPN: ${status}"
+			"Swift Proton VPN: ${status}": [
+				"Swift Proton VPN: ${status}"
 			]
 		},
 		"Title": {
 			"Features": [
 				"Функции"
 			],
-			"Proton VPN for Vivaldi": [
-				"Proton VPN для Vivaldi"
+			"Swift Proton VPN for Vivaldi": [
+				"Swift Proton VPN для Vivaldi"
 			],
 			"Streaming": [
 				"Стриминг"

@@ -53,6 +53,7 @@ import {notifyStateChange} from './tools/notifyStateChange';
 import {requireBestLogical} from './vpn/getLogical';
 import {getErrorAsString} from './tools/getErrorMessage';
 import {connectedServer} from './vpn/connectedServer';
+import {setLastConnectedServer} from './vpn/lastConnectedServer';
 import {Server} from './vpn/Server';
 import {SettingChange} from './messaging/MessageType';
 import {storedSplitTunneling} from './vpn/storedSplitTunneling';
@@ -214,6 +215,7 @@ const onState = asConnectionStateSwitch({
 		const time = Date.now();
 		const initialState = currentState;
 		const server = currentState.data.server;
+		setLastConnectedServer(server);
 		const name = currentState.data.server.name;
 		lastLogicalCheck = time;
 
@@ -557,7 +559,8 @@ export function switchState(state: ConnectionStateSwitch) {
 	info('Switch state to ' + currentState.name, currentState.data);
 	currentState.init?.(oldState);
 	currentState.refreshState?.();
-	triggerPromise(connectedServer.setValue(currentState.data?.server));
+	const server = currentState.data?.server;
+	triggerPromise(connectedServer.setValue(server));
 }
 
 export function logIn() {
@@ -604,7 +607,12 @@ export function disconnect(error?: ApiError | Error | ErrorDump | undefined) {
 	switchState(offState);
 }
 
-export async function connectLogical(logical: Logical, server: Server, splitTunneling?: SplitTunnelingConfig): Promise<void> {
+export async function connectLogical(
+	logical: Logical,
+	server: Server,
+	splitTunneling?: SplitTunnelingConfig,
+	options?: {suppressNotification?: boolean},
+): Promise<void> {
 	const secureCoreLogical = (logical.Features & Feature.SECURE_CORE) !== 0;
 	const label = server.Label || '';
 
@@ -624,6 +632,7 @@ export async function connectLogical(logical: Logical, server: Server, splitTunn
 				: proxyPort + (!singleProxyPort && /^\d+$/.test(label) ? parseInt(label, 10) : 0),
 			splitTunneling,
 		},
+		suppressNotification: options?.suppressNotification,
 	});
 }
 
@@ -635,14 +644,16 @@ export async function connectAfter(
 	data: ConnectionState['data'],
 	previousName: string | undefined,
 ): Promise<void> {
+	const {suppressNotification, ...nextData} = data || {};
+
 	delete currentState.data.error;
-	Object.assign(currentState.data, data);
+	Object.assign(currentState.data, nextData);
 	switchState(onState);
 
 	const name = data?.server?.name;
 	const city = data?.server?.exitCity;
 
-	if (!previousName || previousName !== name) {
+	if (!suppressNotification && (!previousName || previousName !== name)) {
 		emitNotification(
 			'connected-server',
 			name

@@ -98,8 +98,8 @@
 			"Upgrade": [
 				"Nagyobb csomagra váltás"
 			],
-			"Upgrade to Proton VPN Plus": [
-				"Előfizetés a Proton VPN Plusra"
+			"Upgrade to Swift Proton VPN Plus": [
+				"Előfizetés a Swift Proton VPN Plusra"
 			],
 			"Visit Support Center": [
 				"Súgóközpont megnyitása"
@@ -205,8 +205,8 @@
 			"Access over 13,000 secure servers in over 120 countries": [
 				"Férjen hozzá több mint 13.000 biztonságos szerverhez több mint 120 országban"
 			],
-			"Access Proton VPN via this icon": [
-				"A Proton VPN-t ezen az ikonon keresztül érheti el"
+			"Access Swift Proton VPN via this icon": [
+				"A Swift Proton VPN-t ezen az ikonon keresztül érheti el"
 			],
 			"Allow VPN permissions": [
 				"VPN-engedélyek megadása"
@@ -220,8 +220,8 @@
 			"Auto-selected from": [
 				"Automatikus kiválasztva innen:"
 			],
-			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"Automatikus újrakapcsolódás a Proton VPN-hez a böngésző megnyitásakor."
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"Automatikus újrakapcsolódás a Swift Proton VPN-hez a böngésző megnyitásakor."
 			],
 			"Back": [
 				"Vissza"
@@ -253,8 +253,8 @@
 			"Connecting...": [
 				"Kapcsolódás..."
 			],
-			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"A Proton VPN-nel kapcsolatos segítségért, lépjen kapcsolatba ügyfélszolgálati munkatársainkkal."
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"A Swift Proton VPN-nel kapcsolatos segítségért, lépjen kapcsolatba ügyfélszolgálati munkatársainkkal."
 			],
 			"Crash": [
 				"Összeomlás"
@@ -280,8 +280,8 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Rendszerértesítések kapcsolódáskor és a kapcsolat bontásakor."
 			],
-			"Enjoying Proton VPN?": [
-				"Kedveli a Proton VPN-t?"
+			"Enjoying Swift Proton VPN?": [
+				"Kedveli a Swift Proton VPN-t?"
 			],
 			"Exclude mode": [
 				"Kihagyás mód"
@@ -292,8 +292,8 @@
 			"Fastest free server": [
 				"A leggyorsabb ingyenes szerver"
 			],
-			"Follow these simple steps to get the best experience using Proton VPN": [
-				"Kövesse ezeket az egyszerű lépéseket, a Proton VPN sikeres használatához"
+			"Follow these simple steps to get the best experience using Swift Proton VPN": [
+				"Kövesse ezeket az egyszerű lépéseket, a Swift Proton VPN sikeres használatához"
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"Ingyenes szerver országok (<span id=\"free-server-countries-count\">0</span>)"
@@ -341,11 +341,11 @@
 			"Open the Extensions menu": [
 				"Nyissa meg a bővítmények menüt"
 			],
-			"Open the Proton VPN browser extension to continue": [
-				"Nyissa meg a Proton VPN böngésző bővítményt a folytatáshoz"
+			"Open the Swift Proton VPN browser extension to continue": [
+				"Nyissa meg a Swift Proton VPN böngésző bővítményt a folytatáshoz"
 			],
-			"Pin Proton VPN to your toolbar": [
-				"Rögzítse a Proton VPN-t az eszköztárához"
+			"Pin Swift Proton VPN to your toolbar": [
+				"Rögzítse a Swift Proton VPN-t az eszköztárához"
 			],
 			"Please help us spread the word with a Web Store rating.": [
 				"Kérjük, segítsen nekünk terjeszteni az üzenetet egy Web Áruház értékeléssel."
@@ -356,11 +356,11 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Védje magát online a Proton ingyenes, nagy sebességű VPN-jével."
 			],
-			"Proton VPN": [
-				"Proton VPN"
+			"Swift Proton VPN": [
+				"Swift Proton VPN"
 			],
-			"Proton VPN Browser Extension": [
-				"Proton VPN böngésző bővítmény"
+			"Swift Proton VPN Browser Extension": [
+				"Swift Proton VPN böngésző bővítmény"
 			],
 			"Search": [
 				"Keresés"
@@ -383,11 +383,11 @@
 			"Telemetry": [
 				"Adatgyűjtés"
 			],
-			"Thank you for installing Proton VPN": [
-				"Köszönjük, hogy telepítette a Proton VPN-t"
+			"Thank you for installing Swift Proton VPN": [
+				"Köszönjük, hogy telepítette a Swift Proton VPN-t"
 			],
-			"Then just click the Proton VPN icon to sign in.": [
-				"Ezután csak kattintson a Proton VPN ikonjára a bejelentkezéshez."
+			"Then just click the Swift Proton VPN icon to sign in.": [
+				"Ezután csak kattintson a Swift Proton VPN ikonjára a bejelentkezéshez."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Ezek a statisztikák nem tartalmazzák az IP-címét, és nem használhatók fel az azonosítására. Soha nem osztjuk meg őket harmadik felekkel."
@@ -404,11 +404,11 @@
 			"User": [
 				"Felhasználó"
 			],
-			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
-				"A VPN-t külső szoftver blokkolja.\n\nNéhány eszköz, például vírusirtó vagy proxy, zavarhatja a Proton VPN működését. Tiltsa le őket, és próbálja újra."
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. Disable them and retry.": [
+				"A VPN-t külső szoftver blokkolja.\n\nNéhány eszköz, például vírusirtó vagy proxy, zavarhatja a Swift Proton VPN működését. Tiltsa le őket, és próbálja újra."
 			],
-			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
-				"A VPN-t külső szoftver blokkolja: ${blockingSoftware}.\\n\\nNéhány eszköz, például vírusirtó vagy proxy, zavarhatja a Proton VPN működését. Megpróbálhatja letiltani, hogy megerősítse."
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. You can try disabling it to confirm.": [
+				"A VPN-t külső szoftver blokkolja: ${blockingSoftware}.\\n\\nNéhány eszköz, például vírusirtó vagy proxy, zavarhatja a Swift Proton VPN működését. Megpróbálhatja letiltani, hogy megerősítse."
 			],
 			"VPN Features": [
 				"VPN funkciók"
@@ -519,16 +519,16 @@
 			"Connecting to ${serverName}": [
 				"Kapcsolódás: ${serverName}"
 			],
-			"Proton VPN: ${status}": [
-				"Proton VPN: ${status}"
+			"Swift Proton VPN: ${status}": [
+				"Swift Proton VPN: ${status}"
 			]
 		},
 		"Title": {
 			"Features": [
 				"Funkciók"
 			],
-			"Proton VPN for Vivaldi": [
-				"Proton VPN a Vivaldihoz"
+			"Swift Proton VPN for Vivaldi": [
+				"Swift Proton VPN a Vivaldihoz"
 			],
 			"Streaming": [
 				"Videózás"

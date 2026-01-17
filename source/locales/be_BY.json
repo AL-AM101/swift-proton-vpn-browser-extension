@@ -98,8 +98,8 @@
 			"Upgrade": [
 				"Палепшыць"
 			],
-			"Upgrade to Proton VPN Plus": [
-				"Палепшыць да Proton VPN Plus"
+			"Upgrade to Swift Proton VPN Plus": [
+				"Палепшыць да Swift Proton VPN Plus"
 			],
 			"Visit Support Center": [
 				"Наведаць цэнтр падтрымкі"
@@ -217,8 +217,8 @@
 			"Access over 13,000 secure servers in over 120 countries": [
 				"Доступ да больш чым 13000 абароненых сервераў у больш чым 120 краінах"
 			],
-			"Access Proton VPN via this icon": [
-				"Атрымаць доступ да Proton VPN праз значок праграмы"
+			"Access Swift Proton VPN via this icon": [
+				"Атрымаць доступ да Swift Proton VPN праз значок праграмы"
 			],
 			"Allow VPN permissions": [
 				"Даць дазволы VPN"
@@ -235,8 +235,8 @@
 			"Auto-selected from": [
 				"Аўтаматычны выбар з"
 			],
-			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"Аўтаматычна перападключыцца да Proton VPN пры адкрыцці браўзера."
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"Аўтаматычна перападключыцца да Swift Proton VPN пры адкрыцці браўзера."
 			],
 			"Back": [
 				"Назад"
@@ -274,8 +274,8 @@
 			"Connecting...": [
 				"Падключэнне..."
 			],
-			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"Звяжыцеся са службай падтрымкі для дапамогі з Proton VPN."
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"Звяжыцеся са службай падтрымкі для дапамогі з Swift Proton VPN."
 			],
 			"Crash": [
 				"Збой"
@@ -304,8 +304,8 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Адпраўляць сістэмныя апавяшчэнні пры падключэнні і адключэнні."
 			],
-			"Enjoying Proton VPN?": [
-				"Падабаецца Proton VPN?"
+			"Enjoying Swift Proton VPN?": [
+				"Падабаецца Swift Proton VPN?"
 			],
 			"Exclude mode": [
 				"Рэжым выключэння"
@@ -316,8 +316,8 @@
 			"Fastest free server": [
 				"Найхутчэйшы бясплатны сервер"
 			],
-			"Follow these simple steps to get the best experience using Proton VPN": [
-				"Прытрымлівайцеся гэтых простых крокаў, каб атрымаць лепшы досвед ад выкарыстання Proton VPN"
+			"Follow these simple steps to get the best experience using Swift Proton VPN": [
+				"Прытрымлівайцеся гэтых простых крокаў, каб атрымаць лепшы досвед ад выкарыстання Swift Proton VPN"
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"Краіны з бясплатнымі серверамі (<span id=\"free-server-countries-count\">0</span>)"
@@ -367,11 +367,11 @@
 			"Open the Extensions menu": [
 				"Адкрыйце меню з пашырэннямі"
 			],
-			"Open the Proton VPN browser extension to continue": [
-				"Адкрыйце пашырэнне Proton VPN для браўзера, каб працягнуць"
+			"Open the Swift Proton VPN browser extension to continue": [
+				"Адкрыйце пашырэнне Swift Proton VPN для браўзера, каб працягнуць"
 			],
-			"Pin Proton VPN to your toolbar": [
-				"Замацаваць Proton VPN на панэлі інструментаў"
+			"Pin Swift Proton VPN to your toolbar": [
+				"Замацаваць Swift Proton VPN на панэлі інструментаў"
 			],
 			"Please help us spread the word with a Web Store rating.": [
 				"Дапамажыце нам распаўсюдзіць інфармацыю з дапамогай ацэнкі ў вэб-краме"
@@ -382,11 +382,11 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Абараніце сябе ў інтэрнэце з бясплатным і высакахуткасным VPN ад Proton."
 			],
-			"Proton VPN": [
-				"Proton VPN"
+			"Swift Proton VPN": [
+				"Swift Proton VPN"
 			],
-			"Proton VPN Browser Extension": [
-				"Пашырэнні Proton VPN для браўзера"
+			"Swift Proton VPN Browser Extension": [
+				"Пашырэнні Swift Proton VPN для браўзера"
 			],
 			"Search": [
 				"Пошук"
@@ -412,11 +412,11 @@
 			"Telemetry": [
 				"Тэлеметрыя"
 			],
-			"Thank you for installing Proton VPN": [
-				"Дзякуй за тое, што ўсталявалі Proton VPN"
+			"Thank you for installing Swift Proton VPN": [
+				"Дзякуй за тое, што ўсталявалі Swift Proton VPN"
 			],
-			"Then just click the Proton VPN icon to sign in.": [
-				"Цяпер проста націсніце значок Proton VPN, каб увайсці."
+			"Then just click the Swift Proton VPN icon to sign in.": [
+				"Цяпер проста націсніце значок Swift Proton VPN, каб увайсці."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Гэта статыстыка не змяшчае ваш IP-адрас і яна не будзе выкарыстана, каб ідэнтыфікаваць вас. Мы ніколі не перадаём яе староннім асобам"
@@ -436,11 +436,11 @@
 			"User": [
 				"Карыстальнік"
 			],
-			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
-				"VPN заблакіраваны знешнім праграмным забеспячэннем.\n\nНекаторыя інструменты, такія як антывірусы або проксі, могуць перашкаджаць працы Proton VPN. Адключыце іх і паспрабуйце яшчэ раз."
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. Disable them and retry.": [
+				"VPN заблакіраваны знешнім праграмным забеспячэннем.\n\nНекаторыя інструменты, такія як антывірусы або проксі, могуць перашкаджаць працы Swift Proton VPN. Адключыце іх і паспрабуйце яшчэ раз."
 			],
-			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
-				"VPN заблакіраваны з дапамогай знешняга праграмнага забеспячэння: ${blockingSoftware}.\n\nНекаторыя інструменты, такія як антывірусы або проксі, могуць перашкаджаць працы Proton VPN. Паспрабуйце адключыць іх, каб пацвердзіць свае дзеянні."
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. You can try disabling it to confirm.": [
+				"VPN заблакіраваны з дапамогай знешняга праграмнага забеспячэння: ${blockingSoftware}.\n\nНекаторыя інструменты, такія як антывірусы або проксі, могуць перашкаджаць працы Swift Proton VPN. Паспрабуйце адключыць іх, каб пацвердзіць свае дзеянні."
 			],
 			"VPN Features": [
 				"Функцыі VPN"
@@ -562,16 +562,16 @@
 			"Connecting to ${serverName}": [
 				"Падключэнне да ${serverName}"
 			],
-			"Proton VPN: ${status}": [
-				"Proton VPN: ${status}"
+			"Swift Proton VPN: ${status}": [
+				"Swift Proton VPN: ${status}"
 			]
 		},
 		"Title": {
 			"Features": [
 				"Функцыі"
 			],
-			"Proton VPN for Vivaldi": [
-				"Proton VPN для Vivaldi"
+			"Swift Proton VPN for Vivaldi": [
+				"Swift Proton VPN для Vivaldi"
 			],
 			"Streaming": [
 				"Трансляцыя"

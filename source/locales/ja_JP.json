@@ -98,8 +98,8 @@
 			"Upgrade": [
 				"アップグレード"
 			],
-			"Upgrade to Proton VPN Plus": [
-				"Proton VPN Plusへアップグレード"
+			"Upgrade to Swift Proton VPN Plus": [
+				"Swift Proton VPN Plusへアップグレード"
 			],
 			"Visit Support Center": [
 				"サポートセンターを開く"
@@ -208,8 +208,8 @@
 			"Access over 13,000 secure servers in over 120 countries": [
 				"120か国以上で13,000以上のセキュアなサーバーにアクセス"
 			],
-			"Access Proton VPN via this icon": [
-				"このアイコンから Proton VPN にアクセス"
+			"Access Swift Proton VPN via this icon": [
+				"このアイコンから Swift Proton VPN にアクセス"
 			],
 			"Allow VPN permissions": [
 				"VPN 権限の許可"
@@ -226,8 +226,8 @@
 			"Auto-selected from": [
 				"から自動選択"
 			],
-			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"ブラウザを開いた際に Proton VPN に自動で再接続します。"
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"ブラウザを開いた際に Swift Proton VPN に自動で再接続します。"
 			],
 			"Back": [
 				"戻る"
@@ -265,8 +265,8 @@
 			"Connecting...": [
 				"接続中..."
 			],
-			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"Proton VPN のカスタマーサポートに問い合わせます。"
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"Swift Proton VPN のカスタマーサポートに問い合わせます。"
 			],
 			"Crash": [
 				"クラッシュ"
@@ -295,8 +295,8 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"接続や接続解除が発生した際にシステム通知を表示します。"
 			],
-			"Enjoying Proton VPN?": [
-				"Proton VPNをお楽しみいただいていますか？"
+			"Enjoying Swift Proton VPN?": [
+				"Swift Proton VPNをお楽しみいただいていますか？"
 			],
 			"Exclude mode": [
 				"除外モード"
@@ -307,8 +307,8 @@
 			"Fastest free server": [
 				"最速の無料サーバー"
 			],
-			"Follow these simple steps to get the best experience using Proton VPN": [
-				"以下の手順で、Proton VPN が使いやすくなります。"
+			"Follow these simple steps to get the best experience using Swift Proton VPN": [
+				"以下の手順で、Swift Proton VPN が使いやすくなります。"
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"無料サーバーの国 (<span id=\"free-server-countries-count\">0</span>)"
@@ -355,11 +355,11 @@
 			"Open the Extensions menu": [
 				"拡張機能メニューを開く"
 			],
-			"Open the Proton VPN browser extension to continue": [
-				"Proton VPN ブラウザ拡張機能を開いてください"
+			"Open the Swift Proton VPN browser extension to continue": [
+				"Swift Proton VPN ブラウザ拡張機能を開いてください"
 			],
-			"Pin Proton VPN to your toolbar": [
-				"ツールバーに Proton VPN をピン留め"
+			"Pin Swift Proton VPN to your toolbar": [
+				"ツールバーに Swift Proton VPN をピン留め"
 			],
 			"Please help us spread the word with a Web Store rating.": [
 				"弊社の活動を広めるため、ウェブストアでの評価へのご協力をお願いいたします。"
@@ -370,11 +370,11 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Protonの無料の高速VPNでオンライン上で安全を確保。"
 			],
-			"Proton VPN": [
-				"Proton VPN"
+			"Swift Proton VPN": [
+				"Swift Proton VPN"
 			],
-			"Proton VPN Browser Extension": [
-				"Proton VPN ブラウザ拡張機能"
+			"Swift Proton VPN Browser Extension": [
+				"Swift Proton VPN ブラウザ拡張機能"
 			],
 			"Search": [
 				"検索"
@@ -400,11 +400,11 @@
 			"Telemetry": [
 				"テレメトリ"
 			],
-			"Thank you for installing Proton VPN": [
-				"Proton VPN をインストールしていただき、ありがとうございます"
+			"Thank you for installing Swift Proton VPN": [
+				"Swift Proton VPN をインストールしていただき、ありがとうございます"
 			],
-			"Then just click the Proton VPN icon to sign in.": [
-				"そして、Proton VPN アイコンをクリックしてサインインします。"
+			"Then just click the Swift Proton VPN icon to sign in.": [
+				"そして、Swift Proton VPN アイコンをクリックしてサインインします。"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"これらの統計にはあなたの IP アドレスは含まれていないため、個人を特定するために使用することはできません。第三者と共有することはありません"
@@ -424,11 +424,11 @@
 			"User": [
 				"ユーザー"
 			],
-			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
-				"外部ソフトウェアによってVPNがブロックされました。\n\nアンチウイルスやプロキシなどの一部のツールがProton VPNと干渉する可能性があります。それらを無効化して再試行してください。"
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. Disable them and retry.": [
+				"外部ソフトウェアによってVPNがブロックされました。\n\nアンチウイルスやプロキシなどの一部のツールがSwift Proton VPNと干渉する可能性があります。それらを無効化して再試行してください。"
 			],
-			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
-				"外部ソフトウェアによってVPNがブロックされました: ${blockingSoftware}。\n\nアンチウイルスやプロキシなどの一部のツールは、Proton VPNと干渉する可能性があります。無効化して確認してみてください。"
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. You can try disabling it to confirm.": [
+				"外部ソフトウェアによってVPNがブロックされました: ${blockingSoftware}。\n\nアンチウイルスやプロキシなどの一部のツールは、Swift Proton VPNと干渉する可能性があります。無効化して確認してみてください。"
 			],
 			"VPN Features": [
 				"VPN 機能"
@@ -538,16 +538,16 @@
 			"Connecting to ${serverName}": [
 				"${serverName} に接続中"
 			],
-			"Proton VPN: ${status}": [
-				"Proton VPN: ${status}"
+			"Swift Proton VPN: ${status}": [
+				"Swift Proton VPN: ${status}"
 			]
 		},
 		"Title": {
 			"Features": [
 				"機能"
 			],
-			"Proton VPN for Vivaldi": [
-				"Vivaldi用Proton VPN"
+			"Swift Proton VPN for Vivaldi": [
+				"Vivaldi用Swift Proton VPN"
 			],
 			"Streaming": [
 				"ストリーミング"

@@ -98,8 +98,8 @@
 			"Upgrade": [
 				"Přejít na placený tarif"
 			],
-			"Upgrade to Proton VPN Plus": [
-				"Navýšit na Proton VPN Plus"
+			"Upgrade to Swift Proton VPN Plus": [
+				"Navýšit na Swift Proton VPN Plus"
 			],
 			"Visit Support Center": [
 				"Navštívit centrum podpory"
@@ -217,8 +217,8 @@
 			"Access over 13,000 secure servers in over 120 countries": [
 				"Přístup k více než 13000 bezpečným serverům ve 120+ zemích"
 			],
-			"Access Proton VPN via this icon": [
-				"Přistupujte k Proton VPN přes tuto ikonu"
+			"Access Swift Proton VPN via this icon": [
+				"Přistupujte k Swift Proton VPN přes tuto ikonu"
 			],
 			"Allow VPN permissions": [
 				"Povolit VPN oprávnění"
@@ -235,8 +235,8 @@
 			"Auto-selected from": [
 				"Automaticky vybráno z"
 			],
-			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"Automatické připojení k Proton VPN po otevření vašeho prohlížeče."
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"Automatické připojení k Swift Proton VPN po otevření vašeho prohlížeče."
 			],
 			"Back": [
 				"Zpět"
@@ -274,8 +274,8 @@
 			"Connecting...": [
 				"Připojování..."
 			],
-			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"Kontaktujte naše pracovníky zákaznické podpory, kteří vám s Proton VPN pomohou."
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"Kontaktujte naše pracovníky zákaznické podpory, kteří vám s Swift Proton VPN pomohou."
 			],
 			"Crash": [
 				"Pád"
@@ -304,8 +304,8 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Vysílat systémová upozornění při událostech připojení a odpojení."
 			],
-			"Enjoying Proton VPN?": [
-				"Spokojeni s Proton VPN?"
+			"Enjoying Swift Proton VPN?": [
+				"Spokojeni s Swift Proton VPN?"
 			],
 			"Exclude mode": [
 				"Režim vyloučení"
@@ -316,8 +316,8 @@
 			"Fastest free server": [
 				"Nejrychlejší bezplatný server"
 			],
-			"Follow these simple steps to get the best experience using Proton VPN": [
-				"Postupujte podle následujících jednoduchých kroků, abyste měli co nejlepší zážitek s používáním Proton VPN"
+			"Follow these simple steps to get the best experience using Swift Proton VPN": [
+				"Postupujte podle následujících jednoduchých kroků, abyste měli co nejlepší zážitek s používáním Swift Proton VPN"
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"Země se servery Free (<span id=\"free-server-countries-count\">0</span>)"
@@ -367,11 +367,11 @@
 			"Open the Extensions menu": [
 				"Otevřít menu rozšíření"
 			],
-			"Open the Proton VPN browser extension to continue": [
-				"Pro pokračování otevřete rozšíření Proton VPN v prohlížeči"
+			"Open the Swift Proton VPN browser extension to continue": [
+				"Pro pokračování otevřete rozšíření Swift Proton VPN v prohlížeči"
 			],
-			"Pin Proton VPN to your toolbar": [
-				"Připnout Proton VPN k vašemu panelu nástrojů"
+			"Pin Swift Proton VPN to your toolbar": [
+				"Připnout Swift Proton VPN k vašemu panelu nástrojů"
 			],
 			"Please help us spread the word with a Web Store rating.": [
 				"Prosím, pomozte nám šířit povědomí hodnocením ve webovém obchodě."
@@ -380,13 +380,13 @@
 				"Stiskněte <b>Další</b>, pak klikněte na <b>Povolit</b> ve vyskakovacím okně vašeho prohlížeče."
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
-				"Chraňte se online s bezplatnou vysokorychlostní Proton VPN."
+				"Chraňte se online s bezplatnou vysokorychlostní Swift Proton VPN."
 			],
-			"Proton VPN": [
-				"Proton VPN"
+			"Swift Proton VPN": [
+				"Swift Proton VPN"
 			],
-			"Proton VPN Browser Extension": [
-				"Proton VPN rozšíření prohlížeče"
+			"Swift Proton VPN Browser Extension": [
+				"Swift Proton VPN rozšíření prohlížeče"
 			],
 			"Search": [
 				"Vyhledat"
@@ -412,11 +412,11 @@
 			"Telemetry": [
 				"Telemetrie"
 			],
-			"Thank you for installing Proton VPN": [
-				"Děkujeme, že jste si nainstalovali Proton VPN"
+			"Thank you for installing Swift Proton VPN": [
+				"Děkujeme, že jste si nainstalovali Swift Proton VPN"
 			],
-			"Then just click the Proton VPN icon to sign in.": [
-				"Pak jen klikněte na ikonu Proton VPN pro přihlášení."
+			"Then just click the Swift Proton VPN icon to sign in.": [
+				"Pak jen klikněte na ikonu Swift Proton VPN pro přihlášení."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Tyto statistiky neobsahují vaši IP adresu a nelze je použít k vaší identifikaci. Nikdy je nebudeme sdílet se třetími stranami"
@@ -436,11 +436,11 @@
 			"User": [
 				"Uživatel"
 			],
-			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
-				"VPN blokuje externí software.\n\nNěkteré nástroje, jako jsou například antivirové programy nebo proxy, mohou narušovat funkčnost Proton VPN. Deaktivujte je a zkuste to znovu."
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. Disable them and retry.": [
+				"VPN blokuje externí software.\n\nNěkteré nástroje, jako jsou například antivirové programy nebo proxy, mohou narušovat funkčnost Swift Proton VPN. Deaktivujte je a zkuste to znovu."
 			],
-			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
-				"VPN blokuje externí software: ${blockingSoftware}.\n\nNěkteré nástroje, jako jsou například antivirové programy nebo proxy, mohou narušovat funkčnost Proton VPN. Deaktivujte je a zkuste to znovu."
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. You can try disabling it to confirm.": [
+				"VPN blokuje externí software: ${blockingSoftware}.\n\nNěkteré nástroje, jako jsou například antivirové programy nebo proxy, mohou narušovat funkčnost Swift Proton VPN. Deaktivujte je a zkuste to znovu."
 			],
 			"VPN Features": [
 				"VPN Funkce"
@@ -562,16 +562,16 @@
 			"Connecting to ${serverName}": [
 				"Připojování k ${serverName}"
 			],
-			"Proton VPN: ${status}": [
-				"Proton VPN: ${status}"
+			"Swift Proton VPN: ${status}": [
+				"Swift Proton VPN: ${status}"
 			]
 		},
 		"Title": {
 			"Features": [
 				"Funkce"
 			],
-			"Proton VPN for Vivaldi": [
-				"Proton VPN pro Vivaldi"
+			"Swift Proton VPN for Vivaldi": [
+				"Swift Proton VPN pro Vivaldi"
 			],
 			"Streaming": [
 				"Streamování"

@@ -194,8 +194,8 @@
 			]
 		},
 		"Info": {
-			"Access Proton VPN via this icon": [
-				"Dostopajte do Proton VPN prek te ikone"
+			"Access Swift Proton VPN via this icon": [
+				"Dostopajte do Swift Proton VPN prek te ikone"
 			],
 			"Allow VPN permissions": [
 				"Omogoči VPN dovoljenja"
@@ -209,8 +209,8 @@
 			"Auto-selected from": [
 				"Samodejno izbrano med"
 			],
-			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"Samodejno se znova povežite s Proton VPN, ko odprete brskalnik."
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"Samodejno se znova povežite s Swift Proton VPN, ko odprete brskalnik."
 			],
 			"Back": [
 				"Nazaj"
@@ -242,8 +242,8 @@
 			"Connecting...": [
 				"Povezujem ..."
 			],
-			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"Obrnite se na naše agente za podporo strankam, da vam bodo pomagali pri Proton VPN."
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"Obrnite se na naše agente za podporo strankam, da vam bodo pomagali pri Swift Proton VPN."
 			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Poročila o zrušitvah nam pomagajo odpraviti napake, zaznati požarne zidove in se izogniti blokadam VPN."
@@ -263,8 +263,8 @@
 			"Fastest free server": [
 				"Najhitrejši brezplačen strežnik"
 			],
-			"Follow these simple steps to get the best experience using Proton VPN": [
-				"Sledite tem preprostim korakom za najboljšo izkušnjo z uporabo Proton VPN"
+			"Follow these simple steps to get the best experience using Swift Proton VPN": [
+				"Sledite tem preprostim korakom za najboljšo izkušnjo z uporabo Swift Proton VPN"
 			],
 			"Get unlimited server changes with VPN Plus": [
 				"Pridobite neomejene spremembe strežnika z VPN Plus"
@@ -308,20 +308,20 @@
 			"Open the Extensions menu": [
 				"Odprite meni Razširitve"
 			],
-			"Open the Proton VPN browser extension to continue": [
-				"Za nadaljevanje odprite razširitev brskalnika Proton VPN"
+			"Open the Swift Proton VPN browser extension to continue": [
+				"Za nadaljevanje odprite razširitev brskalnika Swift Proton VPN"
 			],
-			"Pin Proton VPN to your toolbar": [
-				"Pripnite Proton VPN v orodno vrstico"
+			"Pin Swift Proton VPN to your toolbar": [
+				"Pripnite Swift Proton VPN v orodno vrstico"
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Pritisnite <b>Naprej</b>, nato kliknite <b>Dovoli</b> na pojavnem oknu v brskalniku."
 			],
-			"Proton VPN": [
-				"Proton VPN"
+			"Swift Proton VPN": [
+				"Swift Proton VPN"
 			],
-			"Proton VPN Browser Extension": [
-				"Proton VPN razširitev za spletni brskalnik"
+			"Swift Proton VPN Browser Extension": [
+				"Swift Proton VPN razširitev za spletni brskalnik"
 			],
 			"Search": [
 				"Išči"
@@ -344,11 +344,11 @@
 			"Telemetry": [
 				"Telemetrija"
 			],
-			"Thank you for installing Proton VPN": [
-				"Hvala, ker ste namestili Proton VPN"
+			"Thank you for installing Swift Proton VPN": [
+				"Hvala, ker ste namestili Swift Proton VPN"
 			],
-			"Then just click the Proton VPN icon to sign in.": [
-				"Nato samo kliknite ikono Proton VPN, da se prijavite."
+			"Then just click the Swift Proton VPN icon to sign in.": [
+				"Nato samo kliknite ikono Swift Proton VPN, da se prijavite."
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Če želite začeti, morate v brskalniku omogočiti dovoljenja VPN."
@@ -479,16 +479,16 @@
 			"Connecting to ${serverName}": [
 				"Povezovanje z ${serverName}"
 			],
-			"Proton VPN: ${status}": [
-				"Proton VPN: ${status}"
+			"Swift Proton VPN: ${status}": [
+				"Swift Proton VPN: ${status}"
 			]
 		},
 		"Title": {
 			"Features": [
 				"Funkcije"
 			],
-			"Proton VPN for Vivaldi": [
-				"Proton VPN za Vivaldi"
+			"Swift Proton VPN for Vivaldi": [
+				"Swift Proton VPN za Vivaldi"
 			],
 			"Streaming": [
 				"Pretočni prenos"

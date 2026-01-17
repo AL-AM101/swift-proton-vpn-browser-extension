@@ -179,8 +179,8 @@
 			]
 		},
 		"Info": {
-			"Access Proton VPN via this icon": [
-				"Truy cập vào Proton VPN bằng biểu tượng này"
+			"Access Swift Proton VPN via this icon": [
+				"Truy cập vào Swift Proton VPN bằng biểu tượng này"
 			],
 			"Allow VPN permissions": [
 				"Cấp phép sử dụng VPN"
@@ -194,8 +194,8 @@
 			"Auto-selected from": [
 				"Tự động chọn từ"
 			],
-			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"Tự động kết nối vào Proton VPN khi bạn mở trình duyệt."
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"Tự động kết nối vào Swift Proton VPN khi bạn mở trình duyệt."
 			],
 			"Back": [
 				"Trở lại"
@@ -227,8 +227,8 @@
 			"Connecting...": [
 				"Đang kết nối..."
 			],
-			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"Liên hệ với Trung tâm chăm sóc khác hàng để được trợ giúp về Proton VPN."
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"Liên hệ với Trung tâm chăm sóc khác hàng để được trợ giúp về Swift Proton VPN."
 			],
 			"Crash": [
 				"Sự cố"
@@ -248,8 +248,8 @@
 			"Fastest free server": [
 				"Máy chủ miễn phí nhanh nhất"
 			],
-			"Follow these simple steps to get the best experience using Proton VPN": [
-				"Hãy làm theo các bước đơn giản sau đây để có được trải nghiệm sử dụng Proton VPN tốt nhất:"
+			"Follow these simple steps to get the best experience using Swift Proton VPN": [
+				"Hãy làm theo các bước đơn giản sau đây để có được trải nghiệm sử dụng Swift Proton VPN tốt nhất:"
 			],
 			"Help": [
 				"Hỗ trợ"
@@ -281,20 +281,20 @@
 			"Open the Extensions menu": [
 				"Mở danh sách phần mở rộng"
 			],
-			"Open the Proton VPN browser extension to continue": [
-				"Mở tiện ích mở rộng trình duyệt Proton VPN để tiếp tục"
+			"Open the Swift Proton VPN browser extension to continue": [
+				"Mở tiện ích mở rộng trình duyệt Swift Proton VPN để tiếp tục"
 			],
-			"Pin Proton VPN to your toolbar": [
-				"Ghim Proton VPN vào thanh công cụ"
+			"Pin Swift Proton VPN to your toolbar": [
+				"Ghim Swift Proton VPN vào thanh công cụ"
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Nhấn <b>Kế tiếp</b>, sau đó chọn <b>Cho phép</b> khi được trình duyệt hỏi"
 			],
-			"Proton VPN": [
-				"Proton VPN"
+			"Swift Proton VPN": [
+				"Swift Proton VPN"
 			],
-			"Proton VPN Browser Extension": [
-				"Tiện ích mở rộng trên trình duyệt Proton VPN"
+			"Swift Proton VPN Browser Extension": [
+				"Tiện ích mở rộng trên trình duyệt Swift Proton VPN"
 			],
 			"Search": [
 				"Tìm kiếm"
@@ -314,11 +314,11 @@
 			"Telemetry": [
 				"Thu thập dữ liệu từ xa"
 			],
-			"Thank you for installing Proton VPN": [
-				"Cảm ơn đã cài đặt Proton VPN"
+			"Thank you for installing Swift Proton VPN": [
+				"Cảm ơn đã cài đặt Swift Proton VPN"
 			],
-			"Then just click the Proton VPN icon to sign in.": [
-				"Sau đó chỉ cần nhấp vào biểu tượng Proton VPN để đăng nhập"
+			"Then just click the Swift Proton VPN icon to sign in.": [
+				"Sau đó chỉ cần nhấp vào biểu tượng Swift Proton VPN để đăng nhập"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Những thống kê này không chứa địa chỉ IP của bạn và chúng không thể được sử dụng để nhận dạng bạn. Chúng tôi sẽ không bao giờ chia sẻ chúng với bên thứ ba"
@@ -440,8 +440,8 @@
 			"Connecting to ${serverName}": [
 				"Connecting to${serverName}"
 			],
-			"Proton VPN: ${status}": [
-				"Proton VPN: ${status}"
+			"Swift Proton VPN: ${status}": [
+				"Swift Proton VPN: ${status}"
 			]
 		},
 		"Title": {

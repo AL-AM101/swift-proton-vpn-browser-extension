@@ -130,7 +130,7 @@ const showSigningViewAsync = async (
 
 		const h1 = signInView.querySelector('h1');
 		if (h1) {
-			h1.innerText = c('Title').t`Proton VPN for Vivaldi`;
+			h1.innerText = c('Title').t`Swift Proton VPN for Vivaldi`;
 		}
 
 		const incentive = signInView.querySelector<HTMLElement>('.incentive-paragraph');
@@ -201,7 +201,7 @@ const showSigningViewAsync = async (
 				+ '<br><br>'
 				+ /*
 				* translator: previous sentence is "then click <b>Allow</b> on the pop-up from your browser."
-				*/c('Info').t`Then just click the Proton VPN icon to sign in.`;
+				*/c('Info').t`Then just click the Swift Proton VPN icon to sign in.`;
 
 			return;
 		}

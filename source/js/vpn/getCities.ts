@@ -2,7 +2,7 @@ import {fetchJson} from '../api';
 import {type CacheWrappedValue, Storage, storage} from '../tools/storage';
 import type {Logical} from './Logical';
 import {getCacheAge} from '../tools/getCacheAge';
-import {getLanguage} from '../tools/translate';
+import {getLanguageList} from '../tools/translate';
 import {triggerPromise} from '../tools/triggerPromise';
 import {getCityTranslationMissingNamesTTL, getCityTranslationNamesTTL} from '../intervals';
 
@@ -80,9 +80,10 @@ const loadCitiesCacheItem = async (cacheKey: string, languageKey: string): Promi
 
 export const getCities = async (sessionUid?: string, forceReload = false): Promise<Cities> => {
 	lastSessionUid = sessionUid;
-	const languages = navigator.languages || [getLanguage()];
+	const languages = getLanguageList();
+	const primaryLanguage = `${languages[0] || ''}`;
 
-	if (/^en(-.*)$/.test(`${languages[0] || ''}`)) {
+	if (/^en([_-].*)?$/i.test(primaryLanguage)) {
 		// English is default, save a request
 		return {};
 	}

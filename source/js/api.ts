@@ -188,7 +188,7 @@ const getBlockingSoftwareErrorFromResponse = (text: string) => {
 
 	if (blockingSoftware) {
 		return new Error(
-			c('Info').t`VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.`,
+			c('Info').t`VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. You can try disabling it to confirm.`,
 		);
 	}
 
@@ -199,7 +199,7 @@ const getBlockingSoftwareErrorFromResponse = (text: string) => {
 	);
 
 	return new Error(
-		c('Info').t`VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.`,
+		c('Info').t`VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. Disable them and retry.`,
 	);
 }
 

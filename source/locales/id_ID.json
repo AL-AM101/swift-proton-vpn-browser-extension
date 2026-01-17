@@ -98,8 +98,8 @@
 			"Upgrade": [
 				"Tingkatkan"
 			],
-			"Upgrade to Proton VPN Plus": [
-				"Tingkatkan ke Proton VPN Plus"
+			"Upgrade to Swift Proton VPN Plus": [
+				"Tingkatkan ke Swift Proton VPN Plus"
 			],
 			"Visit Support Center": [
 				"Kunjungi Pusat Bantuan"
@@ -208,8 +208,8 @@
 			"Access over 13,000 secure servers in over 120 countries": [
 				"Akses lebih dari 13000 server aman di lebih dari 120 negara"
 			],
-			"Access Proton VPN via this icon": [
-				"Akses Proton VPN melalui ikon ini"
+			"Access Swift Proton VPN via this icon": [
+				"Akses Swift Proton VPN melalui ikon ini"
 			],
 			"Allow VPN permissions": [
 				"Perkenankan izin VPN"
@@ -226,8 +226,8 @@
 			"Auto-selected from": [
 				"Terpilih secara otomatis dari"
 			],
-			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"Hubungkan diri Anda ke Proton VPN secara otomatis setiap kali Anda membuka browser."
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"Hubungkan diri Anda ke Swift Proton VPN secara otomatis setiap kali Anda membuka browser."
 			],
 			"Back": [
 				"Kembali"
@@ -265,8 +265,8 @@
 			"Connecting...": [
 				"Menghubungkan..."
 			],
-			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"Hubungi agen Layanan Dukungan kami untuk memperoleh bantuan seputar Proton VPN."
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"Hubungi agen Layanan Dukungan kami untuk memperoleh bantuan seputar Swift Proton VPN."
 			],
 			"Crash": [
 				"Crash"
@@ -295,8 +295,8 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Tampilkan notifikasi sistem pada saat terhubung atau terputus."
 			],
-			"Enjoying Proton VPN?": [
-				"Menikmati Proton VPN?"
+			"Enjoying Swift Proton VPN?": [
+				"Menikmati Swift Proton VPN?"
 			],
 			"Exclude mode": [
 				"Mode pengecualian"
@@ -307,8 +307,8 @@
 			"Fastest free server": [
 				"Server Free tercepat"
 			],
-			"Follow these simple steps to get the best experience using Proton VPN": [
-				"Ikuti langkah-langkah mudah berikut untuk memperoleh pengalaman Proton VPN yang mumpuni"
+			"Follow these simple steps to get the best experience using Swift Proton VPN": [
+				"Ikuti langkah-langkah mudah berikut untuk memperoleh pengalaman Swift Proton VPN yang mumpuni"
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"Negara server Free (<span id=\"free-server-countries-count\">0</span>)"
@@ -355,14 +355,14 @@
 			"Open the Extensions menu": [
 				"Buka menu Ekstensi"
 			],
-			"Open the Proton VPN browser extension to continue": [
-				"Buka ekstensi browser Proton VPN untuk melanjutkan"
+			"Open the Swift Proton VPN browser extension to continue": [
+				"Buka ekstensi browser Swift Proton VPN untuk melanjutkan"
 			],
-			"Pin Proton VPN to your toolbar": [
-				"Sematkan Proton VPN ke toolbar Anda"
+			"Pin Swift Proton VPN to your toolbar": [
+				"Sematkan Swift Proton VPN ke toolbar Anda"
 			],
 			"Please help us spread the word with a Web Store rating.": [
-				"Mohon bantu kami membuat Proton VPN lebih dikenal dengan memberikan rating di Web Store."
+				"Mohon bantu kami membuat Swift Proton VPN lebih dikenal dengan memberikan rating di Web Store."
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Klik tombol <b>Selanjutnya</b> di bawah ini, lalu pilih <b>Izinkan</b> pada jendela pop-up yang muncul pada browser Anda."
@@ -370,11 +370,11 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Lindungi diri Anda di internet dengan VPN gratis berkecepatan tinggi dari Proton."
 			],
-			"Proton VPN": [
-				"Proton VPN"
+			"Swift Proton VPN": [
+				"Swift Proton VPN"
 			],
-			"Proton VPN Browser Extension": [
-				"Ekstensi Browser Proton VPN"
+			"Swift Proton VPN Browser Extension": [
+				"Ekstensi Browser Swift Proton VPN"
 			],
 			"Search": [
 				"Pencarian"
@@ -400,11 +400,11 @@
 			"Telemetry": [
 				"Telemetri"
 			],
-			"Thank you for installing Proton VPN": [
-				"Terima kasih telah memasang Proton VPN"
+			"Thank you for installing Swift Proton VPN": [
+				"Terima kasih telah memasang Swift Proton VPN"
 			],
-			"Then just click the Proton VPN icon to sign in.": [
-				"Setelahnya, Anda hanya perlu mengeklik ikon Proton VPN untuk masuk."
+			"Then just click the Swift Proton VPN icon to sign in.": [
+				"Setelahnya, Anda hanya perlu mengeklik ikon Swift Proton VPN untuk masuk."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Statistik ini tidak mengandung alamat IP Anda dan tidak dapat digunakan untuk mengenali diri Anda. Kami tidak akan pernah membagikan statistik ini kepada pihak ketiga"
@@ -424,11 +424,11 @@
 			"User": [
 				"Pengguna"
 			],
-			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
-				"VPN diblokir oleh perangkat lunak eksternal.\n\nAplikasi tertentu, seperti anti-virus atau proxy, dapat mengganggu keberjalanan Proton VPN. Nonaktifkan perangkat lunak ini dan coba lagi."
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. Disable them and retry.": [
+				"VPN diblokir oleh perangkat lunak eksternal.\n\nAplikasi tertentu, seperti anti-virus atau proxy, dapat mengganggu keberjalanan Swift Proton VPN. Nonaktifkan perangkat lunak ini dan coba lagi."
 			],
-			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
-				"VPN diblokir oleh perangkat lunak eksternal: ${blockingSoftware}\n\nAplikasi tertentu, seperti anti-virus atau proxy, dapat mengganggu keberjalanan Proton VPN. Anda dapat mencoba menonaktifkan aplikasi ini untuk mengonfirmasi masalah."
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. You can try disabling it to confirm.": [
+				"VPN diblokir oleh perangkat lunak eksternal: ${blockingSoftware}\n\nAplikasi tertentu, seperti anti-virus atau proxy, dapat mengganggu keberjalanan Swift Proton VPN. Anda dapat mencoba menonaktifkan aplikasi ini untuk mengonfirmasi masalah."
 			],
 			"VPN Features": [
 				"Fitur VPN"
@@ -538,16 +538,16 @@
 			"Connecting to ${serverName}": [
 				"Menghubungkan ke ${serverName}"
 			],
-			"Proton VPN: ${status}": [
-				"Proton VPN: ${status}"
+			"Swift Proton VPN: ${status}": [
+				"Swift Proton VPN: ${status}"
 			]
 		},
 		"Title": {
 			"Features": [
 				"Fitur"
 			],
-			"Proton VPN for Vivaldi": [
-				"Proton VPN untuk Vivaldi"
+			"Swift Proton VPN for Vivaldi": [
+				"Swift Proton VPN untuk Vivaldi"
 			],
 			"Streaming": [
 				"Streaming"

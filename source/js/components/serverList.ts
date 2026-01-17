@@ -119,6 +119,17 @@ export const serverList = (
 				${!up || (simplifiedUi && userTier <= 0) || logical.Tier > userTier ? '' : c('Action').t`Connect`}
 			</div>
 			<div class="button-box">
+				<button
+					class="favorite-toggle"
+					data-favorite-id="${escapeHtml(`${logical.ID}`)}"
+					aria-pressed="false"
+					title="${c('Action').t`Favorite`}"
+					aria-label="${c('Action').t`Favorite`}"
+				>
+					<svg class="favorite-icon" viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
+						<use xlink:href="img/icons.svg#favorite"></use>
+					</svg>
+				</button>
 				${up
 					? (simplifiedUi && userTier <= 0
 						? upgradeButton()

@@ -57,7 +57,7 @@ export const forkSession = async (message: any): Promise<ForkResponse | undefine
 			partnerId: session.partnerId,
 			payload: {
 				title: c('Info').t`You're signed in`,
-				message: c('Info').t`Open the Proton VPN browser extension to continue`,
+				message: c('Info').t`Open the Swift Proton VPN browser extension to continue`,
 			},
 		};
 	} catch (e) {

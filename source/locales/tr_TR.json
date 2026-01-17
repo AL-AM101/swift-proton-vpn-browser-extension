@@ -98,8 +98,8 @@
 			"Upgrade": [
 				"Yükselt"
 			],
-			"Upgrade to Proton VPN Plus": [
-				"Proton VPN Plus tarifesine yükselt"
+			"Upgrade to Swift Proton VPN Plus": [
+				"Swift Proton VPN Plus tarifesine yükselt"
 			],
 			"Visit Support Center": [
 				"Destek merkezine git"
@@ -211,8 +211,8 @@
 			"Access over 13,000 secure servers in over 120 countries": [
 				"120 üzerinde ülkede bulunan 13.000 üzerinde güvenli sunucuya erişin"
 			],
-			"Access Proton VPN via this icon": [
-				"Proton VPN için bu simgeyi kullanın"
+			"Access Swift Proton VPN via this icon": [
+				"Swift Proton VPN için bu simgeyi kullanın"
 			],
 			"Allow VPN permissions": [
 				"VPN izinlerini verin"
@@ -229,8 +229,8 @@
 			"Auto-selected from": [
 				"Şuradan otomatik seçildi"
 			],
-			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"Tarayıcınızı açtığınızda Proton VPN otomatik olarak yeniden bağlanır."
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"Tarayıcınızı açtığınızda Swift Proton VPN otomatik olarak yeniden bağlanır."
 			],
 			"Back": [
 				"Geri"
@@ -268,8 +268,8 @@
 			"Connecting...": [
 				"Bağlantı kuruluyor..."
 			],
-			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"Proton VPN ile ilgili yardım almak için müşteri desteği temsilcilerimizle görüşün."
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"Swift Proton VPN ile ilgili yardım almak için müşteri desteği temsilcilerimizle görüşün."
 			],
 			"Crash": [
 				"Çökme"
@@ -298,8 +298,8 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Bağlantı kurulma ve kesilme durumlarında sistem bildirimleri gönderilsin."
 			],
-			"Enjoying Proton VPN?": [
-				"Proton VPN uygulamasını beğendiniz mi?"
+			"Enjoying Swift Proton VPN?": [
+				"Swift Proton VPN uygulamasını beğendiniz mi?"
 			],
 			"Exclude mode": [
 				"Katmama kipi"
@@ -310,8 +310,8 @@
 			"Fastest free server": [
 				"En hızlı Free sunucusu"
 			],
-			"Follow these simple steps to get the best experience using Proton VPN": [
-				"Bu basit adımları izleyerek en iyi Proton VPN deneyimini elde edin"
+			"Follow these simple steps to get the best experience using Swift Proton VPN": [
+				"Bu basit adımları izleyerek en iyi Swift Proton VPN deneyimini elde edin"
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"Free tarifesi sunucuları ülkeleri (<span id=\"free-server-countries-count\">0</span>)"
@@ -359,11 +359,11 @@
 			"Open the Extensions menu": [
 				"Eklenti menüsünü açın"
 			],
-			"Open the Proton VPN browser extension to continue": [
-				"İlerlemek için Proton VPN tarayıcı eklentisini açın"
+			"Open the Swift Proton VPN browser extension to continue": [
+				"İlerlemek için Swift Proton VPN tarayıcı eklentisini açın"
 			],
-			"Pin Proton VPN to your toolbar": [
-				"Araçlar menünüze Proton VPN ekleyin"
+			"Pin Swift Proton VPN to your toolbar": [
+				"Araçlar menünüze Swift Proton VPN ekleyin"
 			],
 			"Please help us spread the word with a Web Store rating.": [
 				"Lütfen, mağazada değerlendirerek bilirniliğimizi artırın."
@@ -372,13 +372,13 @@
 				"Tarayıcınızda açılan pencerede <b>Sonraki</b> ve <b>İzin ver</b> üzerine tıklayın."
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
-				"Ücretsiz ve yüksek-hızlı Proton VPN ile çevrim içi dünyada kendinizi koruyun"
+				"Ücretsiz ve yüksek-hızlı Swift Proton VPN ile çevrim içi dünyada kendinizi koruyun"
 			],
-			"Proton VPN": [
-				"Proton VPN"
+			"Swift Proton VPN": [
+				"Swift Proton VPN"
 			],
-			"Proton VPN Browser Extension": [
-				"Proton VPN tarayıcı eklentisi"
+			"Swift Proton VPN Browser Extension": [
+				"Swift Proton VPN tarayıcı eklentisi"
 			],
 			"Search": [
 				"Arama"
@@ -404,11 +404,11 @@
 			"Telemetry": [
 				"Telemetri"
 			],
-			"Thank you for installing Proton VPN": [
-				"Proton VPN uygulamasını indirdiğiniz için teşekkürler"
+			"Thank you for installing Swift Proton VPN": [
+				"Swift Proton VPN uygulamasını indirdiğiniz için teşekkürler"
 			],
-			"Then just click the Proton VPN icon to sign in.": [
-				"Ardından oturum açmak için Proton VPN simgesine tıklayın."
+			"Then just click the Swift Proton VPN icon to sign in.": [
+				"Ardından oturum açmak için Swift Proton VPN simgesine tıklayın."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Bu istatistiklerde IP adresiniz bulunmaz ve kim olduğunuzu belirlemek için kullanılamaz. Bu verileri asla üçüncü taraflar ile paylaşmayız"
@@ -428,11 +428,11 @@
 			"User": [
 				"Kullanıcı"
 			],
-			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. Disable them and retry.": [
 				"VPN bir dış uygulama tarafından engellendi."
 			],
-			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
-				"VPN bir dış uygulama tarafından engellendi: ${blockingSoftware}.\n\nAntivirüsler veya vekil sunucular gibi bazı araçlar, Proton VPN ile çakışabilir. Onu kapatmayı deneyerek sorunu doğrulayabilirsiniz."
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. You can try disabling it to confirm.": [
+				"VPN bir dış uygulama tarafından engellendi: ${blockingSoftware}.\n\nAntivirüsler veya vekil sunucular gibi bazı araçlar, Swift Proton VPN ile çakışabilir. Onu kapatmayı deneyerek sorunu doğrulayabilirsiniz."
 			],
 			"VPN Features": [
 				"VPN özellikleri"
@@ -546,16 +546,16 @@
 			"Connecting to ${serverName}": [
 				"${serverName} ile bağlantı kuruluyor"
 			],
-			"Proton VPN: ${status}": [
-				"Proton VPN: ${status}"
+			"Swift Proton VPN: ${status}": [
+				"Swift Proton VPN: ${status}"
 			]
 		},
 		"Title": {
 			"Features": [
 				"Özellikler"
 			],
-			"Proton VPN for Vivaldi": [
-				"Vivaldi için Proton VPN"
+			"Swift Proton VPN for Vivaldi": [
+				"Vivaldi için Swift Proton VPN"
 			],
 			"Streaming": [
 				"Yayın akışı"

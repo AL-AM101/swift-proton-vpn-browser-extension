@@ -1,6 +1,18 @@
 import {triggerPromise} from './triggerPromise';
 import {c} from './translate';
 
+const stateIconSizes = [16, 19, 32, 38] as const;
+
+const getStateIconPaths = (icon: string): Record<string, string> => {
+	const baseName = icon.replace(/\.png$/, '');
+
+	return stateIconSizes.reduce((paths, size) => {
+		const suffix = size === 32 ? '' : `-${size}`;
+		paths[size.toString()] = browser.runtime.getURL(`/img/${baseName}${suffix}.png`);
+		return paths;
+	}, {} as Record<string, string>);
+};
+
 const setIcon = (icon: string, title?: string): void => {
 	const action = chrome.action || chrome.browserAction;
 
@@ -9,7 +21,7 @@ const setIcon = (icon: string, title?: string): void => {
 	}
 
 	triggerPromise(action.setIcon({
-		path: browser.runtime.getURL('/img/' + icon),
+		path: getStateIconPaths(icon),
 	}));
 
 	if (typeof title === 'string') {
@@ -36,7 +48,7 @@ export const setButton = (state: keyof typeof states, title?: string): void => {
 
 	const status = title || states[state]();
 	const hoverText = // translator: This is the hover tooltip of the browser extension button, ${status} can be "Unprotected", "Protected - Paris #12", etc.
-		c('Status').t`Proton VPN: ${status}`;
+		c('Status').t`Swift Proton VPN: ${status}`;
 
 	setIcon(
 		`state-${({

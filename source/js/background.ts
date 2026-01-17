@@ -9,8 +9,13 @@ import {initFocusWatcher} from './vpn/initFocusWatcher';
 import {initProxySettingsWatcher} from './vpn/initProxySettingsWatcher';
 import {initIdleWatcher} from './vpn/initIdleWatcher';
 import {initAuthInterceptor} from './vpn/initAuthInterceptor';
+import {initConnectionSpeed} from './vpn/initConnectionSpeed';
 import {initSentry} from './tools/sentry';
 import {setProxyToWaiterHost} from './tools/proxy';
+import {initSwift} from './swift/initSwift';
+import {initSwiftHeartbeat} from './swift/initSwiftHeartbeat';
+import {initSwiftBlockedSite} from './swift/initSwiftBlockedSite';
+import {waitForReadyState} from './state';
 
 triggerPromise(setProxyToWaiterHost());
 initSentry();
@@ -23,3 +28,11 @@ initOnboarding();
 initFocusWatcher();
 initProxySettingsWatcher();
 initIdleWatcher();
+initSwift();
+initSwiftHeartbeat();
+initSwiftBlockedSite();
+initConnectionSpeed();
+
+chrome.runtime.onStartup.addListener(() => {
+	return waitForReadyState();
+});

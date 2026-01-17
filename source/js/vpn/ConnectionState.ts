@@ -52,6 +52,7 @@ export interface ConnectionState extends StateDefinition {
 	data: {
 		error?: ApiError | Error | ErrorDump;
 		server?: ProxyServer;
+		suppressNotification?: boolean;
 		credsTry?: number;
 		credsData?: {
 			Username: string;

@@ -98,8 +98,8 @@
 			"Upgrade": [
 				"Opgradér"
 			],
-			"Upgrade to Proton VPN Plus": [
-				"Opgradér til Proton VPN Plus"
+			"Upgrade to Swift Proton VPN Plus": [
+				"Opgradér til Swift Proton VPN Plus"
 			],
 			"Visit Support Center": [
 				"Besøg supportcenter"
@@ -211,8 +211,8 @@
 			"Access over 13,000 secure servers in over 120 countries": [
 				"Adgang til over 13.000 sikre servere i over 120 lande"
 			],
-			"Access Proton VPN via this icon": [
-				"Få adgang til Proton VPN via dette ikon"
+			"Access Swift Proton VPN via this icon": [
+				"Få adgang til Swift Proton VPN via dette ikon"
 			],
 			"Allow VPN permissions": [
 				"Giv VPN-tilladelser"
@@ -229,8 +229,8 @@
 			"Auto-selected from": [
 				"Vælges automatisk fra"
 			],
-			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"Genopret automatisk forbindelsen til Proton VPN, når du åbner din browser."
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"Genopret automatisk forbindelsen til Swift Proton VPN, når du åbner din browser."
 			],
 			"Back": [
 				"Tilbage"
@@ -268,8 +268,8 @@
 			"Connecting...": [
 				"Forbinder..."
 			],
-			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"Kontakt vores kundesupport for at få hjælp til Proton VPN."
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"Kontakt vores kundesupport for at få hjælp til Swift Proton VPN."
 			],
 			"Crash": [
 				"Nedbrud"
@@ -298,8 +298,8 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Udsend systemmeddelelser om til- og frakoblingshændelser."
 			],
-			"Enjoying Proton VPN?": [
-				"Er du glad for Proton VPN?"
+			"Enjoying Swift Proton VPN?": [
+				"Er du glad for Swift Proton VPN?"
 			],
 			"Exclude mode": [
 				"Udelad tilstand"
@@ -310,8 +310,8 @@
 			"Fastest free server": [
 				"Hurtigste gratis server"
 			],
-			"Follow these simple steps to get the best experience using Proton VPN": [
-				"Følg disse enkle trin for at få den bedste oplevelse med Proton VPN"
+			"Follow these simple steps to get the best experience using Swift Proton VPN": [
+				"Følg disse enkle trin for at få den bedste oplevelse med Swift Proton VPN"
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"Gratis server-lande (<span id=\"free-server-countries-count\">0</span>)"
@@ -359,11 +359,11 @@
 			"Open the Extensions menu": [
 				"Åbn menuen Udvidelser"
 			],
-			"Open the Proton VPN browser extension to continue": [
-				"Åbn Proton VPN-browserudvidelsen for at fortsætte"
+			"Open the Swift Proton VPN browser extension to continue": [
+				"Åbn Swift Proton VPN-browserudvidelsen for at fortsætte"
 			],
-			"Pin Proton VPN to your toolbar": [
-				"Fastgør Proton VPN til din værktøjslinje"
+			"Pin Swift Proton VPN to your toolbar": [
+				"Fastgør Swift Proton VPN til din værktøjslinje"
 			],
 			"Please help us spread the word with a Web Store rating.": [
 				"Hjælp os venligst med at sprede budskabet med en vurdering i webbutikken."
@@ -374,11 +374,11 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Beskyt dig selv online med Protons gratis højhastigheds-VPN."
 			],
-			"Proton VPN": [
-				"Proton VPN"
+			"Swift Proton VPN": [
+				"Swift Proton VPN"
 			],
-			"Proton VPN Browser Extension": [
-				"Proton VPN browser-udvidelse"
+			"Swift Proton VPN Browser Extension": [
+				"Swift Proton VPN browser-udvidelse"
 			],
 			"Search": [
 				"Søg"
@@ -404,11 +404,11 @@
 			"Telemetry": [
 				"Telemetri"
 			],
-			"Thank you for installing Proton VPN": [
-				"Tak fordi du installerede Proton VPN"
+			"Thank you for installing Swift Proton VPN": [
+				"Tak fordi du installerede Swift Proton VPN"
 			],
-			"Then just click the Proton VPN icon to sign in.": [
-				"Klik derefter blot på Proton VPN-ikonet for at logge ind."
+			"Then just click the Swift Proton VPN icon to sign in.": [
+				"Klik derefter blot på Swift Proton VPN-ikonet for at logge ind."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Disse statistikker indeholder ikke din IP-adresse, og de kan ikke bruges til at identificere dig. Vi deler dem aldrig med tredjeparter."
@@ -428,11 +428,11 @@
 			"User": [
 				"Bruger"
 			],
-			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
-				"VPN blokeret af ekstern software.\n\nNogle værktøjer, som antivirusprogrammer eller proxyer, kan forstyrre Proton VPN. Deaktivér dem, og prøv igen."
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. Disable them and retry.": [
+				"VPN blokeret af ekstern software.\n\nNogle værktøjer, som antivirusprogrammer eller proxyer, kan forstyrre Swift Proton VPN. Deaktivér dem, og prøv igen."
 			],
-			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
-				"VPN blokeret af ekstern software: ${blockingSoftware}.\n\nNogle værktøjer, som antivirusprogrammer eller proxyer, kan forstyrre Proton VPN. Du kan prøve at deaktivere det for at bekræfte."
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. You can try disabling it to confirm.": [
+				"VPN blokeret af ekstern software: ${blockingSoftware}.\n\nNogle værktøjer, som antivirusprogrammer eller proxyer, kan forstyrre Swift Proton VPN. Du kan prøve at deaktivere det for at bekræfte."
 			],
 			"VPN Features": [
 				"VPN Funktioner"
@@ -546,16 +546,16 @@
 			"Connecting to ${serverName}": [
 				"Forbinder til ${serverName}"
 			],
-			"Proton VPN: ${status}": [
-				"Proton VPN: ${status}"
+			"Swift Proton VPN: ${status}": [
+				"Swift Proton VPN: ${status}"
 			]
 		},
 		"Title": {
 			"Features": [
 				"Funktioner"
 			],
-			"Proton VPN for Vivaldi": [
-				"Proton VPN til Vivaldi"
+			"Swift Proton VPN for Vivaldi": [
+				"Swift Proton VPN til Vivaldi"
 			],
 			"Streaming": [
 				"Streaming"

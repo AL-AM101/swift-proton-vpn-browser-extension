@@ -29,7 +29,7 @@ export const initProxySettingsWatcher = (): void => {
 		const connected = isCurrentStateConnected() || (await isConnected());
 
 		if (!connected) {
-			// Don't bother if Proton VPN is not currently connected
+			// Don't bother if Swift Proton VPN is not currently connected
 			return;
 		}
 

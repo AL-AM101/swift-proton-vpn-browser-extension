@@ -185,8 +185,8 @@
 			"<div class=\"weak-text\">\n<span data-trans>About free connections</span>\n<svg width=\"15\" height=\"14\" viewBox=\"0 0 15 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path \t\t\t\t\t\t\t\t\t\tfill-rule=\"evenodd\"\nclip-rule=\"evenodd\"\nd=\"M7.5 13C10.8137 13 13.5 10.3137 13.5 7C13.5 3.68629 10.8137 1 7.5 1C4.18629 1 1.5 3.68629 1.5 7C1.5 10.3137 4.18629 13 7.5 13ZM7.5 14C11.366 14 14.5 10.866 14.5 7C14.5 3.13401 11.366 0 7.5 0C3.63401 0 0.5 3.13401 0.5 7C0.5 10.866 3.63401 14 7.5 14ZM9.24995 10C9.24995 10.3038 9.00371 10.55 8.69995 10.55H7.69995H6.69995C6.39619 10.55 6.14995 10.3038 6.14995 10C6.14995 9.69624 6.39619 9.45 6.69995 9.45H7.14995L7.14995 6.55H6.99994C6.69618 6.55 6.44994 6.30376 6.44994 6C6.44994 5.69624 6.69618 5.45 6.99994 5.45H7.69995C7.84582 5.45 7.98571 5.50795 8.08886 5.61109C8.19201 5.71424 8.24995 5.85413 8.24995 6L8.24995 9.45H8.69995C9.00371 9.45 9.24995 9.69624 9.24995 10ZM7.5 4.40002C7.8866 4.40002 8.2 4.08662 8.2 3.70002C8.2 3.31343 7.8866 3.00002 7.5 3.00002C7.1134 3.00002 6.8 3.31343 6.8 3.70002C6.8 4.08662 7.1134 4.40002 7.5 4.40002Z\"\nfill=\"#A7A4B5\" ></path>\n</svg>\n</div>": [
 				"<div class=\"weak-text\">\n<span data-trans>मुफ्त कनेक्शन के बारे में</span>\n<svg width=\"15\" height=\"14\" viewBox=\"0 0 15 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path \t\t\t\t\t\t\t\t\t\tfill-rule=\"evenodd\"\nclip-rule=\"evenodd\"\nd=\"M7.5 13C10.8137 13 13.5 10.3137 13.5 7C13.5 3.68629 10.8137 1 7.5 1C4.18629 1 1.5 3.68629 1.5 7C1.5 10.3137 4.18629 13 7.5 13ZM7.5 14C11.366 14 14.5 10.866 14.5 7C14.5 3.13401 11.366 0 7.5 0C3.63401 0 0.5 3.13401 0.5 7C0.5 10.866 3.63401 14 7.5 14ZM9.24995 10C9.24995 10.3038 9.00371 10.55 8.69995 10.55H7.69995H6.69995C6.39619 10.55 6.14995 10.3038 6.14995 10C6.14995 9.69624 6.39619 9.45 6.69995 9.45H7.14995L7.14995 6.55H6.99994C6.69618 6.55 6.44994 6.30376 6.44994 6C6.44994 5.69624 6.69618 5.45 6.99994 5.45H7.69995C7.84582 5.45 7.98571 5.50795 8.08886 5.61109C8.19201 5.71424 8.24995 5.85413 8.24995 6L8.24995 9.45H8.69995C9.00371 9.45 9.24995 9.69624 9.24995 10ZM7.5 4.40002C7.8866 4.40002 8.2 4.08662 8.2 3.70002C8.2 3.31343 7.8866 3.00002 7.5 3.00002C7.1134 3.00002 6.8 3.31343 6.8 3.70002C6.8 4.08662 7.1134 4.40002 7.5 4.40002Z\"\nfill=\"#A7A4B5\" ></path>\n</svg>\n</div>"
 			],
-			"Access Proton VPN via this icon": [
-				"इस आइकन से Proton VPN एक्सेस करें"
+			"Access Swift Proton VPN via this icon": [
+				"इस आइकन से Swift Proton VPN एक्सेस करें"
 			],
 			"Allow VPN permissions": [
 				"वीपीएन अनुमतियां दें"
@@ -200,8 +200,8 @@
 			"Auto-selected from": [
 				"इनमें से अपनेआप चुना"
 			],
-			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"Proton VPN से अपनेआप जुड़े जब आपका ब्राउज़र खुलता है।"
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"Swift Proton VPN से अपनेआप जुड़े जब आपका ब्राउज़र खुलता है।"
 			],
 			"Back": [
 				"वापस जाएं"
@@ -233,8 +233,8 @@
 			"Connecting...": [
 				"जुड़ रहे..."
 			],
-			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"Proton VPN की समस्या को सुलझाने के लिए हमारे ग्राहक मदद एजेंट से संपर्क करें।"
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"Swift Proton VPN की समस्या को सुलझाने के लिए हमारे ग्राहक मदद एजेंट से संपर्क करें।"
 			],
 			"Crash": [
 				"क्रैश"
@@ -254,8 +254,8 @@
 			"Fastest free server": [
 				"सबसे तेज़ फ्री सर्वर"
 			],
-			"Follow these simple steps to get the best experience using Proton VPN": [
-				"Proton VPN से बेहतरीन अनुभव लेने के लिए इन आसान चीज़ो को करें"
+			"Follow these simple steps to get the best experience using Swift Proton VPN": [
+				"Swift Proton VPN से बेहतरीन अनुभव लेने के लिए इन आसान चीज़ो को करें"
 			],
 			"Get worldwide coverage with VPN Plus": [
 				"VPN Plus के साथ वर्ल्डवाइड कवरेज पाएं"
@@ -291,17 +291,17 @@
 			"Open the Extensions menu": [
 				"एक्सटेंशन मेन्यू खोलें"
 			],
-			"Open the Proton VPN browser extension to continue": [
-				"जारी रखने के लिए Proton VPN ब्राउज़र एक्सटेंशन खोलें"
+			"Open the Swift Proton VPN browser extension to continue": [
+				"जारी रखने के लिए Swift Proton VPN ब्राउज़र एक्सटेंशन खोलें"
 			],
-			"Pin Proton VPN to your toolbar": [
-				"Proton VPN को अपने टूलबार में पिन करें"
+			"Pin Swift Proton VPN to your toolbar": [
+				"Swift Proton VPN को अपने टूलबार में पिन करें"
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"दबाएं <b>अगला</b>, फिर अपने ब्राउज़र के पॉपअप में दबाएं <b>अनुमति दें</b>।"
 			],
-			"Proton VPN Browser Extension": [
-				"Proton VPN ब्राउज़र एक्सटेंशन"
+			"Swift Proton VPN Browser Extension": [
+				"Swift Proton VPN ब्राउज़र एक्सटेंशन"
 			],
 			"Search": [
 				"खोजें"
@@ -321,11 +321,11 @@
 			"Telemetry": [
 				"टेलीमेटरी"
 			],
-			"Thank you for installing Proton VPN": [
-				"Proton VPN इंस्टॉल करने के लिए शुक्रिया"
+			"Thank you for installing Swift Proton VPN": [
+				"Swift Proton VPN इंस्टॉल करने के लिए शुक्रिया"
 			],
-			"Then just click the Proton VPN icon to sign in.": [
-				"फिर साइनइन करने के लिए बस Proton VPN का आइकन दबाएं।"
+			"Then just click the Swift Proton VPN icon to sign in.": [
+				"फिर साइनइन करने के लिए बस Swift Proton VPN का आइकन दबाएं।"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"उन आंकड़ों में IP पता नहीं होता है, और उनका उपयोग पहचान करने के लिए नहीं किया जा सकता है। हम उन्हें कभी भी तीसरे पक्ष के साथ साझा नहीं करेंगे"
@@ -451,8 +451,8 @@
 			"Connecting to ${serverName}": [
 				"${serverName} से जुड़ रहे"
 			],
-			"Proton VPN: ${status}": [
-				"Proton VPN: ${status}"
+			"Swift Proton VPN: ${status}": [
+				"Swift Proton VPN: ${status}"
 			]
 		},
 		"Title": {

@@ -98,8 +98,8 @@
 			"Upgrade": [
 				"Upgraden"
 			],
-			"Upgrade to Proton VPN Plus": [
-				"Upgraden naar Proton VPN Plus"
+			"Upgrade to Swift Proton VPN Plus": [
+				"Upgraden naar Swift Proton VPN Plus"
 			],
 			"Visit Support Center": [
 				"Bezoek het helpcentrum"
@@ -211,8 +211,8 @@
 			"Access over 13,000 secure servers in over 120 countries": [
 				"Toegang tot meer dan 13 000 veilige servers in meer dan 120 landen."
 			],
-			"Access Proton VPN via this icon": [
-				"Toegang tot Proton VPN via dit icoon"
+			"Access Swift Proton VPN via this icon": [
+				"Toegang tot Swift Proton VPN via dit icoon"
 			],
 			"Allow VPN permissions": [
 				"VPN-machtigingen toestaan"
@@ -229,8 +229,8 @@
 			"Auto-selected from": [
 				"Automatisch geselecteerd uit"
 			],
-			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"Automatisch herverbinden met Proton VPN wanneer u de browser opent."
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"Automatisch herverbinden met Swift Proton VPN wanneer u de browser opent."
 			],
 			"Back": [
 				"Terug"
@@ -268,8 +268,8 @@
 			"Connecting...": [
 				"Verbinden..."
 			],
-			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"Neem contact op met onze klantenondersteuningsagenten om u te helpen met Proton VPN."
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"Neem contact op met onze klantenondersteuningsagenten om u te helpen met Swift Proton VPN."
 			],
 			"Crash": [
 				"Crash"
@@ -298,8 +298,8 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Systeemmeldingen sturen bij verbindingsgebeurtenissen."
 			],
-			"Enjoying Proton VPN?": [
-				"Geniet u van Proton VPN?"
+			"Enjoying Swift Proton VPN?": [
+				"Geniet u van Swift Proton VPN?"
 			],
 			"Exclude mode": [
 				"Uitsluit-modus"
@@ -310,8 +310,8 @@
 			"Fastest free server": [
 				"Snelste gratis server"
 			],
-			"Follow these simple steps to get the best experience using Proton VPN": [
-				"Volg deze eenvoudige stappen om de beste ervaring te krijgen met Proton VPN"
+			"Follow these simple steps to get the best experience using Swift Proton VPN": [
+				"Volg deze eenvoudige stappen om de beste ervaring te krijgen met Swift Proton VPN"
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"Landen met gratis server (<span id=\"free-server-countries-count\">0</span>)"
@@ -359,11 +359,11 @@
 			"Open the Extensions menu": [
 				"Open het Extensie-menu"
 			],
-			"Open the Proton VPN browser extension to continue": [
-				"Open de Proton VPN-browserextensie om verder te gaan"
+			"Open the Swift Proton VPN browser extension to continue": [
+				"Open de Swift Proton VPN-browserextensie om verder te gaan"
 			],
-			"Pin Proton VPN to your toolbar": [
-				"Proton VPN vastmaken aan uw werkbalk"
+			"Pin Swift Proton VPN to your toolbar": [
+				"Swift Proton VPN vastmaken aan uw werkbalk"
 			],
 			"Please help us spread the word with a Web Store rating.": [
 				"Help ons het woord te verspreiden met een beoordeling in de Web Store."
@@ -374,11 +374,11 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Bescherm uzelf online met Proton's gratis hoge snelheid VPN"
 			],
-			"Proton VPN": [
-				"Proton VPN"
+			"Swift Proton VPN": [
+				"Swift Proton VPN"
 			],
-			"Proton VPN Browser Extension": [
-				"Proton VPN Browserextensie"
+			"Swift Proton VPN Browser Extension": [
+				"Swift Proton VPN Browserextensie"
 			],
 			"Search": [
 				"Zoeken"
@@ -404,11 +404,11 @@
 			"Telemetry": [
 				"Telemetrie"
 			],
-			"Thank you for installing Proton VPN": [
-				"Bedankt voor het installeren van Proton VPN"
+			"Thank you for installing Swift Proton VPN": [
+				"Bedankt voor het installeren van Swift Proton VPN"
 			],
-			"Then just click the Proton VPN icon to sign in.": [
-				"Klik daarna op het Proton VPN-icoon om in te loggen."
+			"Then just click the Swift Proton VPN icon to sign in.": [
+				"Klik daarna op het Swift Proton VPN-icoon om in te loggen."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Deze statistieken bevatten uw IP-adres niet, en kunnen niet gebruikt worden om u te identificeren. We zullen deze gegevens nooit delen met derden"
@@ -428,11 +428,11 @@
 			"User": [
 				"Gebruiker"
 			],
-			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
-				"VPN geblokkeerd door externe software.\n\nSommige tools, zoals antivirusprogramma's of proxy's, kunnen interfereren met Proton VPN. Schakel deze uit en probeer het opnieuw."
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. Disable them and retry.": [
+				"VPN geblokkeerd door externe software.\n\nSommige tools, zoals antivirusprogramma's of proxy's, kunnen interfereren met Swift Proton VPN. Schakel deze uit en probeer het opnieuw."
 			],
-			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
-				"VPN geblokkeerd door externe software: ${blockingSoftware}\n\nSommige tools, zoals antivirusprogramma’s of proxy’s, kunnen interfereren met Proton VPN. U kunt proberen deze tijdelijk uit te schakelen om dit te bevestigen."
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. You can try disabling it to confirm.": [
+				"VPN geblokkeerd door externe software: ${blockingSoftware}\n\nSommige tools, zoals antivirusprogramma’s of proxy’s, kunnen interfereren met Swift Proton VPN. U kunt proberen deze tijdelijk uit te schakelen om dit te bevestigen."
 			],
 			"VPN Features": [
 				"VPN-functies"
@@ -546,16 +546,16 @@
 			"Connecting to ${serverName}": [
 				"Verbinding maken met ${serverName}"
 			],
-			"Proton VPN: ${status}": [
-				"Proton VPN: ${status}"
+			"Swift Proton VPN: ${status}": [
+				"Swift Proton VPN: ${status}"
 			]
 		},
 		"Title": {
 			"Features": [
 				"Functies"
 			],
-			"Proton VPN for Vivaldi": [
-				"Proton VPN voor Vivaldi"
+			"Swift Proton VPN for Vivaldi": [
+				"Swift Proton VPN voor Vivaldi"
 			],
 			"Streaming": [
 				"Streaming"

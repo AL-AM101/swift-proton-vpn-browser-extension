@@ -2,6 +2,7 @@
 import {getPluralFunc as getPluralFn} from 'plural-forms/minimal-safe';
 import {each} from './each';
 import {getCountryCode} from './getCountryCode';
+import {Storage, storage} from './storage';
 
 interface TranslationConfig {
 	headers?: Record<string, string>;
@@ -16,6 +17,65 @@ let currentTranslations: {
 const variablePlaceholder = '${}';
 
 const variableOrder: Record<string, string[]> = {};
+
+const languagePreferenceItem = storage.item<{value: string | null}>('language-preference', Storage.LOCAL);
+let preferredLanguage: string | null | undefined = undefined;
+
+const getNavigatorLanguage = () => {
+	if (typeof navigator === 'undefined') {
+		return 'en';
+	}
+
+	return navigator.language || (navigator as any).userLanguage;
+};
+
+export const loadPreferredLanguage = async (): Promise<string | null> => {
+	if (preferredLanguage !== undefined) {
+		return preferredLanguage;
+	}
+
+	if (typeof chrome === 'undefined' || !chrome.storage) {
+		preferredLanguage = null;
+		return preferredLanguage;
+	}
+
+	const stored = await languagePreferenceItem.get();
+	const value = typeof stored?.value === 'string' && stored.value.trim() !== '' ? stored.value : null;
+
+	preferredLanguage = value;
+	return preferredLanguage;
+};
+
+export const setPreferredLanguage = async (language: string | null): Promise<void> => {
+	preferredLanguage = language && language.trim() !== '' ? language : null;
+
+	if (typeof chrome === 'undefined' || !chrome.storage) {
+		return;
+	}
+
+	if (preferredLanguage) {
+		await languagePreferenceItem.setValue(preferredLanguage);
+		return;
+	}
+
+	await languagePreferenceItem.remove();
+};
+
+export const getPreferredLanguage = (): string | null => preferredLanguage || null;
+
+export const getLanguageList = (): string[] => {
+	const preferred = getPreferredLanguage();
+
+	if (preferred) {
+		return [preferred];
+	}
+
+	if (typeof navigator !== 'undefined' && Array.isArray(navigator.languages) && navigator.languages.length) {
+		return navigator.languages;
+	}
+
+	return [getNavigatorLanguage()];
+};
 
 const calculateVariableOrder = (key: string): string[] => {
 	const variables: string[] = [];
@@ -169,6 +229,7 @@ const loadTranslations = async (locale: string) => {
 };
 
 export const fetchTranslations = async () => {
+	await loadPreferredLanguage();
 	const locale = getLocale();
 
 	if (locale === 'en_US') {
@@ -196,7 +257,7 @@ export const fetchTranslations = async () => {
 	}
 }
 
-export const getLanguage = () => navigator.language || (navigator as any).userLanguage;
+export const getLanguage = () => getPreferredLanguage() || getNavigatorLanguage();
 
 export const getPrimaryLanguage = () => (`${getLanguage() || 'en'}`).split(/[_-]/)[0] || 'en';
 

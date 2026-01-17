@@ -98,8 +98,8 @@
 			"Upgrade": [
 				"Modificare"
 			],
-			"Upgrade to Proton VPN Plus": [
-				"Treceți la Proton VPN Plus"
+			"Upgrade to Swift Proton VPN Plus": [
+				"Treceți la Swift Proton VPN Plus"
 			],
 			"Visit Support Center": [
 				"Vizitați centrul de asistență"
@@ -214,8 +214,8 @@
 			"Access over 13,000 secure servers in over 120 countries": [
 				"Accesați peste 13.000 de servere sigure din 120 de țări"
 			],
-			"Access Proton VPN via this icon": [
-				"Accesați Proton VPN cu această pictogramă"
+			"Access Swift Proton VPN via this icon": [
+				"Accesați Swift Proton VPN cu această pictogramă"
 			],
 			"Allow VPN permissions": [
 				"Acordați permisiuni pentru VPN"
@@ -232,8 +232,8 @@
 			"Auto-selected from": [
 				"Autoselectare din"
 			],
-			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"Reconectare automată la Proton VPN când se deschide navigatorul."
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"Reconectare automată la Swift Proton VPN când se deschide navigatorul."
 			],
 			"Back": [
 				"Înapoi"
@@ -271,8 +271,8 @@
 			"Connecting...": [
 				"Se conectează..."
 			],
-			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"Contactați asistența pentru clienți pentru a vă ajuta cu Proton VPN."
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"Contactați asistența pentru clienți pentru a vă ajuta cu Swift Proton VPN."
 			],
 			"Crash": [
 				"Eroare"
@@ -301,8 +301,8 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Emitere notificări de sistem privind evenimentele de conectare și deconectare."
 			],
-			"Enjoying Proton VPN?": [
-				"Vă place Proton VPN?"
+			"Enjoying Swift Proton VPN?": [
+				"Vă place Swift Proton VPN?"
 			],
 			"Exclude mode": [
 				"Mod excludere"
@@ -313,8 +313,8 @@
 			"Fastest free server": [
 				"Cel mai rapid server gratuit"
 			],
-			"Follow these simple steps to get the best experience using Proton VPN": [
-				"Urmați acești pași simpli pentru a avea cea mai bună experiență cu Proton VPN"
+			"Follow these simple steps to get the best experience using Swift Proton VPN": [
+				"Urmați acești pași simpli pentru a avea cea mai bună experiență cu Swift Proton VPN"
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"Țări cu servere gratuite (<span id=\"free-server-countries-count\">0</span>)"
@@ -363,11 +363,11 @@
 			"Open the Extensions menu": [
 				"Deschideți meniul de extensii"
 			],
-			"Open the Proton VPN browser extension to continue": [
-				"Deschideți extensia de navigator Proton VPN pentru a continua."
+			"Open the Swift Proton VPN browser extension to continue": [
+				"Deschideți extensia de navigator Swift Proton VPN pentru a continua."
 			],
-			"Pin Proton VPN to your toolbar": [
-				"Fixați în bara de unelte Proton VPN"
+			"Pin Swift Proton VPN to your toolbar": [
+				"Fixați în bara de unelte Swift Proton VPN"
 			],
 			"Please help us spread the word with a Web Store rating.": [
 				"Vă rugăm să ne ajutați să răspândim vestea prin intermediul unei evaluări în Magazinul Web."
@@ -378,11 +378,11 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Protejați-vă online cu VPN-ul gratuit de mare viteză de la Proton."
 			],
-			"Proton VPN": [
-				"Proton VPN"
+			"Swift Proton VPN": [
+				"Swift Proton VPN"
 			],
-			"Proton VPN Browser Extension": [
-				"Extensie navigator Proton VPN"
+			"Swift Proton VPN Browser Extension": [
+				"Extensie navigator Swift Proton VPN"
 			],
 			"Search": [
 				"Căutare"
@@ -408,11 +408,11 @@
 			"Telemetry": [
 				"Telemetrie"
 			],
-			"Thank you for installing Proton VPN": [
-				"Vă mulțumim că ați instalat Proton VPN"
+			"Thank you for installing Swift Proton VPN": [
+				"Vă mulțumim că ați instalat Swift Proton VPN"
 			],
-			"Then just click the Proton VPN icon to sign in.": [
-				"Apoi doar faceți clic pe pictograma Proton VPN pentru autentificare."
+			"Then just click the Swift Proton VPN icon to sign in.": [
+				"Apoi doar faceți clic pe pictograma Swift Proton VPN pentru autentificare."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Statisticile nu vă conțin adresa IP și nu pot fi utilizate să vă identifice. Nu le vom partaja cu terțe părți"
@@ -432,11 +432,11 @@
 			"User": [
 				"Utilizator"
 			],
-			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
-				"VPN blocat de un program extern.\n\nAnumite instrumente, cum ar fi antivirusurile sau proxy-urile, pot interfera cu Proton VPN. Dezactivați-le și reîncercați."
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. Disable them and retry.": [
+				"VPN blocat de un program extern.\n\nAnumite instrumente, cum ar fi antivirusurile sau proxy-urile, pot interfera cu Swift Proton VPN. Dezactivați-le și reîncercați."
 			],
-			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
-				"VPN blocat de un program extern: ${blockingSoftware}.\n\nUnele instrumente, precum antivirusurile sau proxy-urile, pot interfera cu Proton VPN. Le puteți dezactiva pentru a continua."
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Swift Proton VPN. You can try disabling it to confirm.": [
+				"VPN blocat de un program extern: ${blockingSoftware}.\n\nUnele instrumente, precum antivirusurile sau proxy-urile, pot interfera cu Swift Proton VPN. Le puteți dezactiva pentru a continua."
 			],
 			"VPN Features": [
 				"Funcții VPN"
@@ -554,16 +554,16 @@
 			"Connecting to ${serverName}": [
 				"Se conectează la ${serverName}"
 			],
-			"Proton VPN: ${status}": [
-				"Proton VPN: ${status}"
+			"Swift Proton VPN: ${status}": [
+				"Swift Proton VPN: ${status}"
 			]
 		},
 		"Title": {
 			"Features": [
 				"Funcții"
 			],
-			"Proton VPN for Vivaldi": [
-				"Proton VPN pentru Vivaldi"
+			"Swift Proton VPN for Vivaldi": [
+				"Swift Proton VPN pentru Vivaldi"
 			],
 			"Streaming": [
 				"Transmisie în flux"

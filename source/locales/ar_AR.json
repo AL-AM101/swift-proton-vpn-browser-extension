@@ -1,0 +1,247 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=6; plural=(n==0?0:n==1?1:n==2?2:n%100>=3 && n%100<=10?3:n%100>=11 && n%100<=99?4:5);",
+		"language": "ar_AR"
+	},
+	"contexts": {
+		"Action": {
+			"Add": [
+				"إضافة"
+			],
+			"Add server": [
+				"إضافة خادم"
+			],
+			"Add website": [
+				"إضافة موقع"
+			],
+			"Back": [
+				"رجوع"
+			],
+			"Cancel": [
+				"إلغاء"
+			],
+			"Choose location": [
+				"اختر الموقع"
+			],
+			"Close": [
+				"إغلاق"
+			],
+			"Dismiss": [
+				"تجاهل"
+			],
+			"Export rules": [
+				"تصدير القواعد"
+			],
+			"Import rules": [
+				"استيراد القواعد"
+			],
+			"Use browser language": [
+				"استخدم لغة المتصفح"
+			],
+			"Use country only": [
+				"استخدم الدولة فقط"
+			],
+			"Use current tab": [
+				"استخدم علامة التبويب الحالية"
+			],
+			"Visit Support Center": [
+				"زيارة مركز الدعم"
+			],
+			"Contact us": [
+				"تواصل معنا"
+			],
+			"Manage subscription": [
+				"إدارة الاشتراك"
+			],
+			"Sign out": [
+				"تسجيل الخروج"
+			],
+			"Connect": [
+				"اتصال"
+			],
+			"Reconnect": [
+				"إعادة الاتصال"
+			],
+			"Favorites": [
+				"المفضلة"
+			],
+			"Disconnect": [
+				"قطع الاتصال"
+			]
+		},
+		"Info": {
+			"Add to Swift": [
+				"أضف إلى سويفت"
+			],
+			"Also match subdomains": [
+				"مطابقة النطاقات الفرعية أيضًا"
+			],
+			"Choose the language for the extension.": [
+				"اختر لغة الإضافة."
+			],
+			"Connected by Swift": [
+				"متصل بواسطة سويفت"
+			],
+			"Import replaces current rules.": [
+				"الاستيراد يستبدل القواعد الحالية."
+			],
+			"Last Swift event": [
+				"آخر حدث لسويفت"
+			],
+			"Last connected ${relative}": [
+				"آخر اتصال ${relative}"
+			],
+			"Recently": [
+				"قبل قليل"
+			],
+			"No countries found.": [
+				"لم يتم العثور على دول."
+			],
+			"No servers found.": [
+				"لم يتم العثور على خوادم."
+			],
+			"Select country": [
+				"اختر الدولة"
+			],
+			"Select server": [
+				"اختر الخادم"
+			],
+			"Site might be blocked": [
+				"قد يكون الموقع محجوبًا"
+			],
+			"Swift Background": [
+				"خاصية سويفت في الخلفية"
+			],
+			"Swift rules": [
+				"قواعد سويفت"
+			],
+			"Turn off VPN when your active tab isn't in Swift rules.": [
+				"إيقاف الـVPN عندما لا تكون علامة التبويب النشطة ضمن قواعد سويفت."
+			],
+			"When you visit a website, Swift connects you to the server or country you selected.": [
+				"عند زيارة موقع، يقوم سويفت بالاتصال بالخادم أو الدولة التي اخترتها."
+			],
+			"Help": [
+				"المساعدة"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"تصفح مركز الدعم واعثر على إجابات للأسئلة الشائعة."
+			],
+			"Contact our Customer Support agents to help you out with Swift Proton VPN.": [
+				"تواصل مع فريق دعم العملاء لمساعدتك في Swift Proton VPN."
+			],
+			"VPN Features": [
+				"ميزات VPN"
+			],
+			"Secure Core": [
+				"النواة الآمنة"
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"حماية إضافية للأشخاص ذوي احتياجات خصوصية متقدمة."
+			],
+			"Automatically reconnect to Swift Proton VPN when you open your browser.": [
+				"أعد الاتصال تلقائيًا بـ Swift Proton VPN عند فتح المتصفح."
+			],
+			"Decide which websites are protected by VPN.": [
+				"حدد المواقع التي يحميها VPN."
+			],
+			"Split tunneling": [
+				"تقسيم النفق"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"يمنع متصفحك من تسريب عنوان IP إلى المواقع والتطبيقات التي تستخدم WebRTC. قد يؤثر هذا في أداء مكالمات الفيديو أو البث المباشر على بعض المواقع."
+			],
+			"Help us fight censorship": [
+				"ساعدنا في مكافحة الرقابة"
+			],
+			"Share anonymous usage statistics": [
+				"شارك إحصائيات استخدام مجهولة الهوية"
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"تساعدنا بيانات الاستخدام على تجاوز حظر VPN وتحسين أداء التطبيق."
+			],
+			"Share anonymous usage crash reports": [
+				"شارك تقارير الأعطال المجهولة الهوية"
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"تساعدنا تقارير الأعطال على إصلاح الأخطاء واكتشاف جدران الحماية وتجنب حظر VPN."
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"لا تحتوي هذه الإحصائيات على عنوان IP الخاص بك، ولا يمكن استخدامها لتحديد هويتك. لن نشاركها أبدًا مع أطراف ثالثة"
+			],
+			"Learn more": [
+				"اعرف المزيد"
+			],
+			"On": [
+				"تشغيل"
+			],
+			"Off": [
+				"إيقاف"
+			]
+		},
+		"Label": {
+			"Auto-connect by website": [
+				"الاتصال التلقائي حسب الموقع"
+			],
+			"Country": [
+				"الدولة"
+			],
+			"Disconnect on other sites": [
+				"افصل الاتصال على المواقع الأخرى"
+			],
+			"Language": [
+				"اللغة"
+			],
+			"Server": [
+				"الخادم"
+			],
+			"Swift": [
+				"سويفت"
+			],
+			"Want to know more?": [
+				"هل تريد معرفة المزيد؟"
+			],
+			"Need help?": [
+				"هل تحتاج إلى مساعدة؟"
+			],
+			"Auto connect": [
+				"الاتصال التلقائي"
+			],
+			"Split tunneling": [
+				"تقسيم النفق"
+			],
+			"WebRTC leak protection": [
+				"الحماية من تسرب WebRTC"
+			],
+			"Settings": [
+				"الإعدادات"
+			],
+			"Protected": [
+				"محمي"
+			],
+			"Unprotected": [
+				"غير محمي"
+			],
+			"Favorites": [
+				"المفضلة"
+			],
+			"Countries, cities, servers": [
+				"الدول، المدن، الخوادم"
+			],
+			"Cities": [
+				"المدن"
+			]
+		},
+		"Menu": {
+			"Swift": [
+				"سويفت"
+			],
+			"Help": [
+				"المساعدة"
+			],
+			"Countries": [
+				"الدول"
+			]
+		}
+	}
+}
