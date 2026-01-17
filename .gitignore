@@ -5,6 +5,7 @@ distribution
 distribution-*
 build
 source.zip
+vpn-proton-chrome.zip
 *.php
 *.py
 *.d.ts

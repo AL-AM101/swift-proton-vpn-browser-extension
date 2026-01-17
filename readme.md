@@ -1,3 +1,7 @@
+# Swift Proton VPN Browser Extension
+
+Fork notice: this project is a fork of https://github.com/ProtonVPN/proton-vpn-browser-extension.
+
 # Getting Started
 
 You'll need to have the following environment to work with this project:
