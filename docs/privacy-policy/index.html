@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy | Swift Proton VPN Browser Extension</title>
+    <meta
+      name="description"
+      content="Privacy policy for the Swift Proton VPN Browser Extension and its GitHub Pages site."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;700&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #121216;
+        --muted: #4f5564;
+        --paper: #f7f3ee;
+        --sand: #f1e7db;
+        --accent: #f26b3a;
+        --accent-soft: #f9b799;
+        --line: #e0d5c7;
+        --card: #fffaf4;
+        --shadow: 0 24px 48px -40px rgba(18, 18, 22, 0.6);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Space Grotesk", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at 10% 15%, #fff1e7 0, transparent 45%),
+          radial-gradient(circle at 85% 10%, #ffe9d9 0, transparent 50%),
+          linear-gradient(140deg, #fbf7f2 0%, #f3e4d6 55%, #f8efe5 100%);
+        min-height: 100vh;
+      }
+
+      .grid {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 64px 24px 80px;
+        position: relative;
+      }
+
+      .glow {
+        position: absolute;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(242, 107, 58, 0.3), transparent 60%);
+        filter: blur(2px);
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      .glow.one {
+        top: 10px;
+        left: -40px;
+      }
+
+      .glow.two {
+        bottom: 40px;
+        right: -20px;
+      }
+
+      header {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin-bottom: 32px;
+      }
+
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      h1 {
+        font-family: "Fraunces", "Times New Roman", serif;
+        font-size: clamp(32px, 4vw, 56px);
+        margin: 0;
+      }
+
+      .lede {
+        font-size: 18px;
+        color: var(--muted);
+        max-width: 640px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--sand);
+        border: 1px solid var(--line);
+        color: var(--muted);
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 14px;
+        width: fit-content;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 22px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(120deg, rgba(242, 107, 58, 0.08), transparent 55%);
+        pointer-events: none;
+      }
+
+      h2 {
+        font-family: "Fraunces", "Times New Roman", serif;
+        font-size: 24px;
+        margin: 0 0 12px;
+      }
+
+      h3 {
+        font-size: 16px;
+        margin: 0 0 10px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      p {
+        margin: 0 0 12px;
+        line-height: 1.6;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 18px;
+        line-height: 1.7;
+      }
+
+      .summary {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .summary strong {
+        color: var(--accent);
+      }
+
+      .callout {
+        border: 1px dashed var(--accent);
+        background: rgba(242, 107, 58, 0.08);
+        padding: 16px 18px;
+        border-radius: 18px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      footer {
+        margin-top: 40px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        animation: rise 0.7s ease forwards;
+      }
+
+      .delay-1 {
+        animation-delay: 0.08s;
+      }
+
+      .delay-2 {
+        animation-delay: 0.16s;
+      }
+
+      .delay-3 {
+        animation-delay: 0.24s;
+      }
+
+      .delay-4 {
+        animation-delay: 0.32s;
+      }
+
+      @keyframes rise {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 720px) {
+        .grid {
+          padding: 48px 18px 64px;
+        }
+
+        .card {
+          padding: 20px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          animation: none;
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div class="glow one"></div>
+      <div class="glow two"></div>
+
+      <header class="reveal">
+        <span class="eyebrow">Swift Proton VPN Extension</span>
+        <h1>Privacy Policy</h1>
+        <p class="lede">
+          This page explains how the Swift Proton VPN Browser Extension and this GitHub Pages
+          site handle information. We keep it short, clear, and practical.
+        </p>
+        <span class="pill">Effective date: 2026-01-17</span>
+      </header>
+
+      <section class="cards">
+        <article class="card summary reveal delay-1">
+          <h2>Quick Summary</h2>
+          <p><strong>We do not sell your data.</strong></p>
+          <p>The extension stores your preferences locally in your browser.</p>
+          <p>
+            The extension connects to Proton VPN services to authenticate and establish VPN
+            connections, which may process data under Proton's own policies.
+          </p>
+          <div class="callout">
+            If you only need the short version, the three points above are the essence of the
+            policy.
+          </div>
+        </article>
+
+        <article class="card reveal delay-2">
+          <h3>On This Site</h3>
+          <h2>GitHub Pages Data</h2>
+          <p>This site is static and does not include analytics, tracking scripts, or cookies.</p>
+          <ul>
+            <li>No account creation or sign-in.</li>
+            <li>No form submissions or data uploads.</li>
+            <li>Basic server logs may be collected by GitHub as part of hosting.</li>
+          </ul>
+        </article>
+
+        <article class="card reveal delay-3">
+          <h3>In The Extension</h3>
+          <h2>Information Processed</h2>
+          <ul>
+            <li>Connection preferences such as chosen servers, countries, and rules.</li>
+            <li>Authentication tokens required to access Proton VPN services.</li>
+            <li>Optional favorites or rule lists saved in your browser storage.</li>
+          </ul>
+          <p>
+            These items are stored locally in your browser unless you export them yourself.
+          </p>
+        </article>
+
+        <article class="card reveal delay-4">
+          <h3>Use And Sharing</h3>
+          <h2>How Data Is Used</h2>
+          <ul>
+            <li>To enable VPN connections and apply your site-based rules.</li>
+            <li>To display your saved preferences inside the extension UI.</li>
+            <li>
+              To communicate with Proton VPN infrastructure for authentication and connection
+              management.
+            </li>
+          </ul>
+          <p>
+            This fork does not add extra telemetry or advertising SDKs beyond what Proton VPN
+            services require to function.
+          </p>
+        </article>
+      </section>
+
+      <section class="cards" style="margin-top: 24px;">
+        <article class="card reveal delay-1">
+          <h3>Retention</h3>
+          <h2>How Long We Keep Data</h2>
+          <p>
+            Local extension data stays in your browser until you remove it or uninstall the
+            extension. Exported files remain on your device until you delete them.
+          </p>
+        </article>
+        <article class="card reveal delay-2">
+          <h3>Security</h3>
+          <h2>How We Protect Data</h2>
+          <p>
+            We rely on browser storage protections and Proton VPN's secure APIs. Keep your
+            browser updated and avoid installing untrusted extensions.
+          </p>
+        </article>
+        <article class="card reveal delay-3">
+          <h3>Changes</h3>
+          <h2>Policy Updates</h2>
+          <p>
+            If this policy changes, the effective date will be updated. Material changes will be
+            summarized here.
+          </p>
+        </article>
+      </section>
+
+      <footer class="reveal delay-2">
+        Questions? Open an issue in the repository or contact the maintainer listed there.
+      </footer>
+    </div>
+  </body>
+</html>
