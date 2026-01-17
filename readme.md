@@ -62,6 +62,6 @@ Pin servers to a favorites list shown at the top of the server or country list.
 
 ## Support
 
-If this project helps you, please consider supporting it.
+If this project helps you, please consider supporting it ❤️
 
 [![Buy me a coffee](https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&slug=azizalam&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff)](https://buymeacoffee.com/azizalam)
