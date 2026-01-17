@@ -1,6 +1,6 @@
 # Swift Proton VPN Browser Extension
 
-![Swift Proton VPN](<docs/media/swift-proton-frontpage-readme.jpg>)
+![Swift Proton VPN](<docs/media/0. Front-UI.png>)
 
 Fork notice: this project is a fork of https://github.com/ProtonVPN/proton-vpn-browser-extension.
 
@@ -28,31 +28,34 @@ Pin servers to a favorites list shown at the top of the server or country list.
 
 ## Screenshots
 
-### Swift Feature
+### Swift rules per site
 
-![Swift demo](<docs/media/swift.gif>)
-
-### Swift rules
-
-![Swift rules](<docs/media/swift rules.png>)
+![Swift rules per site](<docs/media/1. Swift rules per site.png>)
 
 ### Disconnect on other sites
 
-![Disconnect on other sites](<docs/media/dissconnect on other web.png>)
+![Disconnect on other sites](<docs/media/2. Disconnect on other sites.png>)
 
 ### Import/Export rules
 
-![Import/Export rules](<docs/media/Import-export.png>)
+![Import/Export rules](<docs/media/3. Import-Export rules.png>)
 
 ### Blocked-site prompt
 
-![Blocked-site prompt](<docs/media/Add block website.png>)
+![Blocked-site prompt](<docs/media/4. Blocked-site prompt.png>)
 
 ### Reconnect
 
-![Reconnect](<docs/media/reconnect feature.png>)
+![Reconnect](<docs/media/5. Reconnect.png>)
 
 ### Favorites
 
-![Favorites](<docs/media/faviorites.png>)
-![Favorite item](<docs/media/favorite 1.png>)
+![Favorites](<docs/media/6. Favorites.png>)
+
+## Getting Started (Chrome)
+
+1) Download the latest `vpn-proton-chrome.zip`, then unzip it.
+2) Open `chrome://extensions`, enable Developer mode, and click Load unpacked.
+3) Select the unzipped folder to install the extension.
+4) Pin the extension, open it, and sign in with your Proton account.
+5) Click Connect or choose a specific country or server.
