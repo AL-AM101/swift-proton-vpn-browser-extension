@@ -1,0 +1,55 @@
+name: upstream-check
+
+on:
+  schedule:
+    - cron: "0 8 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Check upstream versions
+        id: check
+        run: node scripts/check-upstream.js --report "$RUNNER_TEMP/upstream-check.md"
+      - name: Create or update issue
+        if: steps.check.outputs.mismatch == 'true'
+        uses: actions/github-script@v7
+        env:
+          REPORT_PATH: ${{ steps.check.outputs.report_path }}
+        with:
+          script: |
+            const fs = require('node:fs');
+            const body = fs.readFileSync(process.env.REPORT_PATH, 'utf8');
+            const title = 'Upstream version change detected';
+            const { owner, repo } = context.repo;
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner,
+              repo,
+              state: 'open',
+              per_page: 100,
+            });
+            const existing = issues.find((issue) => issue.title === title);
+            if (existing) {
+              await github.rest.issues.update({
+                owner,
+                repo,
+                issue_number: existing.number,
+                body,
+              });
+              return;
+            }
+            await github.rest.issues.create({
+              owner,
+              repo,
+              title,
+              body,
+            });

@@ -16,6 +16,7 @@
 		"watch": "webpack --mode=development --watch",
 		"watch-ff": "webpack --mode=development --watch --config=webpack-ff.config.js",
 		"repack": "node repack.js",
+		"check-upstream": "node scripts/check-upstream.js",
 		"crx": "crx3 distribution -o vpn-proton.me.crx",
 		"xpi": "web-ext build --overwrite-dest --source-dir=distribution -a . -n vpn-proton.me.xpi",
 		"zip": "web-ext build --overwrite-dest --source-dir=distribution -a . -n vpn-proton-chrome.zip && npm run repack -- vpn-proton-chrome.zip",
