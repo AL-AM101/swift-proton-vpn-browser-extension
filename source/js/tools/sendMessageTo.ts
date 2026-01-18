@@ -9,7 +9,7 @@ export const sendMessageTo = <K>(
 ) => new Promise<K>(async (resolve, reject) => {
 	try {
 		const handleResponse = (response: any) => {
-			if (!response) {
+			if (response == null) {
 				return;
 			}
 
@@ -22,15 +22,29 @@ export const sendMessageTo = <K>(
 				return;
 			}
 
+			resolve(result);
+		};
+
+		const handleCallbackResponse = (response: any) => {
 			const lastError = browser?.runtime?.lastError;
 
 			if (lastError) {
-				reject(lastError.message ? new Error(lastError.message) : lastError);
+				const message = lastError.message || `${lastError}`;
+
+				if (response == null && /message port closed/i.test(message)) {
+					return;
+				}
+
+				reject(message ? new Error(message) : lastError);
 
 				return;
 			}
 
-			resolve(result);
+			if (response == null) {
+				return;
+			}
+
+			handleResponse(response);
 		};
 
 		const messagePromise = (() => {
@@ -40,7 +54,7 @@ export const sendMessageTo = <K>(
 					browser.runtime.id,
 					{type, data, respondTo: 'broadcast', requestId},
 					undefined,
-					handleResponse,
+					handleCallbackResponse,
 				);
 
 				watchOnceBroadcastMessage('answer:' + requestId, handleResponse);

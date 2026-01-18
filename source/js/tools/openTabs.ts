@@ -3,7 +3,6 @@ import {Storage, storage} from './storage';
 import {ForkResponse} from '../messaging/ForkResponse';
 import {getPartnerById} from '../account/partner/partners';
 import {executeOnTab} from './executeOnTab';
-import {getTabs} from './getTabs';
 
 const root = global || window;
 root.browser || ((root as any).browser = chrome);
@@ -19,8 +18,22 @@ export const addTab = (id: number): void => {
 
 export const connectTab = (id: number): void => {
 	addTab(id);
-	triggerPromise(getTabs().executeScript?.(id, {
-		code: `
+	triggerPromise(executeOnTab(
+		id,
+		() => ({
+			func(tabId: number) {
+				chrome.runtime.connect();
+				window.addEventListener('message', (event) => {
+					if (event.source != window) {
+						return;
+					}
+
+					chrome.runtime.sendMessage({...event.data, tabId});
+				}, false);
+			},
+			args: [id] as [number],
+		}),
+		() => `
 			chrome.runtime.connect();
 			window.addEventListener('message', (event) => {
 				if (event.source != window) {
@@ -30,7 +43,7 @@ export const connectTab = (id: number): void => {
 				chrome.runtime.sendMessage({...event.data, tabId: ${JSON.stringify(id)}});
 			}, false);
 		`,
-	}));
+	));
 }
 
 export const sendForkResponse = async (

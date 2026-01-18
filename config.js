@@ -1,5 +1,5 @@
 module.exports = {
-	appVersion: '1.2.13',
+	appVersion: '1.0.2',
 	appId: 'jplgfhpmjnbigmhklmmbgecoobifkmpa',
 	baseDomainURL: 'https://account.proton.me',
 	tokenDuration: 1200, // seconds

@@ -116,6 +116,8 @@
 - Add new languages (now translated in English, French, German, Dutch, Italian, Polish, Portuguese, Russian, Spanish, Belarusian, Czech, Hindi, Ukrainian, Turkish, Romanian)
 - Fix error "Network is Unreachable" that happened inaccurately
 - Return automatically to login screen when session is revoked or expired
+- Fix account fork login messaging to prevent timeouts during sign-in
+- Avoid spurious "message port closed" warnings for broadcast replies
 
 # 1.0.1
 

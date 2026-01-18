@@ -9,6 +9,7 @@ import {triggerPromise} from '../tools/triggerPromise';
 import {executeOnTab} from '../tools/executeOnTab';
 import {getPartnerById} from '../account/partner/partners';
 import {delay} from '../tools/delay';
+import {ForkResponse} from '../messaging/ForkResponse';
 import Tab = browser.tabs.Tab;
 
 type WorkerExternalMessage = MessageBase & (
@@ -77,35 +78,55 @@ export const initMessaging = () => {
 	 * `applications/account/src/app/content/PublicApp.tsx`
 	 */
 	browser.runtime.onMessageExternal.addListener(
-		async (request: WorkerExternalMessage, sender) => {
-			if (request.type === BackgroundAction.FORK) {
+		(request: WorkerExternalMessage, sender, sendResponse) => {
+			if (request.type !== BackgroundAction.FORK) {
+				return;
+			}
+
+			let responded = false;
+			const respond = (response: ForkResponse | undefined) => {
+				if (responded) {
+					return;
+				}
+
+				responded = true;
+				sendResponse(response);
+			};
+
+			(async () => {
 				const response = await forkSession(request);
+
+				respond(response);
 
 				const welcomePage = response?.partnerId
 					? getPartnerById(response.partnerId)?.welcomePage
 					: undefined;
+				const tabId = (sender.tab as Tab | undefined)?.id;
 
-				if (welcomePage) {
-					await executeOnTab(
-						(sender.tab as Tab).id as number,
-						() => ({
-							func(welcomePage: string) {
-								location.href = welcomePage;
-							},
-							args: [welcomePage] as [string],
-						}),
-						() => `location.href = ${JSON.stringify(welcomePage)};`,
-					);
-					// Wait a bit to let the page load
-					// But in case it's too slow, we'll still show the Proton success
-					// So to let user know they can start using the extension
-					await delay(500);
+				if (welcomePage && typeof tabId === 'number') {
+					triggerPromise((async () => {
+						await executeOnTab(
+							tabId,
+							() => ({
+								func(welcomePage: string) {
+									location.href = welcomePage;
+								},
+								args: [welcomePage] as [string],
+							}),
+							() => `location.href = ${JSON.stringify(welcomePage)};`,
+						);
+						// Let the page load without blocking the response.
+						await delay(500);
+					})());
 				}
+			})().catch(error => {
+				respond({
+					type: 'error',
+					payload: {message: `${error}`},
+				});
+			});
 
-				return response;
-			}
-
-			return;
+			return true;
 		}
 	);
 };

@@ -8,7 +8,9 @@ export const executeOnTab = async <Args extends any[], Result>(
 	getCode: () => string,
 ) => {
 	try {
-		const executeScript = (browser as any as typeof chrome).scripting?.executeScript;
+		const chromeApi = globalThis.chrome as typeof chrome | undefined;
+		const browserApi = (globalThis as any).browser as typeof chrome | undefined;
+		const executeScript = chromeApi?.scripting?.executeScript || browserApi?.scripting?.executeScript;
 
 		await (executeScript ? executeScript(
 			{
