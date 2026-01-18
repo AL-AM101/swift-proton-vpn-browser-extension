@@ -2,6 +2,8 @@
 
 - Fix Split-Tunneling backward-compatibility
 - Minor bug fixes
+- Fix account fork messaging responses to avoid timeouts during sign-in
+- Avoid spurious "message port closed" warnings for broadcast replies
 
 # 1.2.12
 
