@@ -21,10 +21,15 @@ export const routeMessage = async (message: { type: BackgroundMessage, data: any
 	const { type, data } = message;
 
 	switch (type) {
-		case BackgroundAction.FORK:
-			await sendForkResponse((message as any).tabId, await forkSession(message));
+		case BackgroundAction.FORK: {
+			const response = await forkSession(message);
 
-			return null;
+			if (!(message as any).bridge) {
+				await sendForkResponse((message as any).tabId, response, (message as any).requestId);
+			}
+
+			return response;
+		}
 
 		case BackgroundData.USER:
 			if (!(await readSession())?.uid) {

@@ -167,6 +167,8 @@ module.exports = (env, argv, options) => {
 			onboarding: './source/js/onboarding.ts',
 			popup: './source/js/popup.ts',
 			transmit: './source/js/transmit.ts',
+			'account-bridge': './source/js/accountBridge.ts',
+			'account-bridge-main': './source/js/accountBridgeMain.ts',
 			['css/popup']: './source/css/popup.scss',
 			['css/onboarding']: './source/css/onboarding.scss',
 		},

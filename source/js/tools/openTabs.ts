@@ -28,7 +28,12 @@ export const connectTab = (id: number): void => {
 						return;
 					}
 
-					chrome.runtime.sendMessage({...event.data, tabId});
+					const data = event.data;
+					if (data && (data.__swiftProtonBridge || data.__swiftProtonBridgeResponse)) {
+						return;
+					}
+
+					chrome.runtime.sendMessage({...data, tabId});
 				}, false);
 			},
 			args: [id] as [number],
@@ -40,7 +45,12 @@ export const connectTab = (id: number): void => {
 					return;
 				}
 
-				chrome.runtime.sendMessage({...event.data, tabId: ${JSON.stringify(id)}});
+				const data = event.data;
+				if (data && (data.__swiftProtonBridge || data.__swiftProtonBridgeResponse)) {
+					return;
+				}
+
+				chrome.runtime.sendMessage({...data, tabId: ${JSON.stringify(id)}});
 			}, false);
 		`,
 	));
@@ -49,6 +59,7 @@ export const connectTab = (id: number): void => {
 export const sendForkResponse = async (
 	tabId: number | undefined,
 	response: ForkResponse | undefined,
+	requestId?: string,
 ): Promise<void> => {
 	if (!response) {
 		return;
@@ -57,6 +68,10 @@ export const sendForkResponse = async (
 	const partnerConfig = response.partnerId
 		? getPartnerById(response.partnerId)
 		: undefined;
+
+	const responsePayload = requestId
+		? {...response, requestId}
+		: response;
 
 	await Promise.all(
 		(tabId ? [tabId] : Object.keys((await tabData.load({})))).map(async (tabId: string | number) => {
@@ -73,11 +88,11 @@ export const sendForkResponse = async (
 
 						window.postMessage(response);
 					},
-					args: [response, welcomePage] as [ForkResponse, string | undefined],
+					args: [responsePayload, welcomePage] as [ForkResponse, string | undefined],
 				}),
 				() => `
 					${welcomePage ? `location.href = ${JSON.stringify(welcomePage)};` : ''}
-					window.postMessage(${JSON.stringify(response)});
+					window.postMessage(${JSON.stringify(responsePayload)});
 				`,
 			);
 		}),

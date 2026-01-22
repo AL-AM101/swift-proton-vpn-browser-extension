@@ -1,3 +1,15 @@
+# 1.2.15
+
+- Silence expected account-page message errors for missing extension IDs
+- Version bump for Chrome Web Store upload
+
+# 1.2.14
+
+- Add account page bridge for Chrome Web Store installs
+- Remove fixed extension key to allow Web Store signing
+- Improve login compatibility for store users
+- Run the login bridge in the page world to bypass CSP blocks
+
 # 1.2.13
 
 - Fix Split-Tunneling backward-compatibility
