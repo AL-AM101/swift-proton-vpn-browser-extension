@@ -1,5 +1,3 @@
-import {appId} from '../config';
-
 export const getBrowser = () => /^moz-extension:/.test(location.href) ? {
 	// moz-extension://
 	name: 'Firefox',
@@ -11,5 +9,5 @@ export const getBrowser = () => /^moz-extension:/.test(location.href) ? {
 	name: 'Chrome',
 	type: 'chromium',
 	pluginsUrl: 'chrome://extensions/',
-	storeReviewsUrl: `https://chromewebstore.google.com/detail/proton-vpn-fast-secure/${appId}/reviews`,
+	storeReviewsUrl: 'https://chromewebstore.google.com/detail/swift-proton-vpn-fast-sec/mofnafclpcapghpjdoaanahkgcjfcece/reviews',
 };
