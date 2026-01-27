@@ -60,6 +60,40 @@ Pin servers to a favorites list shown at the top of the server or country list.
 4) Pin the extension, open it, and sign in with your Proton account.
 5) Click Connect or choose a specific country or server.
 
+## Getting Started (Firefox)
+
+1) Download the latest `vpn-proton-firefox.zip`, then unzip it.
+2) Open `about:debugging#/runtime/this-firefox`.
+3) Click `Load Temporary Add-on...` and select `manifest.json` from the unzipped folder.
+4) Pin the extension, open it, and sign in with your Proton account.
+5) Click Connect or choose a specific country or server.
+
+## Build Requirements
+
+- OS: Windows, macOS, or Linux.
+- Node.js + npm (tested with Node `v24.12.0`, npm `11.6.2`; newer LTS versions should work).
+
+## Build (Firefox)
+
+1) `npm install`
+2) `npm run build-ff`
+3) `npm run zip-ff`
+4) The zip is generated as `vpn-proton-firefox.zip`.
+
+## Build and Verify Releases
+
+If you prefer to verify the release zip matches the source:
+
+1) Build the package locally:
+   - `npm install`
+   - `npm run pack`
+   - The zip is generated as `vpn-proton-chrome.zip`.
+2) Compute the SHA-256 hash and compare it with the release hash I publish:
+   - Windows PowerShell: `Get-FileHash .\\vpn-proton-chrome.zip -Algorithm SHA256`
+   - macOS/Linux: `shasum -a 256 vpn-proton-chrome.zip`
+
+I publish the SHA-256 hash alongside each release so anyone can verify the artifact.
+
 ## Support
 
 If this project helps you, please consider supporting it ❤️
